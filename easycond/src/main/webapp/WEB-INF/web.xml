@@ -36,4 +36,11 @@
   	<welcome-file>index.html</welcome-file>
   	<welcome-file>index.htm</welcome-file>
   </welcome-file-list>
+  
+  <resource-ref>
+  	<description>DataSource EasyCondBD</description>
+  	<res-ref-name>jdbc/EasycondBD</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>
