@@ -23,6 +23,7 @@
 		<property name="use_sql_comments">true</property>
 		
 		<!-- Espaço para declaração de classes das entidades de tabelas -->
+		<mapping class="br.com.easycond.model.Usuario"/>
 		
 	</session-factory>
 </hibernate-configuration>
