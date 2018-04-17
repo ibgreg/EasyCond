@@ -2,11 +2,17 @@ package br.com.easycond.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Usuario implements Serializable {
@@ -33,6 +39,14 @@ public class Usuario implements Serializable {
 	private Date dataNasc;
 	
 	private boolean ativo;
+	
+	@ElementCollection(targetClass = String.class)
+	@JoinTable(
+			name="usuario_permissao",
+			uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario","permissao"})},
+			joinColumns = @JoinColumn(name = "usuario"))
+	@Column(name = "permissao", length = 50)
+	private Set<String> permissao = new HashSet<String>();
 
 	public Integer getCodigo() {
 		return codigo;
@@ -90,6 +104,14 @@ public class Usuario implements Serializable {
 		this.ativo = ativo;
 	}
 
+	public Set<String> getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Set<String> permissao) {
+		this.permissao = permissao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -100,6 +122,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((permissao == null) ? 0 : permissao.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		return result;
 	}
@@ -140,6 +163,11 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (permissao == null) {
+			if (other.permissao != null)
+				return false;
+		} else if (!permissao.equals(other.permissao))
+			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
@@ -147,7 +175,5 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }
