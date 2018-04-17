@@ -9,7 +9,13 @@
 
 <h:body>
 
-	<h:outputText value="Teste" />
+	<h1>EasyCond</h1>
+	<h:form>
+	
+		<h:commandLink action="#{usuarioBean.novo}">Novo usuário? Cadastre-se aqui</h:commandLink>
+		<br/>
+		<h:outputLink value="restrito/principal.jsf">Entrar</h:outputLink>
+	</h:form>
 
 </h:body>
 
