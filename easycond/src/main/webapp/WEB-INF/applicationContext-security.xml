@@ -8,6 +8,7 @@
 			http://www.springframework.org/schema/security/spring-security.xsd">
 	
 	<http auto-config="true">
+		<intercept-url pattern="/adm/**" access="ROLE_ADMIN"/>
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO" />
 		<form-login login-page="/public/login.jsf" always-use-default-target="true" 
 			default-target-url="/restrito/home.jsf"
