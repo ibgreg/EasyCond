@@ -1,51 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		 <!-- Dependência CSS do Materialize -->
+		<h:outputStylesheet library="css" name="materialize.min.css" />
+
+  		<!-- Dependência JS do Materialize -->
+  		<h:outputScript library="js" name="materialize.min.js" />
+  		<h:outputScript name="jquery.js" library="primefaces/jquery" />
+		
 		<title>Login - EasyCond</title>
 	</h:head>
-	<h:body>
-		<h:panelGroup rendered="#{!empty param.login_error}">
-			<span style="font-color:red">Erro ao efetuar o login</span>
-			<br/>
-			<br/>
-			Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
-		</h:panelGroup>
-		
-		<form id="login" method="post" action="#{request.contextPath}/j_spring_security_check">
-			<span style="display: block;">
-				
-				<span>
-					Login:
-				</span>
-				<input type="text" name="j_username" id="j_username" />			
-			</span> 
-			
-			<span style="display: block;">
-				
-				<span>
-					Senha:
-				</span>
-				<input type="password" name="j_password" id="j_password" />			
-			</span>
-			
-			<span style="display: block;">
-				
-				<input type="checkbox" name="_spring_security_remember_me" />
-				<label>Lembrar usuário</label>		
-			</span>
-			
-			<span style="display: block;">
-				<input type="submit" value="Entrar"/>	
-			</span>
-			<script>
-				document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
-			</script>
-		</form>
-		
-		
+	<h:body style="background-color: #1e94d2">
+		<div class="valign-wrapper" id="login-page" style="height: 100%;">
+			<div class="container">
+				<div class="center-align">
+					<div class="row">
+						<div class="col s6 offset-s3">
+							<div class="card">
+								<div class="card-content">
+									<div class="center-align">
+										<h2>EasyCond</h2>
+									</div>
+									<div class="left-align">
+										<h:panelGroup rendered="#{!empty param.login_error}">
+											<span style="color:red">Erro ao efetuar o login</span>
+											<br/>
+											<br/>
+											Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
+										</h:panelGroup>
+										<form id="login-page" method="post" action="#{request.contextPath}/j_spring_security_check">
+										
+											<div class="row">
+												<div class="col s12 input-field">
+													<span>
+														Login:
+													</span>
+													<input type="text" name="j_username" id="j_username" />	
+												</div>
+												
+												<div class="col s12 input-field">
+													<span>
+														Senha:
+													</span>
+													<input type="password" name="j_password" id="j_password" />	
+												</div>												
+												<div class="col s12 input-field">
+													<input type="submit" value="Entrar" class="btn btn-large"/>	
+												</div>
+											</div>
+											<script>
+												document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
+											</script>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</h:body>
 </html>
