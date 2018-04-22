@@ -2,5 +2,12 @@
 EasyCond – Sistema de Gestão de Condomínio
 
 
-Teste Push
-Teste Pull
+PREPARANDO O AMBIENTE NO QUAL O EASYCOND SERÁ INSTALADO
+-------------------------------------------------------
+
+- Instalação do Apache Tomcat
+
+  => Windows:
+    
+    * Instalar o Apache Tomcat na raiz da partição C: do Windows
+    
