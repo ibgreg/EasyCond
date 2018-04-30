@@ -24,6 +24,7 @@
 		
 		<!-- Espaço para declaração de classes das entidades de tabelas -->
 		<mapping class="br.com.easycond.model.Usuario"/>
+		<mapping class="br.com.easycond.model.Aviso"/>
 		
 	</session-factory>
 </hibernate-configuration>
