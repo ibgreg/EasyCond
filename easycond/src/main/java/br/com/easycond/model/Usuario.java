@@ -5,16 +5,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
+@Table(name="usuario")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
