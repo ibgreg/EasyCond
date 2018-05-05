@@ -25,6 +25,8 @@
 		<!-- Espaço para declaração de classes das entidades de tabelas -->
 		<mapping class="br.com.easycond.model.Usuario"/>
 		<mapping class="br.com.easycond.model.Aviso"/>
+		<mapping class="br.com.easycond.model.Assembleia"/>
+		<mapping class="br.com.easycond.model.Enquete"/>
 		
 	</session-factory>
 </hibernate-configuration>

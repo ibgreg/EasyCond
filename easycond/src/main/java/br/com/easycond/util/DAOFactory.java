@@ -1,7 +1,9 @@
 package br.com.easycond.util;
 
+import br.com.easycond.dao.AssembleiaDAO;
 import br.com.easycond.dao.AvisoDAO;
 import br.com.easycond.dao.UsuarioDAO;
+import br.com.easycond.daointerf.AssembleiaDAOInterf;
 import br.com.easycond.daointerf.AvisoDAOInterf;
 import br.com.easycond.daointerf.UsuarioDAOInterf;
 
@@ -18,4 +20,12 @@ public class DAOFactory {
 		avisoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return avisoDAO;
 	}
+	
+	public static AssembleiaDAOInterf criarAssembleiaDAO() {
+		AssembleiaDAO assembleiaDAO = new AssembleiaDAO();
+		assembleiaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return assembleiaDAO;
+	}
+	
+	
 }

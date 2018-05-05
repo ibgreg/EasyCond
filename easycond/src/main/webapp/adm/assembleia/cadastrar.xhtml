@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="/templates/layout.xhtml">
+	
+	<ui:define name="content">
+		
+		<h1>Nova Assembleia</h1>
+		<p:separator />
+		
+		<h:form prependId="false" >
+		
+			<p:messages id="msg" closable="true" autoUpdate="true" />
+		
+			<h:inputHidden value="#{assembleiaBean.assembleia.id}"  />
+		
+			<h:outputLabel value="Título: " for="titulo"/>
+			<p:inputText id="titulo" value="#{assembleiaBean.assembleia.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="30" />
+			<br/>
+			
+			<h:outputLabel value="Data Início: " for="dataInicio"/>
+			<p:calendar id="dataInicio" value="#{assembleiaBean.assembleia.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" navigator="true" showOn="both" />
+			<br/>
+			
+			<h:outputLabel value="Data Final: " for="dataFinal"/>
+			<p:calendar id="dataFinal" value="#{assembleiaBean.assembleia.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" navigator="true" showOn="both" />
+			<br/>
+
+			<h:outputLabel value="Pergunta da Enquete: " for="perguntaEnquete"/>
+			<p:inputText id="perguntaEnquete" value="#{assembleiaBean.perguntaEnquete}" required="true" requiredMessage="O campo 'Pergunta da Enquete' é obrigatório!" maxlength="200" size="50" />
+			<br/>
+			
+			<h:outputLabel value="Pauta:" for="pauta" />
+			<p:textEditor id="pauta" value="#{assembleiaBean.assembleia.descricao}" required="true" requiredMessage="O campo 'Pauta' é obrigatório!" height="200" />
+			
+			<p:commandButton action="#{assembleiaBean.salvar()}" value="Salvar" process="@form" icon="ui-icon-disk"/>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>
