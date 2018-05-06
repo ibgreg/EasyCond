@@ -2,12 +2,10 @@ package br.com.easycond.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="aviso")
 public class Aviso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
