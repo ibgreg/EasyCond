@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="/templates/layout.xhtml">
+
+	<ui:define name="content">
+
+		<h1>Condôminos</h1>
+
+		<h:form>
+			<p:dataTable var="condomino" value="#{condominoBean.listaCondomino}"
+				paginator="true" paginatorPosition="bottom"
+				emptyMessage="Não há registros disponíveis">
+				
+				<p:column headerText="ID">
+					<h:outputText value="#{condomino.idCondomino}" />
+				</p:column>
+				
+				<p:column headerText="IDpes">
+					<h:outputText value="#{condomino.idPessoa}" />
+				</p:column>
+				
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
