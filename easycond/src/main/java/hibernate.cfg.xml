@@ -27,6 +27,8 @@
 		<mapping class="br.com.easycond.model.Aviso"/>
 		<mapping class="br.com.easycond.model.Assembleia"/>
 		<mapping class="br.com.easycond.model.Enquete"/>
-		
+		<mapping class="br.com.easycond.model.Condomino"/>
+		<mapping class="br.com.easycond.model.Pessoa"/>
+		<mapping class="br.com.easycond.model.SolicitacaoAviso"/>
 	</session-factory>
 </hibernate-configuration>
