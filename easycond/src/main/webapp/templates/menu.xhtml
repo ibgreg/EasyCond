@@ -9,12 +9,17 @@
 
 		<p:slideMenu style="width:180px">
 			<p:submenu label="Cadastro" icon="ui-icon-refresh">
-				<p:menuitem value="Condômino" update="messages"/>
+				<p:menuitem value="Condômino" update="messages"
+					url="/restrito/cadastro/condomino/form_condomino.jsf" />
 				<p:menuitem value="Funcionário" update="messages"/>
 			</p:submenu>
 			<p:submenu label="Aviso" update="messages">
 				<p:menuitem value="Avisos" url="/restrito/aviso/lista.jsf"
 					update="messages" />
+			</p:submenu>
+			<p:submenu label="Solicitações" update="messages">
+				<p:menuitem value="Aviso" url="/public/solicitacao/aviso/grid_solicitacao_aviso.jsf"
+					update="messages"/>					
 			</p:submenu>
 		</p:slideMenu>
 	</h:form>
