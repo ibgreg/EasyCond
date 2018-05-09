@@ -7,9 +7,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.easycond.model.SolicitacaoAviso;
+import br.com.easycond.rn.AvisoRN;
 import br.com.easycond.rn.SolicitacaoAvisoRN;
 
-@ManagedBean(name="solicitacaoAvisoBean")
+@ManagedBean(name = "solicitacaoAvisoBean")
 @RequestScoped
 public class SolicitacaoAvisoBean {
 
@@ -28,16 +29,24 @@ public class SolicitacaoAvisoBean {
 	public String salvar() {
 
 		SolicitacaoAvisoRN solicitacaoAvisoRN = new SolicitacaoAvisoRN();
-		
+
 		solicitacaoAvisoRN.salvar(this.solicitacaoAviso);
 
-		return "/public/solicitacao/aviso/form_solicitacao_aviso";
+		return "/public/solicitacao/aviso/grid_solicitacao_aviso";
 	}
 
 	public String editar() {
-		return "/public/solicitacao/aviso/form_solicitacao_aviso";
+		return "/public/solicitacao/aviso/grid_solicitacao_aviso";
 	}
-	
+
+	public String excluir() {
+		
+		SolicitacaoAvisoRN solicitacaoAvisoRN = new SolicitacaoAvisoRN();
+		solicitacaoAvisoRN.excluir(this.solicitacaoAviso);
+		this.listaSolicitacaoAviso = null;
+		return null;
+	}
+
 	public List<SolicitacaoAviso> getListaSolicitacaoAviso() {
 		if (this.listaSolicitacaoAviso == null) {
 			SolicitacaoAvisoRN solicitacaoAvisoRN = new SolicitacaoAvisoRN();
