@@ -1,6 +1,8 @@
 package br.com.easycond.rn;
 
+import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
 
 import br.com.easycond.daointerf.SolicitacaoAvisoDAOInterf;
 import br.com.easycond.model.SolicitacaoAviso;
@@ -11,7 +13,7 @@ public class SolicitacaoAvisoRN {
 	private SolicitacaoAvisoDAOInterf solicitacaoAvisoDAO;
 
 	public SolicitacaoAvisoRN() {
-		
+
 		this.solicitacaoAvisoDAO = DAOFactory.criarSolicitacaoAvisoDAO();
 	}
 
@@ -30,12 +32,15 @@ public class SolicitacaoAvisoRN {
 		Integer id = solicitacaoAviso.getIdSolicitacaoAviso();
 
 		if (id == null || id == 0) {
-			
+
 			solicitacaoAviso.setStatus("Em análise");
-			this.solicitacaoAvisoDAO.salvar(solicitacaoAviso);			
-		}
-		else
+			solicitacaoAviso.setDataSolicitacao(new Date());
+			this.solicitacaoAvisoDAO.salvar(solicitacaoAviso);
+		} else {
+			
+			solicitacaoAviso.setDataSolicitacao(new Date());
 			this.solicitacaoAvisoDAO.atualizar(solicitacaoAviso);
+		}
 	}
 
 	public void excluir(SolicitacaoAviso solicitacaoAviso) {

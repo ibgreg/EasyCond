@@ -32,6 +32,10 @@
 					<h:outputText value="#{solicitacaoAviso.status}" escape="false"/>
 				</p:column>
 
+				<p:column headerText="Data da solicitação">
+					<h:outputText value="#{solicitacaoAviso.dataSolicitacao}"/>
+				</p:column>
+
 				<p:column headerText="Comandos">
 					<p:commandButton action="#{solicitacaoAvisoBean.editar}"
 						icon="fa fa-pencil" process="@form">

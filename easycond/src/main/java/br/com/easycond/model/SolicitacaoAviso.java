@@ -1,6 +1,8 @@
 package br.com.easycond.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="solicitacao_aviso")
@@ -29,6 +33,10 @@ public class SolicitacaoAviso implements Serializable {
 	@Column(name="status_solicitacao_aviso", nullable=false, length=20)
 	private String status;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_solicitacao", nullable=false)
+	private Date dataSolicitacao;
+	
 	public Integer getIdSolicitacaoAviso() {
 		return idSolicitacaoAviso;
 	}
@@ -60,14 +68,24 @@ public class SolicitacaoAviso implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
+	public Date getDataSolicitacao() {
+		return dataSolicitacao;
+	}
+
+	public void setDataSolicitacao(Date dataSolicitacao) {
+		this.dataSolicitacao = dataSolicitacao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dataSolicitacao == null) ? 0 : dataSolicitacao.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((idSolicitacaoAviso == null) ? 0 : idSolicitacaoAviso.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
 
@@ -80,6 +98,11 @@ public class SolicitacaoAviso implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		SolicitacaoAviso other = (SolicitacaoAviso) obj;
+		if (dataSolicitacao == null) {
+			if (other.dataSolicitacao != null)
+				return false;
+		} else if (!dataSolicitacao.equals(other.dataSolicitacao))
+			return false;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
@@ -95,8 +118,11 @@ public class SolicitacaoAviso implements Serializable {
 				return false;
 		} else if (!status.equals(other.status))
 			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
 		return true;
-	}
-	
-	
+	}	
 }
