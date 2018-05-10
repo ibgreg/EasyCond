@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.easycond.model.SolicitacaoAviso;
-import br.com.easycond.rn.AvisoRN;
 import br.com.easycond.rn.SolicitacaoAvisoRN;
 
 @ManagedBean(name = "solicitacaoAvisoBean")

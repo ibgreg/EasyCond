@@ -2,7 +2,6 @@ package br.com.easycond.rn;
 
 import java.util.Date;
 import java.util.List;
-import java.time.LocalDate;
 
 import br.com.easycond.daointerf.SolicitacaoAvisoDAOInterf;
 import br.com.easycond.model.SolicitacaoAviso;
