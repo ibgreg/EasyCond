@@ -8,7 +8,6 @@
 	
 	<ui:define name="content">
 		<h1>Bem-vindo</h1>
-		Usuário: #{request.remoteUser}
 		<br/>
 		
 		<h:form>
@@ -16,7 +15,7 @@
 					Teste permissao ADM
 			</sec:ifAnyGranted>
 			
-			<p:commandLink value="Sair" onclick="document.location='#{request.contextPath}/j_spring_security_logout'" />
+			
 		</h:form>
 	</ui:define>
 	

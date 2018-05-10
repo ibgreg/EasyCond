@@ -1,5 +1,12 @@
 /* TOGGLE */
 .aw-toggle {
+	line-height: 50px;
+	margin-right: 15px;
+	
+	color: #fff;
+}
+
+.aw-user {
 	float: right;
 	line-height: 50px;
 	margin-right: 15px;
