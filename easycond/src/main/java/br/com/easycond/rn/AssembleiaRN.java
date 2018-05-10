@@ -18,6 +18,10 @@ public class AssembleiaRN {
 		return this.assembleiaDAO.carregar(id);
 	}
 	
+	public Assembleia carregarAssembleia() {
+		return this.assembleiaDAO.carregarAssembleia();
+	}
+	
 	public List<Assembleia> listar() {
 		return this.assembleiaDAO.listar();
 	}

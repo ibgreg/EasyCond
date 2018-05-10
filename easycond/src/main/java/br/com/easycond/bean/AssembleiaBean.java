@@ -28,6 +28,14 @@ public class AssembleiaBean {
 		return "/adm/assembleia/cadastrar";
 	}
 	
+	public String carregarEnquete() {
+		this.assembleia = new Assembleia();
+		AssembleiaRN assembleiaRN = new AssembleiaRN();
+		assembleia = assembleiaRN.carregarAssembleia();
+		return "/restrito/assembleia/votacao";
+	}
+	
+	
 	public String salvar() {
 		
 		if (enquete != null) {
