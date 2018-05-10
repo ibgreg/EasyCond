@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="/templates/layout.xhtml">
+
+	<ui:define name="content">
+
+		<h1>Votação</h1>
+		<p:separator />
+
+		<h:form prependId="false">
+			
+			<h:outputText rendered="#{assembleiaBean.assembleia == null}" value="Não existem assembleias ativas no momento" />
+			
+			<p:panel rendered="#{assembleiaBean.assembleia != null}" id="assembleiaPanel" header="#{assembleiaBean.assembleia.titulo}"
+				style="margin-bottom:20px">
+				<h:panelGrid columns="1" cellpadding="10">
+					<h:outputText value="#{assembleiaBean.assembleia.enquete.pergunta}" />
+					<p:fieldset legend="Pauta" toggleable="true" toggleSpeed="500">
+						<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}"/>
+						<h:panelGrid columns="1">
+							<h:outputText value="#{assembleiaBean.assembleia.descricao}" escape="false" />
+						</h:panelGrid>
+					</p:fieldset>
+					<p:selectOneRadio id="console" value="teste">
+						<f:selectItem itemLabel="A Favor" itemValue="F" />
+						<f:selectItem itemLabel="Contra" itemValue="C" />
+					</p:selectOneRadio>
+					<h:outputLabel value="Comentários e/ou sugestões (opcional)" />
+					<p:inputTextarea   />
+					<p:commandButton value="Enviar voto" />
+					
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
