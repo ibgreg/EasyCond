@@ -18,6 +18,14 @@ public class VotosRN {
 		return this.votosDAO.carregar(id);
 	}
 	
+	public List<Votos> carregarVotosContraEnquete(Integer id) {
+		return this.votosDAO.listarVotosContra(id);
+	}
+	
+	public List<Votos> carregarVotosFavorEnquete(Integer id) {
+		return this.votosDAO.listarVotosFavor(id);
+	}
+	
 	public List<Votos> listar() {
 		return this.votosDAO.listar();
 	}

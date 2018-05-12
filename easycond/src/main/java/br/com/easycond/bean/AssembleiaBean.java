@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.primefaces.model.chart.PieChartModel;
+
 import br.com.easycond.model.Assembleia;
 import br.com.easycond.model.Enquete;
 import br.com.easycond.model.Votos;
@@ -21,8 +23,12 @@ public class AssembleiaBean {
 	private Votos votos = new Votos();
 	
 	private String perguntaEnquete;
-	private String opcaoVoto;
+	
 	private List<Assembleia> lista;
+	private List<Votos> listaVotosContra;
+	private List<Votos> listaVotosFavor;
+	
+	private PieChartModel graficoVotos;
 	
 	@PostConstruct
 	public String novo() {
@@ -40,6 +46,39 @@ public class AssembleiaBean {
 		return "/restrito/assembleia/votacao";
 	}
 	
+	public String carregarListaVotos() {
+		this.assembleia = new Assembleia();
+		this.votos =  new Votos();
+		AssembleiaRN assembleiaRN = new AssembleiaRN();
+		VotosRN votosRN = new VotosRN();
+		assembleia = assembleiaRN.carregarAssembleia();
+		
+		if (this.listaVotosContra == null) {
+			
+			this.listaVotosContra = votosRN.carregarVotosContraEnquete(assembleia.getEnquete().getId());
+		}
+		
+		if (this.listaVotosFavor == null) {
+			this.listaVotosFavor = votosRN.carregarVotosFavorEnquete(assembleia.getEnquete().getId());
+		}
+		
+		carregarGrafico();
+		
+		return "/restrito/assembleia/resultado";
+		
+	}
+	
+	public PieChartModel carregarGrafico() {
+		graficoVotos = new PieChartModel();
+		
+		graficoVotos.getData().put("A Favor", listaVotosFavor.size());
+		graficoVotos.getData().put("Contra", listaVotosContra.size());
+		
+		graficoVotos.setTitle("Resultado");
+		graficoVotos.setLegendPosition("w");
+		
+		return graficoVotos;
+	}
 	
 	public String salvar() {
 		
@@ -47,7 +86,6 @@ public class AssembleiaBean {
 			assembleia.setEnquete(enquete);
 			enquete.setPergunta(perguntaEnquete);
 			enquete.setAssembleia(assembleia);
-			//enquete.setPergunta(pergunta);
 		}
 		
 		AssembleiaRN assembleiaRN = new AssembleiaRN();
@@ -63,6 +101,8 @@ public class AssembleiaBean {
 		
 		VotosRN votosRN = new VotosRN();
 		votosRN.salvar(this.votos);
+		
+		carregarListaVotos();
 		
 		return "/restrito/assembleia/resultado";
 		
@@ -110,13 +150,13 @@ public class AssembleiaBean {
 	public void setPerguntaEnquete(String perguntaEnquete) {
 		this.perguntaEnquete = perguntaEnquete;
 	}
-	
-	public String getOpcaoVoto() {
-		return opcaoVoto;
+
+	public PieChartModel getGraficoVotos() {
+		return graficoVotos;
 	}
 
-	public void setOpcaoVoto(String opcaoVoto) {
-		this.opcaoVoto = opcaoVoto;
+	public void setGraficoVotos(PieChartModel graficoVotos) {
+		this.graficoVotos = graficoVotos;
 	}
 
 	public List<Assembleia> getLista() {
@@ -126,6 +166,21 @@ public class AssembleiaBean {
 		}
 		return this.lista;
 	}
-	
+
+	public List<Votos> getListaVotosContra() {
+		return listaVotosContra;
+	}
+
+	public void setListaVotosContra(List<Votos> listaVotosContra) {
+		this.listaVotosContra = listaVotosContra;
+	}
+
+	public List<Votos> getListaVotosFavor() {
+		return listaVotosFavor;
+	}
+
+	public void setListaVotosFavor(List<Votos> listaVotosFavor) {
+		this.listaVotosFavor = listaVotosFavor;
+	}	
 	
 }

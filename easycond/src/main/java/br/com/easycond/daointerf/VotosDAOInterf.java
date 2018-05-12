@@ -13,4 +13,8 @@ public interface VotosDAOInterf {
 	public Votos carregar(Integer id);
 	
 	public List<Votos> listar();
+	
+	public List<Votos> listarVotosContra(Integer id);
+	
+	public List<Votos> listarVotosFavor(Integer id);
 }
