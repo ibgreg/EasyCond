@@ -30,5 +30,7 @@
 		<mapping class="br.com.easycond.model.Condomino"/>
 		<mapping class="br.com.easycond.model.Pessoa"/>
 		<mapping class="br.com.easycond.model.SolicitacaoAviso"/>
+		<mapping class="br.com.easycond.model.Votos"/>
+		
 	</session-factory>
 </hibernate-configuration>
