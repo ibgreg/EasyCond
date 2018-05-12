@@ -11,7 +11,7 @@
 		<h1>Votação</h1>
 		<p:separator />
 
-		<h:form id="teste" prependId="false">
+		<h:form id="votacaoForm" prependId="false">
 			
 			<h:outputText rendered="#{assembleiaBean.assembleia == null}" value="Não existem assembleias ativas no momento" />
 			
@@ -33,7 +33,7 @@
 					</p:selectOneRadio>
 					<h:outputLabel value="Comentários e/ou sugestões (opcional)" />
 					<p:inputTextarea id="comentariosTexto" value="#{assembleiaBean.votos.comentario}" />
-					<p:commandButton action="#{assembleiaBean.enviarVoto()}" value="Enviar voto" process="teste" />
+					<p:commandButton action="#{assembleiaBean.enviarVoto()}" value="Enviar voto" process="@form" />
 					
 				</h:panelGrid>
 			</p:panel>
