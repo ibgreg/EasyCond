@@ -11,9 +11,11 @@
 		<h1>Votação</h1>
 		<p:separator />
 
-		<h:form prependId="false">
+		<h:form id="teste" prependId="false">
 			
 			<h:outputText rendered="#{assembleiaBean.assembleia == null}" value="Não existem assembleias ativas no momento" />
+			
+			<p:messages id="msg" closable="true" autoUpdate="true" />
 			
 			<p:panel rendered="#{assembleiaBean.assembleia != null}" id="assembleiaPanel" header="#{assembleiaBean.assembleia.titulo}"
 				style="margin-bottom:20px">
@@ -25,17 +27,18 @@
 							<h:outputText value="#{assembleiaBean.assembleia.descricao}" escape="false" />
 						</h:panelGrid>
 					</p:fieldset>
-					<p:selectOneRadio id="console" value="teste">
+					<p:selectOneRadio id="opcoesVoto" value="#{assembleiaBean.votos.opcao}" required="true" requiredMessage="É necessário escolher uma opção para votar">
 						<f:selectItem itemLabel="A Favor" itemValue="F" />
 						<f:selectItem itemLabel="Contra" itemValue="C" />
 					</p:selectOneRadio>
 					<h:outputLabel value="Comentários e/ou sugestões (opcional)" />
-					<p:inputTextarea   />
-					<p:commandButton value="Enviar voto" />
+					<p:inputTextarea id="comentariosTexto" value="#{assembleiaBean.votos.comentario}" />
+					<p:commandButton action="#{assembleiaBean.enviarVoto()}" value="Enviar voto" process="teste" />
 					
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
+		
 	</ui:define>
 
 </ui:composition>
