@@ -11,8 +11,18 @@
 		<p:separator />
 		
 		<h:form prependId="false">
-		
-			<h:outputLabel value="Tela reservada para a exibição de resultados da votação" />
+				
+			<p:panel rendered="#{assembleiaBean.assembleia != null}" id="assembleiaPanel" header="#{assembleiaBean.assembleia.titulo}"
+				style="margin-bottom:20px">
+				<h:panelGrid columns="1" cellpadding="10">
+					<h:outputText value="#{assembleiaBean.assembleia.enquete.pergunta}" />
+					
+					<p:chart type="pie" model="#{assembleiaBean.graficoVotos}" style="width:400px;height:300px"  />
+					
+					<p:commandButton value="Página inicial" />
+					
+				</h:panelGrid>
+			</p:panel>
 		
 		</h:form>
 		
