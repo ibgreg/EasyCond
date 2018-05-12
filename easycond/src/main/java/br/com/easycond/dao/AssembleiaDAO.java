@@ -2,6 +2,7 @@ package br.com.easycond.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.easycond.daointerf.AssembleiaDAOInterf;
@@ -38,6 +39,14 @@ public class AssembleiaDAO implements AssembleiaDAOInterf {
 	@Override
 	public List<Assembleia> listar() {
 		return this.session.createCriteria(Assembleia.class).list();
+	}
+	
+	@Override
+	public Assembleia carregarAssembleia() {
+		String sqlQuery = "select a from Assembleia a inner join a.enquete e where sysdate() between a.dataInicio and a.dataFim";
+		Query query = session.createQuery(sqlQuery);
+		
+		return (Assembleia) query.uniqueResult();
 	}
 
 }

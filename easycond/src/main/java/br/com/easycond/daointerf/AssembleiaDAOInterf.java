@@ -15,4 +15,6 @@ public interface AssembleiaDAOInterf {
 	public Assembleia carregar(Integer id);
 	
 	public List<Assembleia> listar();
+
+	public Assembleia carregarAssembleia();
 }
