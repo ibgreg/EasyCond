@@ -1,11 +1,14 @@
 package br.com.easycond.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +28,10 @@ public class Enquete implements Serializable {
 	
 	@OneToOne(mappedBy = "enquete")
 	private Assembleia assembleia;
+	
+	@OneToMany(mappedBy = "idEnquete", fetch = FetchType.LAZY)
+	@Column(name = "id_votos")
+	private List<Votos> votos;
 
 	public Integer getId() {
 		return id;
@@ -50,6 +57,14 @@ public class Enquete implements Serializable {
 		this.assembleia = assembleia;
 	}
 
+	public List<Votos> getVotos() {
+		return votos;
+	}
+
+	public void setVotos(List<Votos> votos) {
+		this.votos = votos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -57,6 +72,7 @@ public class Enquete implements Serializable {
 		result = prime * result + ((assembleia == null) ? 0 : assembleia.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((pergunta == null) ? 0 : pergunta.hashCode());
+		result = prime * result + ((votos == null) ? 0 : votos.hashCode());
 		return result;
 	}
 
@@ -84,8 +100,12 @@ public class Enquete implements Serializable {
 				return false;
 		} else if (!pergunta.equals(other.pergunta))
 			return false;
+		if (votos == null) {
+			if (other.votos != null)
+				return false;
+		} else if (!votos.equals(other.votos))
+			return false;
 		return true;
 	}
-	
-	
+
 }

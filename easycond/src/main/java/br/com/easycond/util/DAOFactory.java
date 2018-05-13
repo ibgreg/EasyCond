@@ -10,6 +10,7 @@ import br.com.easycond.dao.FuncionarioDAO;
 import br.com.easycond.dao.PessoaDAO;
 import br.com.easycond.dao.SolicitacaoAvisoDAO;
 import br.com.easycond.dao.UsuarioDAO;
+import br.com.easycond.dao.VotosDAO;
 import br.com.easycond.daointerf.ApartamentoDAOInterf;
 import br.com.easycond.daointerf.AssembleiaDAOInterf;
 import br.com.easycond.daointerf.AvisoDAOInterf;
@@ -20,6 +21,7 @@ import br.com.easycond.daointerf.FuncionarioDAOInterf;
 import br.com.easycond.daointerf.PessoaDAOInterf;
 import br.com.easycond.daointerf.SolicitacaoAvisoDAOInterf;
 import br.com.easycond.daointerf.UsuarioDAOInterf;
+import br.com.easycond.daointerf.VotosDAOInterf;
 
 public class DAOFactory {
 
@@ -95,5 +97,12 @@ public class DAOFactory {
 		apartamentoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 
 		return apartamentoDAO;
+	}
+	
+	public static VotosDAOInterf criarVotosDAO() {
+		VotosDAO votosDAO = new VotosDAO();
+		votosDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		
+		return votosDAO;
 	}
 }
