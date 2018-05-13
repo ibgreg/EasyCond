@@ -1,7 +1,6 @@
 package br.com.easycond.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -34,7 +33,7 @@ public class SolicitacaoAviso implements Serializable {
 	private String status;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_solicitacao", nullable=false)
+	@Column(name="data_solicitacao", updatable=false, nullable=false)
 	private Date dataSolicitacao;
 	
 	public Integer getIdSolicitacaoAviso() {
