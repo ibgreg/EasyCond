@@ -34,8 +34,13 @@ public class Pessoa implements Serializable{
 	@Column(name="cidade_nascimento", length=50, nullable=true)
 	private String cidadeNascimento;
 
-	/*@OneToOne(mappedBy="pessoa")
-	private Condomino condomino;*/
+	@Column(name="tipo_pessoa", nullable=false, updatable=false)	
+	/*
+	 *  C - Condômino
+	 *  F - Funcionário
+	 *  V - Visitante
+	 */	
+	private char tipoPessoa; 
 	
 	public Integer getIdPessoa() {
 		return idPessoa;
@@ -91,6 +96,16 @@ public class Pessoa implements Serializable{
 
 	public void setCidadeNascimento(String cidadeNascimento) {
 		this.cidadeNascimento = cidadeNascimento;
+	}
+
+	
+	
+	public char getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(char tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
 	}
 
 	@Override
