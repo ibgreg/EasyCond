@@ -6,50 +6,66 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.easycond.model.Condomino;
-import br.com.easycond.rn.CondominoRN;
+import br.com.easycond.model.Pessoa;
+import br.com.easycond.rn.PessoaRN;
 
 @ManagedBean(name="condominoBean")
 @RequestScoped
 public class CondominoBean {
 
-	private Condomino condomino = new Condomino();
+	private Pessoa pessoa = new Pessoa();
 	
-	private List<Condomino> listaCondomino;
+	private List<Pessoa> listaCondomino;
 	
 	@PostConstruct
 	public String novo() {
 		
-		this.condomino = new Condomino();
+		this.pessoa = new Pessoa();
 		
-		return "/restrito/cadastro/condomino/grid_condomino";
+		return "/restrito/cadastro/condomino/form_condomino";
 	}
 	
-	public void salvar() {
+	public String salvar() {
 		
-		CondominoRN condominoRN = new CondominoRN();
+		PessoaRN pessoaRN = new PessoaRN();
 		
-		condominoRN.salvar(this.condomino);		
+		this.pessoa.setTipoPessoa('C');
 		
-		//return "restrito/home";
+		pessoaRN.salvar(this.pessoa);	
+		
+		return "/restrito/cadastro/condomino/grid_condomino";
 	}	
 	
-	public List<Condomino> getListaCondomino() {
+	public String editar() {
+		return "/restrito/cadastro/condomino/form_condomino";
+	}
+
+	public String excluir() {
+		
+		PessoaRN pessoaRN = new PessoaRN();
+		pessoaRN.excluir(this.pessoa);
+		this.listaCondomino = null;
+		return null;
+	}
+	
+	public List<Pessoa> getListaCondomino() {
 		if (this.listaCondomino == null) {
-			CondominoRN condominoRN = new CondominoRN();
-			this.listaCondomino = condominoRN.listar();
+			PessoaRN pessoaRN = new PessoaRN();
+			this.listaCondomino = pessoaRN.listar();
 		}
 		
 		return this.listaCondomino;
 	}
 
-	public Condomino getCondomino() {
-		return condomino;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setCondomino(Condomino condomino) {
-		this.condomino = condomino;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
-	
-	
+
+	public void setListaCondomino(List<Pessoa> listaCondomino) {
+		this.listaCondomino = listaCondomino;
+	}	
 }
