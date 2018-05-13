@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.easycond.daointerf.PessoaDAOInterf;
-import br.com.easycond.model.Aviso;
 import br.com.easycond.model.Pessoa;
 
 public class PessoaDAO implements PessoaDAOInterf {
@@ -14,9 +13,7 @@ public class PessoaDAO implements PessoaDAOInterf {
 	
 	public void setSession(Session session) {
 		this.session = session;
-	}
-	
-	
+	}	
 	
 	@Override
 	public void atualizar(Pessoa pessoa) {
@@ -39,12 +36,12 @@ public class PessoaDAO implements PessoaDAOInterf {
 	@Override
 	public Pessoa carregar(Integer id) {
 		// TODO Auto-generated method stub
-		return (Pessoa) this.session.get(Aviso.class, id);
+		return (Pessoa) this.session.get(Pessoa.class, id);
 	}
 
 	@Override
 	public List<Pessoa> listar() {
 		// TODO Auto-generated method stub
-		return this.session.createCriteria(Aviso.class).list();
+		return this.session.createCriteria(Pessoa.class).list();
 	}	
 }
