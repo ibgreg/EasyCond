@@ -10,8 +10,16 @@
 		<p:slideMenu style="width:180px">
 			<p:submenu label="Cadastro" icon="ui-icon-refresh">
 				<p:menuitem value="Condômino" update="messages"
-					url="/restrito/cadastro/condomino/form_condomino.jsf" />
-				<p:menuitem value="Funcionário" update="messages"/>
+					url="/restrito/cadastro/condomino/grid_condomino.jsf" />
+				<p:menuitem value="Funcionário" update="messages" />
+				<p:submenu label="Imovel">
+					<p:menuitem value="Bloco" update="messages"
+						url="/restrito/cadastro/imovel/bloco/grid_bloco.jsf" />
+					<p:menuitem value="Casa" update="messages"
+						url="/restrito/cadastro/imovel/casa/grid_casa.jsf" />
+					<p:menuitem value="Apartamento" update="messages"
+						url="/restrito/cadastro/imovel/apartamento/grid_apartamento.jsf" />
+				</p:submenu>
 			</p:submenu>
 			<p:submenu label="Registro" update="messages">
 				<p:menuitem value="Visita" url="/restrito/aviso/lista.jsf"
@@ -22,8 +30,9 @@
 					update="messages" />
 			</p:submenu>
 			<p:submenu label="Solicitações" update="messages">
-				<p:menuitem value="Aviso" url="/public/solicitacao/aviso/grid_solicitacao_aviso.jsf"
-					update="messages"/>					
+				<p:menuitem value="Aviso"
+					url="/public/solicitacao/aviso/grid_solicitacao_aviso.jsf"
+					update="messages" />
 			</p:submenu>
 		</p:slideMenu>
 	</h:form>
