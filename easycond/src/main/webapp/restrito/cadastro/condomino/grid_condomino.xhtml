@@ -11,18 +11,29 @@
 		<h1>Condôminos</h1>
 
 		<h:form>
-			<p:dataTable var="condomino" value="#{condominoBean.listaCondomino}"
+			<p:commandButton action="#{condominoBean.novo()}"
+				icon="fa fa-plus-circle" value="Novo" process="@this" />
+
+			<p:dataTable var="pessoa" value="#{condominoBean.listaCondomino}"
 				paginator="true" paginatorPosition="bottom"
 				emptyMessage="Não há registros disponíveis">
-				
-				<p:column headerText="ID">
-					<h:outputText value="#{condomino.idCondomino}" />
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{pessoa.nomePessoa}" />
 				</p:column>
-				
-				<p:column headerText="IDpes">
-					<h:outputText value="#{condomino.idPessoa}" />
+
+				<p:column headerText="Comandos">
+					<p:commandButton action="#{condominoBean.editar}" icon="fa fa-pencil"
+						process="@form">
+						<f:setPropertyActionListener value="#{pessoa}"
+							target="#{condominoBean.pessoa}" />
+					</p:commandButton>
+					<p:commandButton action="#{condominoBean.excluir}" icon="fa fa-trash"
+						process="@this" update="@form">
+						<f:setPropertyActionListener value="#{pessoa}"
+							target="#{condominoBean.pessoa}" />
+					</p:commandButton>
 				</p:column>
-				
 
 			</p:dataTable>
 		</h:form>
