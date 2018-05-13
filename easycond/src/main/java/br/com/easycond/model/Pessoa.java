@@ -96,9 +96,7 @@ public class Pessoa implements Serializable{
 
 	public void setCidadeNascimento(String cidadeNascimento) {
 		this.cidadeNascimento = cidadeNascimento;
-	}
-
-	
+	}	
 	
 	public char getTipoPessoa() {
 		return tipoPessoa;
@@ -113,13 +111,13 @@ public class Pessoa implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cidadeNascimento == null) ? 0 : cidadeNascimento.hashCode());
-		//result = prime * result + ((condomino == null) ? 0 : condomino.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((estadoNascimento == null) ? 0 : estadoNascimento.hashCode());
 		result = prime * result + ((idPessoa == null) ? 0 : idPessoa.hashCode());
 		result = prime * result + ((nomePessoa == null) ? 0 : nomePessoa.hashCode());
+		result = prime * result + tipoPessoa;
 		return result;
 	}
 
@@ -137,11 +135,6 @@ public class Pessoa implements Serializable{
 				return false;
 		} else if (!cidadeNascimento.equals(other.cidadeNascimento))
 			return false;
-		/*if (condomino == null) {
-			if (other.condomino != null)
-				return false;
-		} else if (!condomino.equals(other.condomino))
-			return false;*/
 		if (cpf == null) {
 			if (other.cpf != null)
 				return false;
@@ -172,7 +165,8 @@ public class Pessoa implements Serializable{
 				return false;
 		} else if (!nomePessoa.equals(other.nomePessoa))
 			return false;
+		if (tipoPessoa != other.tipoPessoa)
+			return false;
 		return true;
-	}
-	
+	}	
 }
