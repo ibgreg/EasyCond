@@ -33,11 +33,11 @@ public class SolicitacaoAvisoRN {
 		if (id == null || id == 0) {
 
 			solicitacaoAviso.setStatus("Em análise");
-			solicitacaoAviso.setDataSolicitacao(new Date());
+			solicitacaoAviso.setDataSolicitacao(new Date(System.currentTimeMillis()));
 			this.solicitacaoAvisoDAO.salvar(solicitacaoAviso);
 		} else {
 			
-			solicitacaoAviso.setDataSolicitacao(new Date());
+			solicitacaoAviso.setDataSolicitacao(new Date(System.currentTimeMillis()));
 			this.solicitacaoAvisoDAO.atualizar(solicitacaoAviso);
 		}
 	}
