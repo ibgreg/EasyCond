@@ -6,55 +6,68 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.easycond.model.Funcionario;
 import br.com.easycond.model.Pessoa;
-import br.com.easycond.rn.FuncionarioRN;
+import br.com.easycond.rn.PessoaRN;
 
 @ManagedBean(name="funcionarioBean")
 @RequestScoped
 public class FuncionarioBean {
 
-	private Funcionario funcionario;
-	private Pessoa pessoa;
+	private Pessoa pessoa = new Pessoa();
 	
-	private List<Funcionario> listaFuncionario;
+	private List<Pessoa> listaPessoa;
+	
+	private static final char TIPO_PESSOA_FUNCIONARIO = 'F';
 	
 	@PostConstruct
 	public String novo() {
 		
-		this.funcionario = new Funcionario();
 		this.pessoa = new Pessoa();
 		
-		return "/restrito/cadastro/funcionario/cadastro_funcionario";
+		return "/restrito/cadastro/funcionario/form_funcionario";
 	}
 	
 	public String salvar() {
 		
-		FuncionarioRN funcionarioRN = new FuncionarioRN();
+		PessoaRN pessoaRN = new PessoaRN();
 		
-		funcionarioRN.salvar(this.funcionario, this.pessoa);		
+		this.pessoa.setTipoPessoa(TIPO_PESSOA_FUNCIONARIO);
 		
-		return "restrito/home";
+		pessoaRN.salvar(this.pessoa);	
+		
+		return "/restrito/cadastro/funcionario/grid_funcionario";
+	}	
+	
+	public String editar() {
+		return "/restrito/cadastro/funcionario/form_funcionario";
 	}
 
+	public String excluir() {
+		
+		PessoaRN pessoaRN = new PessoaRN();
+		pessoaRN.excluir(this.pessoa);
+		this.listaPessoa = null;
+		return null;
+	}
 	
-	
-	public List<Funcionario> getListaFuncionario() {
-		if (this.listaFuncionario == null) {
-			FuncionarioRN funcionarioRN = new FuncionarioRN();
-			this.listaFuncionario = funcionarioRN.listar();
+	public List<Pessoa> getListaPessoa() {
+		if (this.listaPessoa == null) {
+			PessoaRN pessoaRN = new PessoaRN();
+			this.listaPessoa = pessoaRN.listar(TIPO_PESSOA_FUNCIONARIO);
 		}
 		
-		return this.listaFuncionario;
+		return this.listaPessoa;
 	}
 
-	public Funcionario getFuncionario() {
-		return funcionario;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
-	
-	
+
+	public void setListaPessoa(List<Pessoa> listaPessoa) {
+		this.listaPessoa = listaPessoa;
+	}	
 }
