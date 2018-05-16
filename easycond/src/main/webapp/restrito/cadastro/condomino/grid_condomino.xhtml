@@ -14,12 +14,20 @@
 			<p:commandButton action="#{condominoBean.novo()}"
 				icon="fa fa-plus-circle" value="Novo" process="@this" />
 
-			<p:dataTable var="pessoa" value="#{condominoBean.listaCondomino}"
+			<p:dataTable var="pessoa" value="#{condominoBean.listaPessoa}"
 				paginator="true" paginatorPosition="bottom"
 				emptyMessage="Não há registros disponíveis">
 
 				<p:column headerText="Nome">
 					<h:outputText value="#{pessoa.nomePessoa}" />
+				</p:column>
+				
+				<p:column headerText="CPF">
+					<h:outputText value="#{pessoa.cpf}" />
+				</p:column>
+				
+				<p:column headerText="E-mail">
+					<h:outputText value="#{pessoa.email}" />
 				</p:column>
 
 				<p:column headerText="Comandos">
