@@ -20,9 +20,9 @@ public class PessoaRN {
 		return this.pessoaDAO.carregar(id);
 	}
 	
-	public List<Pessoa> listar(){
+	public List<Pessoa> listar(char tipoPessoa){
 		
-		return this.pessoaDAO.listar();
+		return this.pessoaDAO.listar(tipoPessoa);
 	}
 	
 	public void salvar(Pessoa pessoa) {
