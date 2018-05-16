@@ -3,6 +3,7 @@ package br.com.easycond.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.easycond.daointerf.PessoaDAOInterf;
 import br.com.easycond.model.Pessoa;
@@ -40,8 +41,10 @@ public class PessoaDAO implements PessoaDAOInterf {
 	}
 
 	@Override
-	public List<Pessoa> listar() {
+	public List<Pessoa> listar(char tipoPessoa) {
 		// TODO Auto-generated method stub
-		return this.session.createCriteria(Pessoa.class).list();
+		
+		return this.session.createCriteria(Pessoa.class)
+				.add(Restrictions.eq("tipoPessoa", tipoPessoa)).list();
 	}	
 }

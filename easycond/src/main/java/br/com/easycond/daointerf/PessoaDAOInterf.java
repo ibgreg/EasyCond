@@ -14,5 +14,5 @@ public interface PessoaDAOInterf {
 	
 	public Pessoa carregar(Integer id);
 	
-	public List<Pessoa> listar();
+	public List<Pessoa> listar(char tipoPessoa);
 }

@@ -15,7 +15,9 @@ public class CondominoBean {
 
 	private Pessoa pessoa = new Pessoa();
 	
-	private List<Pessoa> listaCondomino;
+	private List<Pessoa> listaPessoa;
+	
+	private static final char TIPO_PESSOA_CONDOMINO = 'C';
 	
 	@PostConstruct
 	public String novo() {
@@ -29,7 +31,7 @@ public class CondominoBean {
 		
 		PessoaRN pessoaRN = new PessoaRN();
 		
-		this.pessoa.setTipoPessoa('C');
+		this.pessoa.setTipoPessoa(TIPO_PESSOA_CONDOMINO);
 		
 		pessoaRN.salvar(this.pessoa);	
 		
@@ -44,17 +46,17 @@ public class CondominoBean {
 		
 		PessoaRN pessoaRN = new PessoaRN();
 		pessoaRN.excluir(this.pessoa);
-		this.listaCondomino = null;
+		this.listaPessoa = null;
 		return null;
 	}
 	
-	public List<Pessoa> getListaCondomino() {
-		if (this.listaCondomino == null) {
+	public List<Pessoa> getListaPessoa() {
+		if (this.listaPessoa == null) {
 			PessoaRN pessoaRN = new PessoaRN();
-			this.listaCondomino = pessoaRN.listar();
+			this.listaPessoa = pessoaRN.listar(TIPO_PESSOA_CONDOMINO);
 		}
 		
-		return this.listaCondomino;
+		return this.listaPessoa;
 	}
 
 	public Pessoa getPessoa() {
@@ -65,7 +67,7 @@ public class CondominoBean {
 		this.pessoa = pessoa;
 	}
 
-	public void setListaCondomino(List<Pessoa> listaCondomino) {
-		this.listaCondomino = listaCondomino;
+	public void setListaPessoa(List<Pessoa> listaPessoa) {
+		this.listaPessoa = listaPessoa;
 	}	
 }
