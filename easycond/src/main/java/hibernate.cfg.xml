@@ -32,6 +32,8 @@
 		<mapping class="br.com.easycond.model.Apartamento"/>
 		<mapping class="br.com.easycond.model.Bloco"/>
 		<mapping class="br.com.easycond.model.Votos"/>
+		<mapping class="br.com.easycond.model.Reserva"/>
+		<mapping class="br.com.easycond.model.EspacoFisico"/>
 		
 	</session-factory>
 </hibernate-configuration>

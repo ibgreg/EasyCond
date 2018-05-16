@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="/templates/layout.xhtml">
+	
+	<ui:define name="content">
+		
+		<h1>Nova Reserva de Espaço</h1>
+		<p:separator />
+		
+		<h:form id="reservaForm" prependId="false" >
+		
+			<p:messages id="msg" closable="true" autoUpdate="true" />
+		
+			<h:inputHidden value="#{reservaBean.reserva.id}"  />
+		
+			<h:outputLabel value="Usuário: " for="usuarioReserva"/>
+			<p:inputText id="usuarioReserva" value="#{reservaBean.reserva.usuario}" required="true" requiredMessage="O campo 'Usuário' é obrigatório!" maxlength="20" size="30" />
+			<br/>
+			
+			<h:outputLabel value="Espaço: " for="espacoReserva"/>
+			<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:125px">
+            	<f:selectItem itemLabel="Selecione" itemValue="" />
+             	<f:selectItem itemLabel="Salão de Festas" itemValue="1" />
+             	<f:selectItem itemLabel="Salão de Jogos" itemValue="2" />
+             	<f:selectItem itemLabel="Office 1" itemValue="3" />
+             	<f:selectItem itemLabel="Office 2" itemValue="4" />
+             	<f:selectItem itemLabel="Sala de Estudos" itemValue="5" />
+       		</p:selectOneMenu>
+			<br/>
+			
+			<h:outputLabel value="Data Início: " for="dataInicioReserva"/>
+			<p:calendar id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+			<br/>
+			
+			<h:outputLabel value="Data Final: " for="dataFinalReserva"/>
+			<p:calendar id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+			<br/>
+			
+			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
+			
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

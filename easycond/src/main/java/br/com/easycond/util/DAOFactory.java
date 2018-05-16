@@ -6,8 +6,10 @@ import br.com.easycond.dao.AvisoDAO;
 import br.com.easycond.dao.BlocoDAO;
 import br.com.easycond.dao.CasaDAO;
 import br.com.easycond.dao.CondominoDAO;
+import br.com.easycond.dao.EspacoFisicoDAO;
 import br.com.easycond.dao.FuncionarioDAO;
 import br.com.easycond.dao.PessoaDAO;
+import br.com.easycond.dao.ReservaDAO;
 import br.com.easycond.dao.SolicitacaoAvisoDAO;
 import br.com.easycond.dao.UsuarioDAO;
 import br.com.easycond.dao.VotosDAO;
@@ -17,8 +19,10 @@ import br.com.easycond.daointerf.AvisoDAOInterf;
 import br.com.easycond.daointerf.BlocoDAOInterf;
 import br.com.easycond.daointerf.CasaDAOInterf;
 import br.com.easycond.daointerf.CondominoDAOInterf;
+import br.com.easycond.daointerf.EspacoFisicoDAOInterf;
 import br.com.easycond.daointerf.FuncionarioDAOInterf;
 import br.com.easycond.daointerf.PessoaDAOInterf;
+import br.com.easycond.daointerf.ReservaDAOInterf;
 import br.com.easycond.daointerf.SolicitacaoAvisoDAOInterf;
 import br.com.easycond.daointerf.UsuarioDAOInterf;
 import br.com.easycond.daointerf.VotosDAOInterf;
@@ -104,5 +108,17 @@ public class DAOFactory {
 		votosDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		
 		return votosDAO;
+	}
+	
+	public static ReservaDAOInterf criarReservaDAO() {
+		ReservaDAO reservaDAO = new ReservaDAO();
+		reservaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return reservaDAO;
+	}
+	
+	public static EspacoFisicoDAOInterf criarEspacoFisicoDAO() {
+		EspacoFisicoDAO espacoFisicoDAO = new EspacoFisicoDAO();
+		espacoFisicoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return espacoFisicoDAO;
 	}
 }
