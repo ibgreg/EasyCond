@@ -27,12 +27,6 @@ public class Pessoa implements Serializable{
 	
 	@Column(name="data_nascimento", nullable=true)
 	private Date dataNascimento;
-	
-	@Column(name="estado_nascimento", length=45, nullable=true)
-	private String estadoNascimento;
-	
-	@Column(name="cidade_nascimento", length=50, nullable=true)
-	private String cidadeNascimento;
 
 	@Column(name="tipo_pessoa", nullable=false, updatable=false)	
 	/*
@@ -40,8 +34,8 @@ public class Pessoa implements Serializable{
 	 *  F - Funcionário
 	 *  V - Visitante
 	 */	
-	private char tipoPessoa; 
-	
+	private char tipoPessoa;
+
 	public Integer getIdPessoa() {
 		return idPessoa;
 	}
@@ -82,22 +76,6 @@ public class Pessoa implements Serializable{
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getEstadoNascimento() {
-		return estadoNascimento;
-	}
-
-	public void setEstadoNascimento(String estadoNascimento) {
-		this.estadoNascimento = estadoNascimento;
-	}
-
-	public String getCidadeNascimento() {
-		return cidadeNascimento;
-	}
-
-	public void setCidadeNascimento(String cidadeNascimento) {
-		this.cidadeNascimento = cidadeNascimento;
-	}	
-	
 	public char getTipoPessoa() {
 		return tipoPessoa;
 	}
@@ -110,11 +88,9 @@ public class Pessoa implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cidadeNascimento == null) ? 0 : cidadeNascimento.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((estadoNascimento == null) ? 0 : estadoNascimento.hashCode());
 		result = prime * result + ((idPessoa == null) ? 0 : idPessoa.hashCode());
 		result = prime * result + ((nomePessoa == null) ? 0 : nomePessoa.hashCode());
 		result = prime * result + tipoPessoa;
@@ -130,11 +106,6 @@ public class Pessoa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (cidadeNascimento == null) {
-			if (other.cidadeNascimento != null)
-				return false;
-		} else if (!cidadeNascimento.equals(other.cidadeNascimento))
-			return false;
 		if (cpf == null) {
 			if (other.cpf != null)
 				return false;
@@ -149,11 +120,6 @@ public class Pessoa implements Serializable{
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
-			return false;
-		if (estadoNascimento == null) {
-			if (other.estadoNascimento != null)
-				return false;
-		} else if (!estadoNascimento.equals(other.estadoNascimento))
 			return false;
 		if (idPessoa == null) {
 			if (other.idPessoa != null)
