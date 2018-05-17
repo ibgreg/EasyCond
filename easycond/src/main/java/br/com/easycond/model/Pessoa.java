@@ -25,6 +25,7 @@ public class Pessoa implements Serializable{
 	@Column(name="email", length=100, nullable=true)
 	private String email;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name="data_nascimento", nullable=true)
 	private Date dataNascimento;
 
