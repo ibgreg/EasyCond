@@ -9,6 +9,7 @@ import br.com.easycond.dao.CondominoDAO;
 import br.com.easycond.dao.EspacoFisicoDAO;
 import br.com.easycond.dao.FuncionarioDAO;
 import br.com.easycond.dao.PessoaDAO;
+import br.com.easycond.dao.RegistroEntradaDAO;
 import br.com.easycond.dao.ReservaDAO;
 import br.com.easycond.dao.SolicitacaoAvisoDAO;
 import br.com.easycond.dao.UsuarioDAO;
@@ -22,6 +23,7 @@ import br.com.easycond.daointerf.CondominoDAOInterf;
 import br.com.easycond.daointerf.EspacoFisicoDAOInterf;
 import br.com.easycond.daointerf.FuncionarioDAOInterf;
 import br.com.easycond.daointerf.PessoaDAOInterf;
+import br.com.easycond.daointerf.RegistroEntradaDAOInterf;
 import br.com.easycond.daointerf.ReservaDAOInterf;
 import br.com.easycond.daointerf.SolicitacaoAvisoDAOInterf;
 import br.com.easycond.daointerf.UsuarioDAOInterf;
@@ -120,5 +122,11 @@ public class DAOFactory {
 		EspacoFisicoDAO espacoFisicoDAO = new EspacoFisicoDAO();
 		espacoFisicoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return espacoFisicoDAO;
+	}
+	
+	public static RegistroEntradaDAOInterf criarRegistroEntradaDAO() {
+		RegistroEntradaDAO registroEntradaDAO = new RegistroEntradaDAO();
+		registroEntradaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return registroEntradaDAO;
 	}
 }
