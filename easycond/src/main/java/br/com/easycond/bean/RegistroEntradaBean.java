@@ -6,7 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+
+import br.com.easycond.model.Pessoa;
 import br.com.easycond.model.RegistroEntrada;
+import br.com.easycond.rn.PessoaRN;
 import br.com.easycond.rn.RegistroEntradaRN;
 
 @ManagedBean(name="registroEntradaBean")
@@ -17,12 +20,14 @@ public class RegistroEntradaBean {
 
 	private List<RegistroEntrada> listaRegistroEntrada;
 
+	private List<Pessoa> listaCondomino;
+	
 	@PostConstruct
 	public String novo() {
 
 		this.registroEntrada = new RegistroEntrada();
 
-		return "/restrito/cadastro/imovel/registroEntrada/form_registro_entrada";
+		return "/restrito/registro/registro_entrada/form_registro_entrada";
 	}
 
 	public String salvar() {
@@ -31,11 +36,11 @@ public class RegistroEntradaBean {
 
 		registroEntradaRN.salvar(this.registroEntrada);
 
-		return "/restrito/cadastro/imovel/registroEntrada/grid_registro_entrada";
+		return "/restrito/registro/registro_entrada/grid_registro_entrada";
 	}
 
 	public String editar() {
-		return "/restrito/cadastro/imovel/registroEntrada/grid_registro_entrada";
+		return "/restrito/registro/registro_entrada/form_registro_entrada";
 	}
 
 	public String excluir() {
@@ -63,5 +68,23 @@ public class RegistroEntradaBean {
 	public void setRegistroEntrada(RegistroEntrada registroEntrada) {
 		this.registroEntrada = registroEntrada;
 	}
-	
+
+	public List<Pessoa> getListaCondominos() {
+		
+		if(this.listaCondomino == null) {
+			
+			PessoaRN pessoaRN = new PessoaRN();			
+			this.listaCondomino = pessoaRN.listar('C');
+		}
+		
+		return this.listaCondomino;
+	}
+
+	public void setCondominos(List<Pessoa> condominos) {
+		this.listaCondomino = condominos;
+	}
+
+	public void setListaRegistroEntrada(List<RegistroEntrada> listaRegistroEntrada) {
+		this.listaRegistroEntrada = listaRegistroEntrada;
+	}	
 }
