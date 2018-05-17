@@ -23,6 +23,48 @@
 					
 				</h:panelGrid>
 			</p:panel>
+			
+			<sec:ifAnyGranted roles="ROLE_ADMIN">
+				<div class="ui-fluid">
+					<h1>Detalhes</h1>
+					<p:separator />
+					<p:panel header="Lista de Votos A Favor" toggleable="true" toggleOrientation="vertical">
+						<p:dataTable var="assembleia" value="#{assembleiaBean.listaVotosFavor}" rows="5" paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="5,10,15" emptyMessage="Não há registros disponíveis">
+							<p:column headerText="Usuário">
+								<h:outputText value="#{assembleia.usuario}" />
+							</p:column>
+							
+							<p:column headerText="Opção Voto">
+								<h:outputText value="#{assembleia.opcao}" />
+							</p:column>
+							
+							<p:column headerText="Comentário/Sugestão">
+								<h:outputText value="#{assembleia.comentario}" rendered="#{assembleia.comentario != null}" />
+							</p:column>
+							
+						</p:dataTable>
+					</p:panel>
+					<br/>
+					
+					<p:panel header="Lista de Votos Contra" toggleable="true" toggleOrientation="vertical">
+						<p:dataTable var="assembleia" value="#{assembleiaBean.listaVotosContra}" rows="5" paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="5,10,15" emptyMessage="Não há registros disponíveis">
+							<p:column headerText="Usuário">
+								<h:outputText value="#{assembleia.usuario}" />
+							</p:column>
+							
+							<p:column headerText="Opção Voto">
+								<h:outputText value="#{assembleia.opcao}" />
+							</p:column>
+							
+							<p:column headerText="Comentário/Sugestão">
+								<h:outputText value="#{assembleia.comentario}" />
+							</p:column>
+							
+						</p:dataTable>
+					</p:panel>
+					
+				</div>
+			</sec:ifAnyGranted>
 		
 		</h:form>
 		
