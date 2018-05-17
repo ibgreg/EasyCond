@@ -32,7 +32,7 @@
 
 				<p:column headerText="Comandos">
 					<p:commandButton action="#{condominoBean.editar}" icon="fa fa-pencil"
-						process="@form">
+						process="@this" update="@form">
 						<f:setPropertyActionListener value="#{pessoa}"
 							target="#{condominoBean.pessoa}" />
 					</p:commandButton>
