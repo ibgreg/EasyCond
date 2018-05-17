@@ -30,6 +30,9 @@ public class Votos implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_enquete")
 	private Enquete idEnquete;
+	
+	@Column(name = "nome_usuario", length = 45, nullable = false)
+	private String usuario;
 
 	public Integer getId() {
 		return id;
@@ -63,6 +66,14 @@ public class Votos implements Serializable {
 		this.idEnquete = idEnquete;
 	}
 
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,6 +82,7 @@ public class Votos implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((idEnquete == null) ? 0 : idEnquete.hashCode());
 		result = prime * result + ((opcao == null) ? 0 : opcao.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
 
@@ -103,8 +115,12 @@ public class Votos implements Serializable {
 				return false;
 		} else if (!opcao.equals(other.opcao))
 			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
 		return true;
 	}
-
 	
 }

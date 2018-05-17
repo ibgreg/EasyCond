@@ -13,6 +13,7 @@ import br.com.easycond.model.Enquete;
 import br.com.easycond.model.Votos;
 import br.com.easycond.rn.AssembleiaRN;
 import br.com.easycond.rn.VotosRN;
+import br.com.easycond.util.SpringUtil;
 
 @ManagedBean(name = "assembleiaBean")
 @RequestScoped
@@ -98,7 +99,7 @@ public class AssembleiaBean {
 		AssembleiaRN assembleiaRN = new AssembleiaRN();
 		assembleia = assembleiaRN.carregarAssembleia();
 		votos.setIdEnquete(assembleia.getEnquete());
-		
+		votos.setUsuario(SpringUtil.obterUsuarioLogado());
 		VotosRN votosRN = new VotosRN();
 		votosRN.salvar(this.votos);
 		
