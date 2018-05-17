@@ -109,6 +109,7 @@ public class AssembleiaBean {
 	}
 	
 	public String editar() {
+		perguntaEnquete = assembleia.getEnquete().getPergunta();
 		return "/adm/assembleia/cadastrar";
 	}
 	
