@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="/templates/layout.xhtml">
+	
+	<ui:define name="content">
+		<h1>Lista de Eventos</h1>
+		<p:separator />
+		
+		<h:form prependId="false">
+		
+			<p:commandButton action="#{eventoBean.novo}" icon="fa fa-plus-circle" value="Novo" process="@this" />
+		
+			<p:dataTable var="evento" value="#{eventoBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
+							
+				<p:column headerText="Título">
+					<h:outputText value="#{evento.titulo}" />
+				</p:column>
+				
+				<p:column headerText="Descrição">
+					<h:outputText value="#{evento.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Data de Realização">
+					<h:outputText value="#{evento.dataEvento}" />
+				</p:column>
+				
+				<p:column headerText="Comandos">
+					<p:commandButton action="#{eventoBean.editar}" icon="fa fa-pencil" process="@form">
+						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
+					</p:commandButton>
+					<p:commandButton action="#{eventoBean.excluir}" icon="fa fa-trash" process="@this" update="@form">
+						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
+					</p:commandButton>
+				</p:column>
+				
+			</p:dataTable>
+		
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
