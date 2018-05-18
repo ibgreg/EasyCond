@@ -59,6 +59,9 @@
 												document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
 											</script>
 										</form>
+										<h:form prependId="false">
+											<h:commandLink action="#{usuarioBean.novo}" value="Novo usuário? Cadastre-se aqui" />
+										</h:form>
 									</div>
 								</div>
 							</div>
