@@ -11,13 +11,15 @@
 		<p:separator />
 		
 		<h:form prependId="false">
+		
+			<h:outputText rendered="#{assembleiaBean.assembleia == null}" value="Não existem assembleias ativas no momento" />
 				
 			<p:panel rendered="#{assembleiaBean.assembleia != null}" id="assembleiaPanel" header="#{assembleiaBean.assembleia.titulo}"
 				style="margin-bottom:20px">
 				<h:panelGrid columns="1" cellpadding="10">
 					<h:outputText value="#{assembleiaBean.assembleia.enquete.pergunta}" />
 					
-					<p:chart type="pie" model="#{assembleiaBean.graficoVotos}" responsive="true" style="width:150%;height:300px"  />
+					<p:chart type="pie" model="#{assembleiaBean.graficoVotos}" responsive="true" style="width:100%;height:300px"  />
 					
 					<p:commandButton value="Página inicial" action="/restrito/home" />
 					
@@ -26,9 +28,8 @@
 			
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
 				<div class="ui-fluid">
-					<h1>Detalhes</h1>
-					<p:separator />
-					<p:panel header="Lista de Votos A Favor" toggleable="true" toggleOrientation="vertical">
+					
+					<p:panel rendered="#{assembleiaBean.assembleia != null}" header="Lista de Votos A Favor" toggleable="true" toggleOrientation="vertical">
 						<p:dataTable var="assembleia" value="#{assembleiaBean.listaVotosFavor}" rows="5" paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="5,10,15" emptyMessage="Não há registros disponíveis">
 							<p:column headerText="Usuário">
 								<h:outputText value="#{assembleia.usuario}" />
@@ -46,7 +47,7 @@
 					</p:panel>
 					<br/>
 					
-					<p:panel header="Lista de Votos Contra" toggleable="true" toggleOrientation="vertical">
+					<p:panel rendered="#{assembleiaBean.assembleia != null}" header="Lista de Votos Contra" toggleable="true" toggleOrientation="vertical">
 						<p:dataTable var="assembleia" value="#{assembleiaBean.listaVotosContra}" rows="5" paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="5,10,15" emptyMessage="Não há registros disponíveis">
 							<p:column headerText="Usuário">
 								<h:outputText value="#{assembleia.usuario}" />
