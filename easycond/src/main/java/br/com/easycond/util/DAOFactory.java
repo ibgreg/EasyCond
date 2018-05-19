@@ -144,4 +144,9 @@ public class DAOFactory {
     	return registroSaidaDAO;
     }
     
+    public static RegistroVisitaDAOInterf criarRegistroVisitaDAO() {
+    	RegistroVisitaDAO registroVisitaDAO = new RegistroVisitaDAO();
+    	registroVisitaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+    	return registroVisitaDAO;
+    }
 }
