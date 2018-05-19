@@ -74,7 +74,7 @@ public class DAOFactory {
 
 		return pessoaDAO;
 	}
-	
+
 	public static SolicitacaoAvisoDAOInterf criarSolicitacaoAvisoDAO() {
 
 		SolicitacaoAvisoDAO solicitacaoAvisoDAO = new SolicitacaoAvisoDAO();
@@ -82,7 +82,7 @@ public class DAOFactory {
 
 		return solicitacaoAvisoDAO;
 	}
-	
+
 	public static CasaDAOInterf criarCasaDAO() {
 
 		CasaDAO casaDAO = new CasaDAO();
@@ -90,7 +90,7 @@ public class DAOFactory {
 
 		return casaDAO;
 	}
-	
+
 	public static BlocoDAOInterf criarBlocoDAO() {
 
 		BlocoDAO blocoDAO = new BlocoDAO();
@@ -98,7 +98,7 @@ public class DAOFactory {
 
 		return blocoDAO;
 	}
-	
+
 	public static ApartamentoDAOInterf criarApartamentoDAO() {
 
 		ApartamentoDAO apartamentoDAO = new ApartamentoDAO();
@@ -106,35 +106,42 @@ public class DAOFactory {
 
 		return apartamentoDAO;
 	}
-	
+
 	public static VotosDAOInterf criarVotosDAO() {
 		VotosDAO votosDAO = new VotosDAO();
 		votosDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
-		
+
 		return votosDAO;
 	}
-	
+
 	public static ReservaDAOInterf criarReservaDAO() {
 		ReservaDAO reservaDAO = new ReservaDAO();
 		reservaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return reservaDAO;
 	}
-	
+
 	public static EspacoFisicoDAOInterf criarEspacoFisicoDAO() {
 		EspacoFisicoDAO espacoFisicoDAO = new EspacoFisicoDAO();
 		espacoFisicoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return espacoFisicoDAO;
 	}
-	
+
 	public static RegistroEntradaDAOInterf criarRegistroEntradaDAO() {
 		RegistroEntradaDAO registroEntradaDAO = new RegistroEntradaDAO();
 		registroEntradaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return registroEntradaDAO;
 	}
-	
+
 	public static EventoDAOInterf criarEventoDAO() {
 		EventoDAO eventoDAO = new EventoDAO();
 		eventoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return eventoDAO;
 	}
-}
+
+	}
+
+	public static RegistroSaidaDAOInterf criarRegistroSaidaDAO() {
+    	RegistroSaidaDAO registroSaidaDAO = new RegistroSaidaDAO();
+    	registroSaidaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+    	return registroSaidaDAO;
+    }
