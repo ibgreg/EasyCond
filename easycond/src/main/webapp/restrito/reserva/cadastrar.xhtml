@@ -33,11 +33,11 @@
 			<br/>
 			
 			<h:outputLabel value="Data Início: " for="dataInicioReserva"/>
-			<p:calendar id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+			<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
 			<br/>
 			
 			<h:outputLabel value="Data Final: " for="dataFinalReserva"/>
-			<p:calendar id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+			<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
 			<br/>
 			
 			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
