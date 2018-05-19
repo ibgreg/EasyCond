@@ -24,11 +24,15 @@
 				</p:column>
 				
 				<p:column headerText="Data Inicial">
-					<h:outputText value="#{reserva.dataInicio}" />
+					<h:outputText value="#{reserva.dataInicio}" >
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:outputText>	
 				</p:column>
 				
 				<p:column headerText="Data Final">
-					<h:outputText value="#{reserva.dataFim}" escape="false" />
+					<h:outputText value="#{reserva.dataFim}" escape="false" >
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:outputText>	
 				</p:column>
 				
 				<p:column headerText="Comandos">

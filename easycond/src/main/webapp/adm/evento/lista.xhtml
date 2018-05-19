@@ -25,7 +25,9 @@
 				</p:column>
 				
 				<p:column headerText="Data de Realização">
-					<h:outputText value="#{evento.dataEvento}" />	
+					<h:outputText value="#{evento.dataEvento}" >
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:outputText>	
 				</p:column>
 				
 				<p:column headerText="Comandos">
