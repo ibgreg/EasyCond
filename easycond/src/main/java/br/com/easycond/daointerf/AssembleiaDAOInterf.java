@@ -1,5 +1,6 @@
 package br.com.easycond.daointerf;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.easycond.model.Assembleia;
@@ -17,4 +18,7 @@ public interface AssembleiaDAOInterf {
 	public List<Assembleia> listar();
 
 	public Assembleia carregarAssembleia();
+	
+	public Assembleia verificaAssembleiaExistente(Date dataInicio, Date dataFim);
+	
 }

@@ -1,5 +1,6 @@
 package br.com.easycond.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -47,6 +48,19 @@ public class AssembleiaDAO implements AssembleiaDAOInterf {
 		Query query = session.createQuery(sqlQuery);
 		
 		return (Assembleia) query.uniqueResult();
+	}
+
+	@Override
+	public Assembleia verificaAssembleiaExistente(Date dataInicio, Date dataFim) {
+		String sqlQuery = "select a from Assembleia a inner join a.enquete e where (:dataInicio >= a.dataInicio and :dataFim <= a.dataFim) "
+				+ "or (:dataInicio between a.dataInicio and a.dataFim) "
+				+ "or (:dataFim between a.dataInicio and a.dataFim)";
+		Query query = session.createQuery(sqlQuery);
+		query.setDate("dataInicio", dataInicio);
+		query.setDate("dataFim", dataFim);
+		
+		return (Assembleia) query.uniqueResult();
+
 	}
 
 }

@@ -1,5 +1,6 @@
 package br.com.easycond.rn;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.easycond.daointerf.AssembleiaDAOInterf;
@@ -38,5 +39,15 @@ public class AssembleiaRN {
 	
 	public void excluir(Assembleia assembleia) {
 		this.assembleiaDAO.excluir(assembleia);
+	}
+	
+	public boolean verificaAssembleiaExistente(Date dataInicio, Date dataFim) {
+		Assembleia assembleiaExistente = this.assembleiaDAO.verificaAssembleiaExistente(dataInicio, dataFim);
+		
+		if (assembleiaExistente != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
