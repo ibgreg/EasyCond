@@ -24,10 +24,16 @@ public class Bloco {
 	@Column(name = "identificacao_bloco", length=10, nullable = false)
 	private String identificacaoBloco;
 
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="bloco_apartamento", 
-			   joinColumns= {@JoinColumn(referencedColumnName="id_bloco")},
-			   inverseJoinColumns= {@JoinColumn(referencedColumnName="id_apartamento")})
+	
+	@ManyToMany(
+			targetEntity=Apartamento.class,
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE}			
+			)
+	@JoinTable(
+			name="bloco_apartamento",
+			joinColumns=@JoinColumn(name="id_bloco"),
+			inverseJoinColumns=@JoinColumn(name="id_apartamento")
+			)
 	private Set<Apartamento> apartamento;
 	
 	public Integer getId() {
