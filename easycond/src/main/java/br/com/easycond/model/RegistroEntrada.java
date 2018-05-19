@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="registro_entrada")
+@Table(name="ingresso_condomino")
 public class RegistroEntrada implements Serializable{
 
 	/**
@@ -22,7 +22,7 @@ public class RegistroEntrada implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name="id_reg_ent")
+	@Column(name="id_ingresso")
 	private Integer id;
 	
 	private Integer idCondomino;
@@ -30,6 +30,7 @@ public class RegistroEntrada implements Serializable{
 	//private Integer idImovel;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="data_ingresso")
 	private Date dataEntrada;
 
 	public Integer getId() {
