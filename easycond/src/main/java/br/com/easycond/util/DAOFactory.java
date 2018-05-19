@@ -138,10 +138,10 @@ public class DAOFactory {
 		return eventoDAO;
 	}
 
-	}
-
-	public static RegistroSaidaDAOInterf criarRegistroSaidaDAO() {
+    public static RegistroSaidaDAOInterf criarRegistroSaidaDAO() {
     	RegistroSaidaDAO registroSaidaDAO = new RegistroSaidaDAO();
     	registroSaidaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
     	return registroSaidaDAO;
     }
+    
+}
