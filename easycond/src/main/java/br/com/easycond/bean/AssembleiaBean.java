@@ -3,9 +3,11 @@ package br.com.easycond.bean;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.model.chart.PieChartModel;
 
 import br.com.easycond.model.Assembleia;
@@ -54,16 +56,17 @@ public class AssembleiaBean {
 		VotosRN votosRN = new VotosRN();
 		assembleia = assembleiaRN.carregarAssembleia();
 		
-		if (this.listaVotosContra == null) {
+		if (assembleia != null) {
+			if (this.listaVotosContra == null) {
+				this.listaVotosContra = votosRN.carregarVotosContraEnquete(assembleia.getEnquete().getId());
+			}
 			
-			this.listaVotosContra = votosRN.carregarVotosContraEnquete(assembleia.getEnquete().getId());
+			if (this.listaVotosFavor == null) {
+				this.listaVotosFavor = votosRN.carregarVotosFavorEnquete(assembleia.getEnquete().getId());
+			}
+			
+			carregarGrafico();
 		}
-		
-		if (this.listaVotosFavor == null) {
-			this.listaVotosFavor = votosRN.carregarVotosFavorEnquete(assembleia.getEnquete().getId());
-		}
-		
-		carregarGrafico();
 		
 		return "/restrito/assembleia/resultado";
 		
@@ -101,11 +104,20 @@ public class AssembleiaBean {
 		votos.setIdEnquete(assembleia.getEnquete());
 		votos.setUsuario(SpringUtil.obterUsuarioLogado());
 		VotosRN votosRN = new VotosRN();
-		votosRN.salvar(this.votos);
 		
-		carregarListaVotos();
+		if (!votosRN.verificaVotoExistente(votos.getIdEnquete().getId(), votos.getUsuario())) {
+			votosRN.salvar(this.votos);
+			carregarListaVotos();
 		
-		return "/restrito/assembleia/resultado";
+			return "/restrito/assembleia/resultado";
+		} else {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao enviar o voto", "Você já votou nesta enquete!");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);			
+			
+			return "";
+		}
+		
+		
 		
 	}
 	

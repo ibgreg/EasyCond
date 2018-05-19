@@ -55,7 +55,15 @@ public class VotosDAO implements VotosDAOInterf {
 		List<Votos> listaVotos = query.list();
 		return listaVotos;
 	}
-	
-	
+
+	@Override
+	public Votos verificaVotoExistente(Integer idEnquete, String nomeUsuario) {
+		String sqlQuery = "select v from Votos v where v.usuario = :nomeUsuario and v.idEnquete = :idEnquete";
+		Query query = session.createQuery(sqlQuery);
+		query.setString("nomeUsuario", nomeUsuario);
+		query.setInteger("idEnquete", idEnquete);
+		
+		return (Votos) query.uniqueResult();
+	}
 
 }

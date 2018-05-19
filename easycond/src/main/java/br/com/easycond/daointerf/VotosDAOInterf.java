@@ -17,4 +17,7 @@ public interface VotosDAOInterf {
 	public List<Votos> listarVotosContra(Integer id);
 	
 	public List<Votos> listarVotosFavor(Integer id);
+	
+	public Votos verificaVotoExistente(Integer id, String nomeUsuario);
+	
 }

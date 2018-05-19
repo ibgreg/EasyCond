@@ -39,4 +39,14 @@ public class VotosRN {
 			this.votosDAO.atualizar(votos);
 		}
 	}
+	
+	public boolean verificaVotoExistente(Integer idEnquete, String nomeUsuario) {
+		Votos votoExistente = this.votosDAO.verificaVotoExistente(idEnquete, nomeUsuario);
+		
+		if (votoExistente != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
