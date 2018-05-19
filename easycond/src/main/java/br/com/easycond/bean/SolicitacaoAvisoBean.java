@@ -22,7 +22,7 @@ public class SolicitacaoAvisoBean {
 
 		this.solicitacaoAviso = new SolicitacaoAviso();
 
-		return "/public/solicitacao/aviso/form_solicitacao_aviso";
+		return "/restrito/solicitacao/aviso/form_solicitacao_aviso";
 	}
 
 	public String salvar() {
@@ -31,11 +31,11 @@ public class SolicitacaoAvisoBean {
 
 		solicitacaoAvisoRN.salvar(this.solicitacaoAviso);
 
-		return "/public/solicitacao/aviso/grid_solicitacao_aviso";
+		return "/restrito/solicitacao/aviso/grid_solicitacao_aviso";
 	}
 
 	public String editar() {
-		return "/public/solicitacao/aviso/grid_solicitacao_aviso";
+		return "/restrito/solicitacao/aviso/grid_solicitacao_aviso";
 	}
 
 	public String excluir() {
