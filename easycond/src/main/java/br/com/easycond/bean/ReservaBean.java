@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import org.primefaces.context.RequestContext;
 
 import br.com.easycond.model.EspacoFisico;
 import br.com.easycond.model.Reserva;
@@ -42,15 +45,23 @@ public class ReservaBean {
 	
 	public String salvar() {
 		espacoFisico = espacoFisicoRN.carregarItemCombo(opcaoSelecionada);
+		ReservaRN reservaRN = new ReservaRN();
 		
-		if (espacoFisico != null) {
-			reserva.setEspacoFisico(espacoFisico);
+		if (!reservaRN.verificaReservaExistente(espacoFisico.getId(), reserva.getDataInicio(), reserva.getDataFim())) {
+			if (espacoFisico != null) {
+				reserva.setEspacoFisico(espacoFisico);			
+				reservaRN.salvar(this.reserva);
+			}
 			
-			ReservaRN reservaRN = new ReservaRN();
-			reservaRN.salvar(this.reserva);
+			return "/restrito/reserva/lista";
+		} else {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao reservar", "O espaco selecionado já está reservado nesse periodo!");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);			
+			
+			return "";
 		}
 		
-		return "/restrito/reserva/lista";
+		
 	}
 	
 	public String editar() {
