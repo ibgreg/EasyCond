@@ -25,7 +25,7 @@
 				</p:column>
 				
 				<p:column headerText="Data de Realização">
-					<h:outputText value="#{evento.dataEvento}" />
+					<h:outputText value="#{evento.dataEvento}" />	
 				</p:column>
 				
 				<p:column headerText="Comandos">
@@ -33,11 +33,17 @@
 						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
 					</p:commandButton>
 					<p:commandButton action="#{eventoBean.excluir}" icon="fa fa-trash" process="@this" update="@form">
+						<p:confirm header="Excluir evento" message="Confirma a exclusão do evento?" icon="fa fa-warning" />
 						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
 					</p:commandButton>
 				</p:column>
 				
 			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" closable="false" responsive="true">
+		        <p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
 		
 		</h:form>
 		

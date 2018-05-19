@@ -36,11 +36,17 @@
 						<f:setPropertyActionListener value="#{reserva}" target="#{reservaBean.reserva}" />
 					</p:commandButton>
 					<p:commandButton action="#{reservaBean.excluir}" icon="fa fa-trash" process="@this" update="@form">
+						<p:confirm header="Excluir reserva" message="Confirma a exclusão do espaço reservado?" icon="fa fa-warning" />
 						<f:setPropertyActionListener value="#{reserva}" target="#{reservaBean.reserva}" />
 					</p:commandButton>
 				</p:column>
 				
 			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" closable="false" responsive="true">
+		        <p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
 		
 		</h:form>
 		
