@@ -14,13 +14,14 @@
 
 		<h:form prependId="false">
 		
-			<h:outputLabel value="Condômino: " for="condomino" />			
-			<p:selectOneMenu id="condomino">
+			<h:outputLabel value="Condômino: " for="condomino" />
+			<p:selectOneMenu id="condomino"
+				value="#{registroEntradaBean.pessoaCombo}">
 				<f:selectItems value="#{registroEntradaBean.listaCondominos}"
 					var="condomino" itemLabel="#{condomino.nomePessoa}"
 					itemValue="#{condomino.idPessoa}" />
 			</p:selectOneMenu>
-			
+
 			<h:outputLabel value="Data de entrada: " for="data_entrada" />
 			<p:calendar locale="pt" id="data_entrada"
 					value="#{registroEntradaBean.registroEntrada.dataEntrada}" pattern="dd-MM-yyyy"
