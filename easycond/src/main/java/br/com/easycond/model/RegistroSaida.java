@@ -7,14 +7,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name="egresso_condomino")
 public class RegistroSaida implements Serializable{
 
+	public RegistroSaida() {
+		super();
+		this.pessoa = new Pessoa();
+	}
+	
 	/**
 	 * 
 	 */
@@ -28,6 +37,12 @@ public class RegistroSaida implements Serializable{
 	private Integer idCondomino;
 	
 	//private Integer idImovel;
+	
+	@SuppressWarnings("deprecation")
+	@ManyToOne
+	@JoinColumn(name="pessoa", nullable=false)
+	@ForeignKey(name="id_condomino")
+	private Pessoa pessoa;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_ingresso")
@@ -55,6 +70,14 @@ public class RegistroSaida implements Serializable{
 
 	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
+	}	
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Override
