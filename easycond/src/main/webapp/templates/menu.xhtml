@@ -24,6 +24,12 @@
 			<p:submenu label="Registro" update="messages">
 				<p:menuitem value="Visita" url="/restrito/aviso/lista.jsf"
 					update="messages" />
+					<p:menuitem value="Entrada de Condômino"
+					url="/restrito/registro/registro_entrada/grid_registro_entrada.jsf"
+					update="messages" />
+					<p:menuitem value="Saída de Condômino"
+					url="/restrito/registro/registro_saida/grid_registro_saida.jsf"
+					update="messages" />
 			</p:submenu>
 			<p:submenu label="Aviso" update="messages">
 				<p:menuitem value="Avisos" url="/restrito/aviso/lista.jsf"
@@ -34,6 +40,8 @@
 					url="/public/solicitacao/aviso/grid_solicitacao_aviso.jsf"
 					update="messages" />
 			</p:submenu>
+			
+				
 		</p:slideMenu>
 	</h:form>
 
