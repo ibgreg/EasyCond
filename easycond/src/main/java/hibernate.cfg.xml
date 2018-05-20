@@ -36,6 +36,6 @@
 		<mapping class="br.com.easycond.model.EspacoFisico"/>
 		<mapping class="br.com.easycond.model.Evento"/>
 		<mapping class="br.com.easycond.model.RegistroEntrada"/>
-		
+		<mapping class="br.com.easycond.model.RegistroSaida"/>
 	</session-factory>
 </hibernate-configuration>
