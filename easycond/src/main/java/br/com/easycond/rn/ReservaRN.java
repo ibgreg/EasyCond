@@ -38,9 +38,10 @@ public class ReservaRN {
 	}
 
 	public boolean verificaReservaExistente(Integer idEspacoFisico, Date dataInicio, Date dataFim) {
+		
 		Reserva reservaExistente = this.reservaDAO.verificaReservaExistente(idEspacoFisico, dataInicio, dataFim);
 		
-		if (reservaExistente != null) {
+		if (reservaExistente != null && reservaExistente.getId() == null) {
 			return true;
 		} else {
 			return false;

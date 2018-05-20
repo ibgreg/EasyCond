@@ -24,7 +24,7 @@ public class AssembleiaDAO implements AssembleiaDAOInterf {
 
 	@Override
 	public void atualizar(Assembleia assembleia) {
-		this.session.update(assembleia);
+		this.session.merge(assembleia);
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public class AssembleiaRN {
 	public boolean verificaAssembleiaExistente(Date dataInicio, Date dataFim) {
 		Assembleia assembleiaExistente = this.assembleiaDAO.verificaAssembleiaExistente(dataInicio, dataFim);
 		
-		if (assembleiaExistente != null) {
+		if (assembleiaExistente != null && assembleiaExistente.getId() == null) {
 			return true;
 		} else {
 			return false;

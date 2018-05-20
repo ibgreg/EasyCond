@@ -24,7 +24,7 @@ public class ReservaDAO implements ReservaDAOInterf {
 
 	@Override
 	public void atualizar(Reserva reserva) {
-		this.session.update(reserva);
+		this.session.merge(reserva);
 	}
 
 	@Override
