@@ -14,11 +14,19 @@
 			<p:commandButton action="#{registroEntradaBean.novo()}"
 				icon="fa fa-plus-circle" value="Novo" process="@this" />
 
-			<p:dataTable var="registroEntrada" value="#{registroEntrada.listaRegistroEntrada}"
+			<p:dataTable var="registroEntrada" value="#{registroEntradaBean.listaRegistroEntrada}"
 				paginator="true" paginatorPosition="bottom"
-				emptyMessage="Não há registros disponíveis">
+				emptyMessage="Não há registros disponíveis">				
 
-				
+				<p:column headerText="Condômino">
+					<h:outputText value="#{registroEntrada.pessoa.nomePessoa}" />
+				</p:column>
+
+				<p:column headerText="Data de Ingresso">
+					<h:outputText value="#{registroEntrada.dataEntrada}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
 
 				<p:column headerText="Comandos">
 					<p:commandButton action="#{registroEntradaBean.editar}" icon="fa fa-pencil"

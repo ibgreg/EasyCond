@@ -33,7 +33,9 @@
 				</p:column>
 
 				<p:column headerText="Data da solicitação">
-					<h:outputText value="#{solicitacaoAviso.dataSolicitacao}"/>
+					<h:outputText value="#{solicitacaoAviso.dataSolicitacao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
 				</p:column>
 
 				<p:column headerText="Comandos">
