@@ -23,28 +23,20 @@ public class ReservaBean {
 	private EspacoFisico espacoFisico = new EspacoFisico();
 	
 	private List<Reserva> lista;
-	private List<EspacoFisico> comboEspacoFisico = new ArrayList<EspacoFisico>();
+	private List<EspacoFisico> listaEspacoFisico;
 	
 	private Integer opcaoSelecionada;
-	
-	private EspacoFisicoRN espacoFisicoRN = new EspacoFisicoRN();
 	
 	@PostConstruct
 	public String novo() {
 		this.reserva = new Reserva();
-		//carregarCombo();
 		return "/restrito/reserva/cadastrar";
 	}
 	
-	public void carregarCombo() {
-		if(comboEspacoFisico != null && comboEspacoFisico.isEmpty()) {
-			comboEspacoFisico = espacoFisicoRN.listar();
-		}
-		
-	}
-	
 	public String salvar() {
-		espacoFisico = espacoFisicoRN.carregarItemCombo(opcaoSelecionada);
+		
+		this.espacoFisico = new EspacoFisicoRN().carregar(opcaoSelecionada);
+		
 		ReservaRN reservaRN = new ReservaRN();
 		
 		if (!reservaRN.verificaReservaExistente(espacoFisico.getId(), reserva.getDataInicio(), reserva.getDataFim())) {
@@ -55,7 +47,7 @@ public class ReservaBean {
 			
 			return "/restrito/reserva/lista";
 		} else {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao reservar", "O espaco selecionado jï¿½ estï¿½ reservado nesse periodo!");
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao reservar", "O espaco selecionado já está reservado nesse periodo!");
 			RequestContext.getCurrentInstance().showMessageInDialog(message);			
 			
 			return "";
@@ -66,7 +58,7 @@ public class ReservaBean {
 	
 	public String editar() {
 		opcaoSelecionada = reserva.getEspacoFisico().getId();
-		return "/restrito/reserva/cadastrar";
+ 		return "/restrito/reserva/cadastrar";
 	}
 	
 	public String excluir() {
@@ -100,12 +92,17 @@ public class ReservaBean {
 		return this.lista;
 	}
 
-	public List<EspacoFisico> getComboEspacoFisico() {
-		return comboEspacoFisico;
+	public List<EspacoFisico> getListaEspacoFisico() {
+		if (this.listaEspacoFisico == null) {
+			EspacoFisicoRN espacoFisicoRN = new EspacoFisicoRN();
+			this.listaEspacoFisico = espacoFisicoRN.listar();
+		}
+		
+		return this.listaEspacoFisico;
 	}
 
-	public void setComboEspacoFisico(List<EspacoFisico> comboEspacoFisico) {
-		this.comboEspacoFisico = comboEspacoFisico;
+	public void setListaEspacoFisico(List<EspacoFisico> listaEspacoFisico) {
+		this.listaEspacoFisico = listaEspacoFisico;
 	}
 
 	public Integer getOpcaoSelecionada() {

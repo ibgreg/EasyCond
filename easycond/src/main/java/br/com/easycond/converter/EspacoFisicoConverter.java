@@ -8,7 +8,7 @@ import javax.faces.convert.FacesConverter;
 import br.com.easycond.model.EspacoFisico;
 import br.com.easycond.rn.EspacoFisicoRN;
 
-@FacesConverter("espacoFisicoConverter")
+@FacesConverter(forClass = EspacoFisico.class)
 public class EspacoFisicoConverter implements Converter {
 
 	private static EspacoFisicoRN espacoFisicoRN = new EspacoFisicoRN();
@@ -20,7 +20,7 @@ public class EspacoFisicoConverter implements Converter {
 		if (id == 0) {
 			return null;
 		} else {
-			espacoFisico = espacoFisicoRN.carregarItemCombo(id);
+			espacoFisico = espacoFisicoRN.carregar(id);
 			return espacoFisico;
 		}
 		
@@ -28,14 +28,7 @@ public class EspacoFisicoConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext fc, UIComponent uic, Object value) {
-		if (value instanceof EspacoFisico) {
-			EspacoFisico entity = (EspacoFisico) value;
-			if (entity != null && entity instanceof EspacoFisico && entity.getId() != null) {
-				uic.getAttributes().put(entity.getId().toString(), entity);
-				return entity.getId().toString();
-			}
-		}
-		return "";
+		return null;
 	}
 	
 	

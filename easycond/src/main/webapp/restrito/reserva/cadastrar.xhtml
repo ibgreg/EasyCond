@@ -23,12 +23,8 @@
 			
 			<h:outputLabel value="Espaço: " for="espacoReserva"/>
 			<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:125px">
-            	<f:selectItem itemLabel="Selecione" itemValue="" />
-             	<f:selectItem itemLabel="Salão de Festas" itemValue="1" />
-             	<f:selectItem itemLabel="Salão de Jogos" itemValue="2" />
-             	<f:selectItem itemLabel="Office 1" itemValue="3" />
-             	<f:selectItem itemLabel="Office 2" itemValue="4" />
-             	<f:selectItem itemLabel="Sala de Estudos" itemValue="5" />
+            	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"
+            		itemLabel="#{espacoFisico.descricao}" itemValue="#{espacoFisico.id}"/>
        		</p:selectOneMenu>
 			<br/>
 			
