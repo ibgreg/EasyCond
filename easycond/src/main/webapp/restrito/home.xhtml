@@ -16,8 +16,21 @@
 			</sec:ifAnyGranted>
 			
 						
-			<p:commandLink value="Teste Assembleia" action="#{assembleiaBean.carregarEnquete}" />
-			<p:commandLink value="Teste Resultado Assembleia" action="#{assembleiaBean.carregarListaVotos}" />
+		<p:panelGrid columns="3" layout="grid">
+				<p:commandLink action="#{assembleiaBean.carregarEnquete}">
+					<h:graphicImage value="/resources/img/linkvoto.png" />
+				</p:commandLink>
+				<p:commandLink action="#{assembleiaBean.carregarListaVotos}" >
+					<h:graphicImage value="/resources/img/resultadovoto.png" />
+				</p:commandLink>
+				<p:commandLink action="/restrito/cadastro/visitante/grid_visitante.jsf" >
+					<h:graphicImage value="/resources/img/registrovisitante.png" />
+				</p:commandLink>
+				<p:commandLink action="/restrito/reserva/lista.jsf" >
+					<h:graphicImage value="/resources/img/reservaespaco.png" />
+				</p:commandLink>
+			
+			</p:panelGrid>
 		</h:form>
 	</ui:define>
 	
