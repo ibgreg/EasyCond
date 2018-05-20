@@ -1,16 +1,34 @@
 package br.com.easycond.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="pessoa")
 public class Pessoa implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;	
 	
+	public Pessoa() {
+		super();
+		this.registroEntrada = new ArrayList<RegistroEntrada>();
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_pessoa")
@@ -37,6 +55,10 @@ public class Pessoa implements Serializable{
 	 */	
 	private char tipoPessoa;
 
+	@OneToMany(mappedBy="pessoa", orphanRemoval=true)
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+	private List<RegistroEntrada> registroEntrada;
+	
 	public Integer getIdPessoa() {
 		return idPessoa;
 	}
