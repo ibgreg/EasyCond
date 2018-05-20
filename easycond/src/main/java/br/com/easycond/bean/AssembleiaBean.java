@@ -91,9 +91,9 @@ public class AssembleiaBean {
 		if (!assembleiaRN.verificaAssembleiaExistente(assembleia.getDataInicio(), assembleia.getDataFim())) {
 			
 			if (enquete != null) {
-				assembleia.setEnquete(enquete);
 				enquete.setPergunta(perguntaEnquete);
 				enquete.setAssembleia(assembleia);
+				assembleia.setEnquete(enquete);
 			}
 			
 			
@@ -122,7 +122,7 @@ public class AssembleiaBean {
 		
 			return "/restrito/assembleia/resultado";
 		} else {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao enviar o voto", "Vocï¿½ jï¿½ votou nesta enquete!");
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao enviar o voto", "Você já votou nesta enquete!");
 			RequestContext.getCurrentInstance().showMessageInDialog(message);			
 			
 			return "";
@@ -133,7 +133,7 @@ public class AssembleiaBean {
 	}
 	
 	public String editar() {
-		perguntaEnquete = assembleia.getEnquete().getPergunta();
+		enquete = assembleia.getEnquete();
 		return "/adm/assembleia/cadastrar";
 	}
 	
