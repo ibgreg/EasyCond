@@ -59,6 +59,10 @@ public class Pessoa implements Serializable{
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private List<RegistroEntrada> registroEntrada;
 	
+	@OneToMany(mappedBy="pessoa", orphanRemoval=true)
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+	private List<RegistroSaida> registroSaida;
+	
 	public Integer getIdPessoa() {
 		return idPessoa;
 	}
