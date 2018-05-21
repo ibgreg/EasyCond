@@ -13,24 +13,26 @@
 		<p:separator />
 
 		<h:form prependId="false">
+			<p:panelGrid columns="2">
+				<h:inputHidden
+					value="#{solicitacaoAvisoBean.solicitacaoAviso.idSolicitacaoAviso}" />
 
-			<h:inputHidden
-				value="#{solicitacaoAvisoBean.solicitacaoAviso.idSolicitacaoAviso}" />
+				<p:messages id="msg" closable="true" autoUpdate="true" />
 
-			<p:messages id="msg" closable="true" autoUpdate="true" />
+				<p:outputLabel value="Título: " for="titulo_solicitacao_aviso" />
+				<p:inputText id="titulo_solicitacao_aviso"
+					value="#{solicitacaoAvisoBean.solicitacaoAviso.titulo}"
+					required="true" requiredMessage="O campo 'Título' é obrigatório."
+					maxlength="50" size="50" />
 
-			<p:outputLabel value="Título: " for="titulo_solicitacao_aviso" />
-			<p:inputText id="titulo_solicitacao_aviso"
-				value="#{solicitacaoAvisoBean.solicitacaoAviso.titulo}"
-				required="true" requiredMessage="O campo 'Título' é obrigatório."
-				maxlength="50" size="50" />
-
-			<p:outputLabel value="Descrição: " for="descricao_solicitacao" />
-			<p:inputText id="descricao_solicitacao"
-				value="#{solicitacaoAvisoBean.solicitacaoAviso.descricao}"
-				required="true" requiredMessage="O campo 'Descrição' é obrigatório."
-				maxlength="50" size="50" />
-
+				<p:outputLabel value="Descrição: " for="descricao_solicitacao" />
+				<p:inputText id="descricao_solicitacao"
+					value="#{solicitacaoAvisoBean.solicitacaoAviso.descricao}"
+					required="true"
+					requiredMessage="O campo 'Descrição' é obrigatório." maxlength="50"
+					size="50" />
+			</p:panelGrid>
+			
 			<p:commandButton value="Salvar" process="@form"
 				action="#{solicitacaoAvisoBean.salvar}" />
 		</h:form>

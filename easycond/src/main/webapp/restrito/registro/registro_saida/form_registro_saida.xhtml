@@ -13,23 +13,26 @@
 		<p:separator />
 
 		<h:form prependId="false">
-		
-			<h:outputLabel value="Condômino: " for="condomino" />
-			<p:selectOneMenu id="condomino"
-				value="#{registroSaidaBean.pessoaCombo}">
-				<f:selectItems value="#{registroSaidaBean.listaCondominos}"
-					var="condomino" itemLabel="#{condomino.nomePessoa}"
-					itemValue="#{condomino.idPessoa}" />
-			</p:selectOneMenu>
 
-			<h:outputLabel value="Data de entrada: " for="data_entrada" />
-			<p:calendar locale="pt" id="data_entrada"
-					value="#{registroSaidaBean.registroSaida.dataSaida}" pattern="dd-MM-yyyy"
-					mask="true" />			
+			<p:panelGrid columns="2">
+				<h:outputLabel value="Condômino: " for="condomino" />
+				<p:selectOneMenu id="condomino"
+					value="#{registroSaidaBean.pessoaCombo}">
+					<f:selectItem itemLabel="[CONDÔMINO]" />
+					<f:selectItems value="#{registroSaidaBean.listaCondominos}"
+						var="condomino" itemLabel="#{condomino.nomePessoa}"
+						itemValue="#{condomino.idPessoa}" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Data de entrada: " for="data_entrada" />
+				<p:calendar locale="pt" id="data_entrada"
+					value="#{registroSaidaBean.registroSaida.dataSaida}"
+					pattern="dd-MM-yyyy" mask="true" />
+			</p:panelGrid>
 			
 			<p:commandButton value="Salvar" process="@form"
 				action="#{registroSaidaBean.salvar}" />
-			
+
 		</h:form>
 
 	</ui:define>

@@ -17,13 +17,16 @@
 			<h:inputHidden value="#{apartamentoBean.apartamento.id}" />
 
 			<p:messages id="msg" closable="true" autoUpdate="true" />
-
-			<p:outputLabel value="Número do apartamento: " for="num_apartamento" />
-			<p:inputText id="num_apartamento"
-				value="#{apartamentoBean.apartamento.numApartamento}" required="true"
-				requiredMessage="O campo 'Número do apartamento' é obrigatório." maxlength="50"
-				size="50" />
-
+			
+			<p:panelGrid>
+				<p:outputLabel value="Número do apartamento: " for="num_apartamento" />
+				<p:inputText id="num_apartamento"
+					value="#{apartamentoBean.apartamento.numApartamento}"
+					required="true"
+					requiredMessage="O campo 'Número do apartamento' é obrigatório."
+					maxlength="50" size="50" />
+			</p:panelGrid>
+			
 			<p:commandButton value="Salvar" process="@form"
 				action="#{apartamentoBean.salvar}" />
 		</h:form>
