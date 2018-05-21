@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Cascade;
 
 @Entity
-@Table(name="pessoa")
+@Table(name="pessoa", uniqueConstraints ={ @UniqueConstraint( columnNames = "cpf" ) })
 public class Pessoa implements Serializable{
 
 	private static final long serialVersionUID = 1L;	
@@ -27,6 +27,7 @@ public class Pessoa implements Serializable{
 	public Pessoa() {
 		super();
 		this.registroEntrada = new ArrayList<RegistroEntrada>();
+		//this.registroSaida = new ArrayList<RegistroSaida>();
 	}
 
 	@Id
@@ -59,9 +60,9 @@ public class Pessoa implements Serializable{
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private List<RegistroEntrada> registroEntrada;
 	
-	@OneToMany(mappedBy="pessoa", orphanRemoval=true)
+	/*@OneToMany(mappedBy="pessoa", orphanRemoval=true)
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
-	private List<RegistroSaida> registroSaida;
+	private List<RegistroSaida> registroSaida;*/
 	
 	public Integer getIdPessoa() {
 		return idPessoa;
@@ -110,6 +111,8 @@ public class Pessoa implements Serializable{
 	public void setTipoPessoa(char tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {
