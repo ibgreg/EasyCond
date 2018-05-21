@@ -17,39 +17,33 @@
 			<h:inputHidden value="#{visitanteBean.pessoa.idPessoa}" />
 
 			<p:messages id="msg" closable="true" autoUpdate="true" />
-			
-			<div>
+
+			<p:panelGrid columns="2">
 				<p:outputLabel value="Nome: " for="nome_visitante" />
 				<p:inputText id="nome_visitante"
 					value="#{visitanteBean.pessoa.nomePessoa}" required="true"
 					requiredMessage="O campo 'Nome' é obrigatório." maxlength="50"
 					size="50" />
-			</div>
 
-			<div>
 				<p:outputLabel value="CPF: " for="cpf_visitante" />
 				<p:inputText id="cpf_visitante" value="#{visitanteBean.pessoa.cpf}"
 					required="true" requiredMessage="O campo 'CPF' é obrigatório."
 					maxlength="50" size="50" />
-			</div>
 
-			<div>
 				<p:outputLabel value="E-mail: " for="email_visitante" />
 				<p:inputText id="email_visitante"
 					value="#{visitanteBean.pessoa.email}" required="false"
 					maxlength="50" size="50" />
-			</div>
 
-			<div>
-
-				<p:outputLabel value="Data de Nascimento: " for="data_nascimento_visitante" />
+				<p:outputLabel value="Data de Nascimento: "
+					for="data_nascimento_visitante" />
 				<p:calendar locale="pt" id="data_nascimento_visitante"
 					value="#{visitanteBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy"
 					mask="true" />
-			</div>
-			
+			</p:panelGrid>
 			<p:commandButton value="Salvar" process="@form"
 				action="#{visitanteBean.salvar}" />
+
 		</h:form>
 
 	</ui:define>

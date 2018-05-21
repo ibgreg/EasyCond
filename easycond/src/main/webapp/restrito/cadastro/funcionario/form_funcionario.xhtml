@@ -17,37 +17,32 @@
 			<h:inputHidden value="#{funcionarioBean.pessoa.idPessoa}" />
 
 			<p:messages id="msg" closable="true" autoUpdate="true" />
-			
-			<div>
+
+			<p:panelGrid columns="2">
 				<p:outputLabel value="Nome: " for="nome_funcionario" />
 				<p:inputText id="nome_funcionario"
 					value="#{funcionarioBean.pessoa.nomePessoa}" required="true"
 					requiredMessage="O campo 'Nome' é obrigatório." maxlength="50"
 					size="50" />
-			</div>
 
-			<div>
 				<p:outputLabel value="CPF: " for="cpf_funcionario" />
-				<p:inputText id="cpf_funcionario" value="#{funcionarioBean.pessoa.cpf}"
-					required="true" requiredMessage="O campo 'CPF' é obrigatório."
-					maxlength="50" size="50" />
-			</div>
+				<p:inputText id="cpf_funcionario"
+					value="#{funcionarioBean.pessoa.cpf}" required="true"
+					requiredMessage="O campo 'CPF' é obrigatório." maxlength="50"
+					size="50" />
 
-			<div>
 				<p:outputLabel value="E-mail: " for="email_funcionario" />
 				<p:inputText id="email_funcionario"
 					value="#{funcionarioBean.pessoa.email}" required="false"
 					maxlength="50" size="50" />
-			</div>
 
-			<div>
-
-				<p:outputLabel value="Data de Nascimento: " for="data_nascimento_funcionario" />
+				<p:outputLabel value="Data de Nascimento: "
+					for="data_nascimento_funcionario" />
 				<p:calendar locale="pt" id="data_nascimento_funcionario"
-					value="#{funcionarioBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy"
-					mask="true" />
-			</div>
-			
+					value="#{funcionarioBean.pessoa.dataNascimento}"
+					pattern="dd-MM-yyyy" mask="true" />
+			</p:panelGrid>
+
 			<p:commandButton value="Salvar" process="@form"
 				action="#{funcionarioBean.salvar}" />
 		</h:form>
