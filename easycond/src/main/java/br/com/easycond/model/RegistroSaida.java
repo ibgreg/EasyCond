@@ -34,14 +34,12 @@ public class RegistroSaida implements Serializable{
 	@Column(name="id_ingresso")
 	private Integer id;
 	
-	private Integer idCondomino;
-	
 	//private Integer idImovel;
 	
-	@SuppressWarnings("deprecation")
+	//@SuppressWarnings("deprecation")
 	@ManyToOne
-	@JoinColumn(name="pessoa", nullable=false)
-	@ForeignKey(name="id_condomino")
+	//@JoinColumn(name="pessoa", nullable=false)
+	//@ForeignKey(name="id_condomino")
 	private Pessoa pessoa;
 	
 	@Temporal(TemporalType.DATE)
@@ -54,14 +52,6 @@ public class RegistroSaida implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getIdCondomino() {
-		return idCondomino;
-	}
-
-	public void setIdCondomino(Integer idCondomino) {
-		this.idCondomino = idCondomino;
 	}
 
 	public Date getDataSaida() {
@@ -86,7 +76,7 @@ public class RegistroSaida implements Serializable{
 		int result = 1;
 		result = prime * result + ((dataSaida == null) ? 0 : dataSaida.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((idCondomino == null) ? 0 : idCondomino.hashCode());
+		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		return result;
 	}
 
@@ -109,10 +99,10 @@ public class RegistroSaida implements Serializable{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (idCondomino == null) {
-			if (other.idCondomino != null)
+		if (pessoa == null) {
+			if (other.pessoa != null)
 				return false;
-		} else if (!idCondomino.equals(other.idCondomino))
+		} else if (!pessoa.equals(other.pessoa))
 			return false;
 		return true;
 	}
