@@ -22,7 +22,7 @@ public class CasaBean {
 
 		this.casa = new Casa();
 
-		return "/public/solicitacao/aviso/form_casa";
+		return "/restrito/cadastro/imovel/casa/form_casa";
 	}
 
 	public String salvar() {
@@ -31,11 +31,11 @@ public class CasaBean {
 
 		casaRN.salvar(this.casa);
 
-		return "/public/solicitacao/aviso/grid_casa";
+		return "/restrito/cadastro/imovel/casa/grid_casa";
 	}
 
 	public String editar() {
-		return "/public/solicitacao/aviso/grid_casa";
+		return "/restrito/cadastro/imovel/casa/form_casa";
 	}
 
 	public String excluir() {
