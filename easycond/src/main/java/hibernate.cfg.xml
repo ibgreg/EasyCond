@@ -31,11 +31,13 @@
 		<mapping class="br.com.easycond.model.SolicitacaoAviso"/>
 		<mapping class="br.com.easycond.model.Apartamento"/>
 		<mapping class="br.com.easycond.model.Bloco"/>
+		<mapping class="br.com.easycond.model.Casa"/>
 		<mapping class="br.com.easycond.model.Votos"/>
 		<mapping class="br.com.easycond.model.Reserva"/>
 		<mapping class="br.com.easycond.model.EspacoFisico"/>
 		<mapping class="br.com.easycond.model.Evento"/>
 		<mapping class="br.com.easycond.model.RegistroEntrada"/>
 		<mapping class="br.com.easycond.model.RegistroSaida"/>
+		<mapping class="br.com.easycond.model.RegistroVisita"/>
 	</session-factory>
 </hibernate-configuration>
