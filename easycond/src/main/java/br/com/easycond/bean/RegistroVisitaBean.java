@@ -10,6 +10,7 @@ import br.com.easycond.model.Pessoa;
 import br.com.easycond.model.RegistroVisita;
 import br.com.easycond.rn.PessoaRN;
 import br.com.easycond.rn.RegistroVisitaRN;
+import br.com.easycond.rn.RegistroVisitaRN;
 
 @ManagedBean(name="registroVisitaBean")
 @RequestScoped
@@ -21,6 +22,10 @@ public class RegistroVisitaBean {
 
 	private List<Pessoa> listaVisitante;
 	
+	private Integer pessoaCombo;
+
+	private Pessoa pessoa;
+	
 	@PostConstruct
 	public String novo() {
 
@@ -31,9 +36,16 @@ public class RegistroVisitaBean {
 
 	public String salvar() {
 
-		RegistroVisitaRN registroVisitaRN = new RegistroVisitaRN();
+		this.pessoa = new PessoaRN().carregar(pessoaCombo);
 
-		registroVisitaRN.salvar(this.registroVisita);
+		if (pessoa != null) {
+
+			this.registroVisita.setPessoa(pessoa);
+
+			RegistroVisitaRN registroVisitaRN = new RegistroVisitaRN();
+
+			registroVisitaRN.salvar(this.registroVisita);
+		}
 
 		return "/restrito/registro/registro_visita/grid_registro_visita";
 	}
@@ -85,6 +97,29 @@ public class RegistroVisitaBean {
 
 	public void setListaRegistroVisita(List<RegistroVisita> listaRegistroVisita) {
 		this.listaRegistroVisita = listaRegistroVisita;
-	}	
-	
+	}
+
+	public List<Pessoa> getListaVisitante() {
+		return listaVisitante;
+	}
+
+	public void setListaVisitante(List<Pessoa> listaVisitante) {
+		this.listaVisitante = listaVisitante;
+	}
+
+	public Integer getPessoaCombo() {
+		return pessoaCombo;
+	}
+
+	public void setPessoaCombo(Integer pessoaCombo) {
+		this.pessoaCombo = pessoaCombo;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}		
 }

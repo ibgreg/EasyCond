@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,10 +26,11 @@ public class RegistroVisita implements Serializable {
 	@Column(name="id_ingresso")
 	private Integer id;
 	
-	private Integer idVisitante;
+	@ManyToOne
+	private Pessoa pessoa;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inicio_visita")
+	@Column(name="data_inicio_visita", nullable=false)
 	private Date dataInicioVisita;
 	
 	@Temporal(TemporalType.DATE)
@@ -57,6 +59,14 @@ public class RegistroVisita implements Serializable {
 
 	public void setDataFimVisita(Date dataFimVisita) {
 		this.dataFimVisita = dataFimVisita;
+	}	
+	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Override
@@ -66,7 +76,6 @@ public class RegistroVisita implements Serializable {
 		result = prime * result + ((dataFimVisita == null) ? 0 : dataFimVisita.hashCode());
 		result = prime * result + ((dataInicioVisita == null) ? 0 : dataInicioVisita.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((idVisitante == null) ? 0 : idVisitante.hashCode());
 		return result;
 	}
 
@@ -93,11 +102,6 @@ public class RegistroVisita implements Serializable {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (idVisitante == null) {
-			if (other.idVisitante != null)
-				return false;
-		} else if (!idVisitante.equals(other.idVisitante))
 			return false;
 		return true;
 	}		

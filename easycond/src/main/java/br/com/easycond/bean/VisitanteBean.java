@@ -24,7 +24,7 @@ public class VisitanteBean {
 		
 		this.pessoa = new Pessoa();
 		
-		return "/restrito/cadastro/visita/form_visitante";
+		return "/restrito/cadastro/visitante/form_visitante";
 	}
 	
 	public String salvar() {
@@ -35,11 +35,11 @@ public class VisitanteBean {
 		
 		pessoaRN.salvar(this.pessoa);	
 		
-		return "/restrito/cadastro/visita/grid_visitante";
+		return "/restrito/cadastro/visitante/grid_visitante";
 	}	
 	
 	public String editar() {
-		return "/restrito/cadastro/visita/form_visitante";
+		return "/restrito/cadastro/visitante/form_visitante";
 	}
 
 	public String excluir() {
