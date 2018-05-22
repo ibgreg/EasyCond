@@ -1,59 +1,56 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="/templates/layoutsemmenu.xhtml">
 
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Cadastro de Usuários</title>
-	</h:head>
-	<h:body>
+	<ui:define name="content">
+
 		<h1>Cadastro de Usuários</h1>
-		<h:form id="cadastro">
-			<h:messages/>
+
+		<h:form id="cadastro" prependId="false">
+
 			<h:inputHidden value="#{usuarioBean.usuario.codigo}"/>
 			<h:inputHidden value="#{usuarioBean.usuario.ativo}"/>
-			
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Nome:" for="nome"/>
-				<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30" maxlength="30" required="true" requiredMessage="Você não tem nome?">
-					<f:validateLength minimum="10" maximum="30"/>
-				</h:inputText>
-				
-				<h:outputLabel value="Data Nascimento:" for="data"/>
-				<h:inputText id="data" label="Data Nascimento" value="#{usuarioBean.usuario.dataNasc}" size="10" maxlength="10" required="true">
-					<f:convertDateTime dateStyle="medium"/>
-				</h:inputText>
-				
-				<h:outputLabel value="E-mail" for="email"/>
-				<h:panelGroup>
-					<h:inputText id="email" 
-					label="E-mail" 
-					value="#{usuarioBean.usuario.email}"
-					size="50" maxlength="50" required="true"
-					validatorMessage="E-mail inválido">
-						<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
-					</h:inputText>
-					<h:message for="email"/>
-				</h:panelGroup>
+
+			<p:messages id="msg" closable="true" autoUpdate="true" />
+
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome: " for="nomeUsuario" />
+				<p:inputText id="nomeUsuario" value="#{usuarioBean.usuario.nome}" required="true" requiredMessage="O campo 'Nome' é obrigatório." maxlength="30" size="50" />
+
+				<p:outputLabel value="Data Nascimento: " for="dataNascUsuario" />
+				<p:calendar locale="pt" id="dataNascUsuario" value="#{usuarioBean.usuario.dataNasc}" required="true" requiredMessage="O campo 'Data de Nascimento' é obrigatório!" pattern="dd/MM/yyyy" navigator="true" showOn="both" />
+
+				<p:outputLabel value="E-mail: " for="emailUsuario" />
+				<p:inputText id="emailUsuario" value="#{usuarioBean.usuario.email}" required="true" requiredMessage="O campo 'E-mail' é obrigatório!" maxlength="50" size="50" validatorMessage="E-mail inválido!">
+					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
+				</p:inputText>
 				
 				<h:outputLabel value="Login:" for="login"/>
-				<h:inputText id="login"
-					label="Login"
-					value="#{usuarioBean.usuario.login}"
-					size="15" maxlength="15" required="true"
-					validatorMessage="Login deve ter no mínimo 5 e no máximo 15 caracteres e só pode ter os símbolos '.' e '_'">
+				<p:inputText id="login" value="#{usuarioBean.usuario.login}" 
+					size="20" maxlength="15" required="true" 
+					requiredMessage="O campo 'Login' é obrigatório" 
+					validatorMessage="Login deve ter no mínimo 5 e no máximo 15 caracteres e só pode ter os símbolos '.' e '_'" >
 					<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}"/>
-				</h:inputText>
-				
-				<h:outputLabel value="Senha:" for="senha"/>
-				<h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" size="10" maxlength="10" required="true" redisplay="true"/>
-				
-				<h:outputLabel value="Confirmar senha:" for="confirmarSenha"/>
-				<h:inputSecret id="confirmarSenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10" required="true" redisplay="true"/>
-			</h:panelGrid>
-			
-			<h:commandButton action="#{usuarioBean.salvar}" value="Salvar"/>
+				</p:inputText>
+
+				<h:outputLabel value="Senha: " for="senha" />
+				<p:password id="senha" value="#{usuarioBean.usuario.senha}" size="20" maxlength="10" 
+					required="true" requiredMessage="O campo 'Senha' é obrigatório!"
+					feedback="true" weakLabel="Fraca" goodLabel="Média" strongLabel="Forte" />
+
+				<h:outputLabel value="Confirmar senha: " for="confirmarSenha" />
+				<p:password id="confirmarSenha" value="#{usuarioBean.confirmarSenha}" size="20" maxlength="10" 
+					required="true" requiredMessage="O campo 'Confirmar senha' é obrigatório!" />
+
+			</p:panelGrid>
+
+			<p:commandButton value="Criar cadastro" process="@form"	action="#{usuarioBean.salvar}" />
 		</h:form>
-	</h:body>
-</html>
+
+	</ui:define>
+
+</ui:composition>
