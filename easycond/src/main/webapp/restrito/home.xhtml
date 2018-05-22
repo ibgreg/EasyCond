@@ -16,20 +16,30 @@
 			</sec:ifAnyGranted>
 			
 						
-		<p:panelGrid columns="3" layout="grid">
-				<p:commandLink action="#{assembleiaBean.carregarEnquete}">
-					<h:graphicImage value="/resources/img/linkvoto.png" />
-				</p:commandLink>
-				<p:commandLink action="#{assembleiaBean.carregarListaVotos}" >
-					<h:graphicImage value="/resources/img/resultadovoto.png" />
-				</p:commandLink>
-				<p:commandLink action="/restrito/cadastro/visitante/grid_visitante.jsf" >
-					<h:graphicImage value="/resources/img/registrovisitante.png" />
-				</p:commandLink>
-				<p:commandLink action="/restrito/reserva/lista.jsf" >
-					<h:graphicImage value="/resources/img/reservaespaco.png" />
-				</p:commandLink>
-			
+		<div class="ui-g">
+				<div class="ui-g-6 ui-md-6 ui-lg-3">
+					<p:commandLink action="#{assembleiaBean.carregarEnquete}">
+						<h:graphicImage value="/resources/img/linkvoto.png"/>
+					</p:commandLink>
+				</div>
+				<div class="ui-g-6 ui-md-6 ui-lg-3">
+					<p:commandLink action="#{assembleiaBean.carregarListaVotos}" >
+						<h:graphicImage value="/resources/img/resultadovoto.png" />
+					</p:commandLink>
+				</div>
+				<div class="ui-g-6 ui-md-6 ui-lg-3">
+					<p:commandLink action="/restrito/cadastro/visitante/grid_visitante.jsf" >
+						<h:graphicImage value="/resources/img/registrovisitante.png" />
+					</p:commandLink>
+				</div>
+				
+				<div class="ui-g-6 ui-md-6 ui-lg-3s">
+					<p:commandLink action="/restrito/reserva/lista.jsf" >
+						<h:graphicImage value="/resources/img/reservaespaco.png" />
+					</p:commandLink>	
+				</div>
+				
+			</div>
 			</p:panelGrid>
 		</h:form>
 	</ui:define>
