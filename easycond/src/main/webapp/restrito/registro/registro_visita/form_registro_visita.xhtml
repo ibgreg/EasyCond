@@ -14,6 +14,8 @@
 
 		<h:form prependId="false">
 
+			<p:messages id="msg" closable="true" autoUpdate="true" />
+
 			<h:inputHidden value="#{registroVisitaBean.registroVisita.id}" />
 
 			<p:panelGrid columns="2">
@@ -39,7 +41,7 @@
 			</p:panelGrid>
 
 			<p:commandButton value="Salvar" process="@form"
-				action="#{registroSaidaBean.salvar}" />
+				action="#{registroVisitaBean.salvar}" />
 
 		</h:form>
 

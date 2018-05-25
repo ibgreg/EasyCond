@@ -37,12 +37,12 @@
 				<p:column headerText="Comandos">
 					<p:commandButton action="#{registroVisitaBean.editar}" icon="fa fa-pencil"
 						process="@this" update="@form">
-						<f:setPropertyActionListener value="#{pessoa}"
+						<f:setPropertyActionListener value="#{registroVisita}"
 							target="#{registroVisitaBean.registroVisita}" />
 					</p:commandButton>
 					<p:commandButton action="#{registroVisitaBean.excluir}" icon="fa fa-trash"
 						process="@this" update="@form">
-						<f:setPropertyActionListener value="#{pessoa}"
+						<f:setPropertyActionListener value="#{registroVisita}"
 							target="#{registroVisitaBean.registroVisita}" />
 					</p:commandButton>
 				</p:column>
