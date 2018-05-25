@@ -1,10 +1,13 @@
 package br.com.easycond.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.easycond.model.Pessoa;
 import br.com.easycond.model.RegistroVisita;
@@ -12,7 +15,7 @@ import br.com.easycond.rn.PessoaRN;
 import br.com.easycond.rn.RegistroVisitaRN;
 import br.com.easycond.rn.RegistroVisitaRN;
 
-@ManagedBean(name="registroVisitaBean")
+@ManagedBean(name = "registroVisitaBean")
 @RequestScoped
 public class RegistroVisitaBean {
 
@@ -21,11 +24,11 @@ public class RegistroVisitaBean {
 	private List<RegistroVisita> listaRegistroVisita;
 
 	private List<Pessoa> listaVisitante;
-	
+
 	private Integer pessoaCombo;
 
 	private Pessoa pessoa;
-	
+
 	@PostConstruct
 	public String novo() {
 
@@ -35,8 +38,14 @@ public class RegistroVisitaBean {
 	}
 
 	public String salvar() {
+		
+		if (!verificarVisitante())
+			return null;
 
-		this.pessoa = new PessoaRN().carregar(pessoaCombo);
+		this.pessoa = new PessoaRN().carregar(pessoaCombo);		
+
+		if (!verificarData())
+			return null;
 
 		if (pessoa != null) {
 
@@ -55,7 +64,7 @@ public class RegistroVisitaBean {
 	}
 
 	public String excluir() {
-		
+
 		RegistroVisitaRN registroVisitaRN = new RegistroVisitaRN();
 		registroVisitaRN.excluir(this.registroVisita);
 		this.listaRegistroVisita = null;
@@ -64,7 +73,7 @@ public class RegistroVisitaBean {
 
 	public List<RegistroVisita> getListaRegistroVisita() {
 		if (this.listaRegistroVisita == null) {
-			
+
 			RegistroVisitaRN registroVisitaRN = new RegistroVisitaRN();
 			this.listaRegistroVisita = registroVisitaRN.listar();
 		}
@@ -81,13 +90,13 @@ public class RegistroVisitaBean {
 	}
 
 	public List<Pessoa> getListaVisitantes() {
-		
-		if(this.listaVisitante == null) {
-			
-			PessoaRN pessoaRN = new PessoaRN();			
+
+		if (this.listaVisitante == null) {
+
+			PessoaRN pessoaRN = new PessoaRN();
 			this.listaVisitante = pessoaRN.listar('V');
 		}
-		
+
 		return this.listaVisitante;
 	}
 
@@ -121,5 +130,36 @@ public class RegistroVisitaBean {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
-	}		
+	}
+
+	// region Verificacoes
+
+	private boolean verificarData() {
+
+		Date dtInicio = registroVisita.getDataInicioVisita();
+		Date dtFim = registroVisita.getDataFimVisita();
+
+		if (dtInicio.compareTo(dtFim) > 0) {
+			FacesContext.getCurrentInstance().addMessage("msg",
+					new FacesMessage("A data inicial não pode ser maior do que a data final."));
+
+			return false;
+		}
+
+		return true;
+	}
+
+	private boolean verificarVisitante() {
+
+		if (pessoaCombo == null) {
+			FacesContext.getCurrentInstance().addMessage("msg",
+					new FacesMessage("Por favor, selecione um visitante."));
+
+			return false;
+		}
+		
+		return true;
+	}
+
+	// endregion
 }
