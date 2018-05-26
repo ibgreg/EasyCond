@@ -10,13 +10,14 @@
 		<h1>Bem-vindo</h1>
 		<br/>
 		
-		<h:form>
+		<h:form prependId="false">
+			
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
 					Teste permissao ADM 
 			</sec:ifAnyGranted>
 			
 						
-		<div class="ui-g">
+			<div class="ui-g">
 				<div class="ui-g-6 ui-md-6 ui-lg-3">
 					<p:commandLink action="#{assembleiaBean.carregarEnquete}">
 						<h:graphicImage value="/resources/img/linkvoto.png"/>
@@ -40,6 +41,19 @@
 				</div>
 				
 			</div>
+			
+			<p:carousel numVisible="1" effect="easeInStrong" headerText="Quadro de avisos" responsive="true" style="margin-bottom:0;" >
+		        <p:repeat var="avisos" value="#{avisoBean.quadroAvisos}">
+		        	<p:tab title="Aviso">
+			            <h:panelGrid>
+			            	<h:outputText value="#{avisos.titulo}" escape="false" style="font-weight: bold;"/>
+			            	<br/>
+			                <h:outputText value="#{avisos.descricao}" escape="false" />
+			            </h:panelGrid>
+			        </p:tab>
+		        </p:repeat>
+		       
+		    </p:carousel>
 
 		</h:form>
 	</ui:define>
