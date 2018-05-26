@@ -2,6 +2,7 @@ package br.com.easycond.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.easycond.daointerf.AvisoDAOInterf;
@@ -39,6 +40,14 @@ public class AvisoDAO implements AvisoDAOInterf {
 	@Override
 	public List<Aviso> listar() {
 		return this.session.createCriteria(Aviso.class).list();
+	}
+
+	@Override
+	public List<Aviso> carregarAvisoPorOrdemId() {
+		String sqlQuery = "select av from Aviso av order by av.id desc";
+		Query query = session.createQuery(sqlQuery);
+		
+		return query.list();
 	}
 
 }

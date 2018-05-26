@@ -22,6 +22,10 @@ public class AvisoRN {
 		return this.avisoDAO.listar();
 	}
 	
+	public List<Aviso> carregarAvisoPorOrdemId() {
+		return this.avisoDAO.carregarAvisoPorOrdemId();
+	}
+	
 	public void salvar(Aviso aviso) {
 		Integer id = aviso.getId();
 		

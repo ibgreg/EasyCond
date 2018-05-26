@@ -15,6 +15,7 @@ public class AvisoBean {
 
 	private Aviso aviso = new Aviso();
 	private List<Aviso> lista;
+	private List<Aviso> quadroAvisos;
 	
 	@PostConstruct
 	public String novo() {
@@ -49,6 +50,14 @@ public class AvisoBean {
 		this.aviso = aviso;
 	}
 	
+	public List<Aviso> getQuadroAvisos() {
+		if (this.quadroAvisos == null) {
+			AvisoRN avisoRN = new AvisoRN();
+			this.quadroAvisos = avisoRN.carregarAvisoPorOrdemId();
+		}
+		return this.quadroAvisos;
+	}
+
 	public List<Aviso> getLista() {
 		if (this.lista == null) {
 			AvisoRN avisoRN = new AvisoRN();
@@ -56,5 +65,5 @@ public class AvisoBean {
 		}
 		return this.lista;
 	}
-	
+
 }

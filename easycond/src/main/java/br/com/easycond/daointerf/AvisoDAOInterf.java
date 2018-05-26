@@ -15,4 +15,6 @@ public interface AvisoDAOInterf {
 	public Aviso carregar(Integer id);
 	
 	public List<Aviso> listar();
+	
+	public List<Aviso> carregarAvisoPorOrdemId();
 }
