@@ -1,6 +1,8 @@
 package br.com.easycond.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,11 +27,8 @@ public class Apartamento implements Serializable{
 	@Column(name = "num_apartamento", nullable = false)
 	private Integer numApartamento;
 
-	@ManyToMany(
-			cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-			mappedBy = "apartamento",
-			targetEntity = Bloco.class)
-	private Set<Bloco> bloco;
+	@ManyToMany(mappedBy = "apartamento")
+	private List<Bloco> bloco;
 	
 	public Integer getId() {
 		return id;
@@ -47,11 +46,11 @@ public class Apartamento implements Serializable{
 		this.numApartamento = numApartamento;
 	}
 
-	public Set<Bloco> getBloco() {
+	public List<Bloco> getBloco() {
 		return bloco;
 	}
 
-	public void setBloco(Set<Bloco> bloco) {
+	public void setBloco(List<Bloco> bloco) {
 		this.bloco = bloco;
 	}
 

@@ -1,5 +1,7 @@
 package br.com.easycond.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,16 +27,13 @@ public class Bloco {
 	private String identificacaoBloco;
 
 	
-	@ManyToMany(
-			targetEntity=Apartamento.class,
-			cascade= {CascadeType.PERSIST, CascadeType.MERGE}			
-			)
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(
 			name="bloco_apartamento",
-			joinColumns=@JoinColumn(name="id_bloco"),
-			inverseJoinColumns=@JoinColumn(name="id_apartamento")
+			joinColumns = {@JoinColumn(name="id_bloco")},
+			inverseJoinColumns = {@JoinColumn(name="id_apartamento")}
 			)
-	private Set<Apartamento> apartamento;
+	private List<Apartamento> apartamento;
 	
 	public Integer getId() {
 		return id;
@@ -52,14 +51,12 @@ public class Bloco {
 		this.identificacaoBloco = identificacaoBloco;
 	}
 
-	public Set<Apartamento> getApartamento() {
+	public List<Apartamento> getApartamento() {
 		return apartamento;
 	}
 
-	public void setApartamento(Set<Apartamento> apartamento) {
+	public void setApartamento(List<Apartamento> apartamento) {
 		this.apartamento = apartamento;
-	}
-
-	
+	}	
 	
 }
