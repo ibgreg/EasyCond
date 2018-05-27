@@ -14,7 +14,12 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="registro_visita")
-public class RegistroVisita implements Serializable {
+public class RegistroVisita implements Serializable {	
+	
+	public RegistroVisita() {
+		super();
+		this.pessoa = new Pessoa();
+	}
 
 	/**
 	 * 
@@ -23,7 +28,7 @@ public class RegistroVisita implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name="id_ingresso")
+	@Column(name="id_registro_visita")
 	private Integer id;
 	
 	@ManyToOne
