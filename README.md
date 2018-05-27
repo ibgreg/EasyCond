@@ -16,9 +16,7 @@ Este é o repositório do sistema EasyCond. O projeto tem como objetivo facilita
   <li><a href="https://github.com/algaworks/layout-primefaces-patagonia">Layout Patagonia (layout gratuito para o PrimeFaces desenvolvido pela AlgaWorks)</a></li>
 </ul>
 
-PREPARANDO O AMBIENTE NO QUAL O EASYCOND SERÁ INSTALADO 
-(Vou fazer um Batch Script para dar uma automatizada nesses processos. 
-Seria ideal se implementássemos um setup do aplicativo para instalar e configurar todos os pré-requisitos.)
+PREPARANDO O AMBIENTE NO QUAL O EASYCOND SERÁ INSTALADO
 -------------------------------------------------------
 
 - Instalação do Apache Tomcat
@@ -26,7 +24,7 @@ Seria ideal se implementássemos um setup do aplicativo para instalar e configur
     * Instalar o Apache Tomcat na raiz da partição C: do Windows
     
   => Linux (Ubuntu)
-  
+    * Instalar o Apache Tomcat no diretório /var/local/
 -------------------- //-------------------- //-------------------- //-------------------- //-------------------- //  
 
 - Instalação do Java
@@ -41,6 +39,8 @@ Seria ideal se implementássemos um setup do aplicativo para instalar e configur
     * Criar e definir a variável de ambiente do sistema JAVA_HOME para o caminho do diretório de instalação do JDK
     
   => Linux (Ubuntu)
+    * Definir a variável de ambiente CATALINA_HOME adicionando ao final do arquivo 'profile' localizado no diretório \etc\ o seguinte comando: export CATALINA_HOME=[caminho do diretório de instalação do apache tomcat]
+    * Definir a variável de ambiente JAVA_HOME adicionando ao final do arquivo 'profile' o seguinte comando: export CATALINA_HOME=[caminho do diretório de instalação do JDK]
   
  -------------------- //-------------------- //-------------------- //-------------------- //-------------------- //   
     
@@ -57,8 +57,7 @@ Seria ideal se implementássemos um setup do aplicativo para instalar e configur
    
 - Instalação do MySQL Server
 
-  => Windows
-  => Linux (Ubuntu)
+  * Para ambas as plataformas, fazer o download do MySQLServer e instalá-lo
   
 -------------------- //-------------------- //-------------------- //-------------------- //-------------------- //
     
