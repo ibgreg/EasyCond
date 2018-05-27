@@ -36,7 +36,7 @@ public class BlocoBean {
 	}
 
 	public String editar() {
-		return "/restrito/cadastro/imovel/bloco/grid_bloco";
+		return "/restrito/cadastro/imovel/bloco/form_bloco";
 	}
 
 	public String excluir() {
