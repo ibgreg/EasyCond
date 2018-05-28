@@ -20,7 +20,7 @@ public class AvisoBean {
 	@PostConstruct
 	public String novo() {
 		this.aviso = new Aviso();
-		return "/restrito/aviso/cadastrar";
+		return "/adm/aviso/cadastrar";
 	}
 	
 	public String salvar() {
@@ -28,11 +28,11 @@ public class AvisoBean {
 		AvisoRN avisoRN = new AvisoRN();
 		avisoRN.salvar(this.aviso);
 		
-		return "/restrito/aviso/lista";
+		return "/adm/aviso/lista";
 	}
 	
 	public String editar() {
-		return "/restrito/aviso/cadastrar";
+		return "/adm/aviso/cadastrar";
 	}
 	
 	public String excluir() {
