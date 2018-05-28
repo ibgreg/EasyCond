@@ -39,5 +39,7 @@
 		<mapping class="br.com.easycond.model.RegistroEntrada"/>
 		<mapping class="br.com.easycond.model.RegistroSaida"/>
 		<mapping class="br.com.easycond.model.RegistroVisita"/>
+		<mapping class="br.com.easycond.model.Ocorrencia"/>
+		
 	</session-factory>
 </hibernate-configuration>

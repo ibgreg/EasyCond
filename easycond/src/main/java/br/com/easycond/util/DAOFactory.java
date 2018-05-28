@@ -9,6 +9,7 @@ import br.com.easycond.dao.CondominoDAO;
 import br.com.easycond.dao.EspacoFisicoDAO;
 import br.com.easycond.dao.EventoDAO;
 import br.com.easycond.dao.FuncionarioDAO;
+import br.com.easycond.dao.OcorrenciaDAO;
 import br.com.easycond.dao.PessoaDAO;
 import br.com.easycond.dao.RegistroEntradaDAO;
 import br.com.easycond.dao.RegistroSaidaDAO;
@@ -26,6 +27,7 @@ import br.com.easycond.daointerf.CondominoDAOInterf;
 import br.com.easycond.daointerf.EspacoFisicoDAOInterf;
 import br.com.easycond.daointerf.EventoDAOInterf;
 import br.com.easycond.daointerf.FuncionarioDAOInterf;
+import br.com.easycond.daointerf.OcorrenciaDAOInterf;
 import br.com.easycond.daointerf.PessoaDAOInterf;
 import br.com.easycond.daointerf.RegistroEntradaDAOInterf;
 import br.com.easycond.daointerf.RegistroSaidaDAOInterf;
@@ -152,5 +154,11 @@ public class DAOFactory {
     	RegistroVisitaDAO registroVisitaDAO = new RegistroVisitaDAO();
     	registroVisitaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
     	return registroVisitaDAO;
+    }
+    
+    public static OcorrenciaDAOInterf criarOcorrenciaDAO() {
+    	OcorrenciaDAO ocorrenciaDAO = new OcorrenciaDAO();
+    	ocorrenciaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+    	return ocorrenciaDAO;
     }
 }
