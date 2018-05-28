@@ -1,6 +1,5 @@
 package br.com.easycond.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -12,8 +11,11 @@ import org.primefaces.context.RequestContext;
 
 import br.com.easycond.model.EspacoFisico;
 import br.com.easycond.model.Reserva;
+import br.com.easycond.model.Usuario;
 import br.com.easycond.rn.EspacoFisicoRN;
 import br.com.easycond.rn.ReservaRN;
+import br.com.easycond.rn.UsuarioRN;
+import br.com.easycond.util.SpringUtil;
 
 @ManagedBean(name = "reservaBean")
 @RequestScoped
@@ -21,6 +23,7 @@ public class ReservaBean {
 	
 	private Reserva reserva = new Reserva();
 	private EspacoFisico espacoFisico = new EspacoFisico();
+	private Usuario usuario = new Usuario();
 	
 	private List<Reserva> lista;
 	private List<EspacoFisico> listaEspacoFisico;
@@ -34,13 +37,16 @@ public class ReservaBean {
 	}
 	
 	public String salvar() {
-		
-		this.espacoFisico = new EspacoFisicoRN().carregar(opcaoSelecionada);
-		
+		EspacoFisicoRN espacoFisicoRN = new EspacoFisicoRN();
+		UsuarioRN usuarioRN = new UsuarioRN();
 		ReservaRN reservaRN = new ReservaRN();
+		
+		this.espacoFisico = espacoFisicoRN.carregar(opcaoSelecionada);
+		this.usuario = usuarioRN.carregarPorNomeLogin(SpringUtil.obterUsuarioLogado());
 		
 		if (!reservaRN.verificaReservaExistente(espacoFisico.getId(), reserva.getDataInicio(), reserva.getDataFim())) {
 			if (espacoFisico != null) {
+				reserva.setUsuario(usuario);
 				reserva.setEspacoFisico(espacoFisico);			
 				reservaRN.salvar(this.reserva);
 			}
@@ -86,8 +92,11 @@ public class ReservaBean {
 
 	public List<Reserva> getLista() {
 		if (this.lista == null) {
+			usuario = new Usuario();
+			UsuarioRN usuarioRN = new UsuarioRN();
 			ReservaRN reservaRN = new ReservaRN();
-			this.lista = reservaRN.listar();
+			usuario = usuarioRN.carregarPorNomeLogin(SpringUtil.obterUsuarioLogado());
+			this.lista = reservaRN.listarPorUsuario(usuario.getCodigo());
 		}
 		return this.lista;
 	}

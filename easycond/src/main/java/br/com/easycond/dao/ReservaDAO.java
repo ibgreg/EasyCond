@@ -41,6 +41,15 @@ public class ReservaDAO implements ReservaDAOInterf {
 	public List<Reserva> listar() {
 		return this.session.createCriteria(Reserva.class).list();
 	}
+	
+	@Override
+	public List<Reserva> listarPorUsuario(Integer idUsuario) {
+		String sqlQuery = "select r from Reserva r where r.usuario = :idUsuario";
+		Query query = session.createQuery(sqlQuery);
+		query.setInteger("idUsuario", idUsuario);
+		
+		return query.list();
+	}
 
 	@Override
 	public Reserva verificaReservaExistente(Integer idEspacoFisico, Date dataInicio, Date dataFim) {

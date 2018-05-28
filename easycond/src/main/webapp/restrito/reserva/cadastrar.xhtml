@@ -16,11 +16,7 @@
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 		
 			<h:inputHidden value="#{reservaBean.reserva.id}"  />
-		
-			<h:outputLabel value="Usuário: " for="usuarioReserva"/>
-			<p:inputText id="usuarioReserva" value="#{reservaBean.reserva.usuario}" required="true" requiredMessage="O campo 'Usuário' é obrigatório!" maxlength="20" size="30" />
-			<br/>
-			
+				
 			<h:outputLabel value="Espaço: " for="espacoReserva"/>
 			<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:125px">
             	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"

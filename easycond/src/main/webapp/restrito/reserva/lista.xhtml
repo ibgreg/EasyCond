@@ -16,7 +16,7 @@
 		
 			<p:dataTable var="reserva" value="#{reservaBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
 				<p:column headerText="Usuário">
-					<h:outputText value="#{reserva.usuario}" />
+					<h:outputText value="#{reserva.usuario.login}" />
 				</p:column>
 				
 				<p:column headerText="Descrição">

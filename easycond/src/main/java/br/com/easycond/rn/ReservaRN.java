@@ -23,6 +23,10 @@ public class ReservaRN {
 		return this.reservaDAO.listar();
 	}
 	
+	public List<Reserva> listarPorUsuario(Integer idUsuario) {
+		return this.reservaDAO.listarPorUsuario(idUsuario);
+	}
+	
 	public void salvar(Reserva reserva) {
 		Integer id = reserva.getId();
 		

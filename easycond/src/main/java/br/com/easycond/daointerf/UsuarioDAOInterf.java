@@ -14,5 +14,7 @@ public interface UsuarioDAOInterf {
 	
 	public Usuario carregar(Integer codigo);
 	
+	public Usuario carregarPorNomeLogin(String login);
+	
 	public List<Usuario> listar();
 }

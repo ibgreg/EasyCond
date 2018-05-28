@@ -17,6 +17,8 @@ public interface ReservaDAOInterf {
 	
 	public List<Reserva> listar();
 	
+	public List<Reserva> listarPorUsuario(Integer idUsuario);
+	
 	public Reserva verificaReservaExistente(Integer idEspacoFisico, Date dataInicio, Date dataFim);
 	
 }

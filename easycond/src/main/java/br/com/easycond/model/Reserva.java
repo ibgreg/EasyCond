@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,8 +26,9 @@ public class Reserva implements Serializable {
 	@Column(name = "id_reserva")
 	private Integer id;
 	
-	@Column(name = "id_usuario", length = 45, nullable = false)
-	private String usuario;
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_espaco_fisico")
@@ -48,11 +50,11 @@ public class Reserva implements Serializable {
 		this.id = id;
 	}
 
-	public String getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 

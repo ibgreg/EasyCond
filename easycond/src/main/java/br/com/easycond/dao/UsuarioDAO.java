@@ -2,6 +2,7 @@ package br.com.easycond.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.easycond.daointerf.UsuarioDAOInterf;
@@ -38,6 +39,15 @@ public class UsuarioDAO implements UsuarioDAOInterf {
 	@Override
 	public Usuario carregar(Integer codigo) {
 		return (Usuario) this.session.get(Usuario.class, codigo);
+	}
+	
+	@Override
+	public Usuario carregarPorNomeLogin(String login) {
+		String sqlQuery = "select u from Usuario u where u.login = :login";
+		Query query = session.createQuery(sqlQuery);
+		query.setString("login", login);
+		
+		return (Usuario) query.uniqueResult();
 	}
 
 	@Override

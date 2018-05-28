@@ -18,6 +18,10 @@ public class UsuarioRN {
 		return this.usuarioDAO.carregar(codigo);
 	}
 	
+	public Usuario carregarPorNomeLogin(String login) {
+		return this.usuarioDAO.carregarPorNomeLogin(login);
+	}
+	
 	public List<Usuario> listar() {
 		return this.usuarioDAO.listar();
 	}
