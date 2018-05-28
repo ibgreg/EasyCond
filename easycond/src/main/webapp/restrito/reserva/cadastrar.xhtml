@@ -16,21 +16,21 @@
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 		
 			<h:inputHidden value="#{reservaBean.reserva.id}"  />
+			
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Espaço: " for="espacoReserva"/>
+				<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:190px">
+	            	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"
+	            		itemLabel="#{espacoFisico.descricao}" itemValue="#{espacoFisico.id}"/>
+	       		</p:selectOneMenu>
 				
-			<h:outputLabel value="Espaço: " for="espacoReserva"/>
-			<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:125px">
-            	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"
-            		itemLabel="#{espacoFisico.descricao}" itemValue="#{espacoFisico.id}"/>
-       		</p:selectOneMenu>
-			<br/>
+				<h:outputLabel value="Data Início: " for="dataInicioReserva"/>
+				<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+				
+				<h:outputLabel value="Data Final: " for="dataFinalReserva"/>
+				<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+			</p:panelGrid>
 			
-			<h:outputLabel value="Data Início: " for="dataInicioReserva"/>
-			<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
-			<br/>
-			
-			<h:outputLabel value="Data Final: " for="dataFinalReserva"/>
-			<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
-			<br/>
 			
 			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
 			
