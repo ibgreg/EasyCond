@@ -26,14 +26,15 @@
 <h:body>
 
 	<header class="aw-topbar">
-		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
+		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars" style="margin-top: 17px; margin-left: 10px;"></i></a>
 		<h:outputLabel  value="Logo aqui" />
-		<h:outputLabel styleClass="aw-user" value="Usuário: #{request.remoteUser}" />
-		<h:form>
+		<h:form styleClass="aw-exit">
 			<p:commandLink styleClass="aw-user" onclick="document.location='#{request.contextPath}/j_spring_security_logout'">
-				<i class="fa fa-sign-out"/>
+				<i class="fa fa-sign-out" />
 			</p:commandLink>
 		</h:form>
+		<h:outputLabel styleClass="aw-user" value="Usuário: #{request.remoteUser}" />
+		
 		
 	</header>
 	
