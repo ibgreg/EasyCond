@@ -28,9 +28,13 @@ public class UsuarioRN {
 	
 	public void salvar(Usuario usuario) {
 		Integer codigo = usuario.getCodigo();
+		List<Usuario> listaUsuario = this.usuarioDAO.listar();
 		
 		if(codigo == null || codigo == 0) {
 			usuario.getPermissao().add("ROLE_USUARIO");
+			if (listaUsuario == null || listaUsuario.isEmpty()) {
+				usuario.getPermissao().add("ROLE_ADMIN");
+			}
 			this.usuarioDAO.salvar(usuario);
 		} 
 		else {
