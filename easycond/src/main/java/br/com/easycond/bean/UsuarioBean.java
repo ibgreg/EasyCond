@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
+
 import br.com.easycond.model.Usuario;
 import br.com.easycond.rn.UsuarioRN;
 
@@ -35,9 +37,17 @@ public class UsuarioBean {
 		}
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
-		usuarioRN.salvar(this.usuario);
 		
-		return "/public/login";
+		if (usuarioRN.carregarPorNomeLogin(usuario.getLogin()) == null) {
+			usuarioRN.salvar(this.usuario);
+			return "/public/login";
+		} else {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário já cadastrado", "Digite um login diferente");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);			
+			
+			return "";
+		}
+		
 	}
 	
 	public Usuario getUsuario() {
