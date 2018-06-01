@@ -12,7 +12,7 @@ import br.com.easycond.dao.FuncionarioDAO;
 import br.com.easycond.dao.OcorrenciaDAO;
 import br.com.easycond.dao.PessoaDAO;
 import br.com.easycond.dao.RegistroEntradaDAO;
-import br.com.easycond.dao.RegistroSaidaDAO;
+import br.com.easycond.dao.RegistroMoradaDAO;
 import br.com.easycond.dao.RegistroVisitaDAO;
 import br.com.easycond.dao.ReservaDAO;
 import br.com.easycond.dao.SolicitacaoAvisoDAO;
@@ -30,7 +30,7 @@ import br.com.easycond.daointerf.FuncionarioDAOInterf;
 import br.com.easycond.daointerf.OcorrenciaDAOInterf;
 import br.com.easycond.daointerf.PessoaDAOInterf;
 import br.com.easycond.daointerf.RegistroEntradaDAOInterf;
-import br.com.easycond.daointerf.RegistroSaidaDAOInterf;
+import br.com.easycond.daointerf.RegistroMoradaDAOInterf;
 import br.com.easycond.daointerf.RegistroVisitaDAOInterf;
 import br.com.easycond.daointerf.ReservaDAOInterf;
 import br.com.easycond.daointerf.SolicitacaoAvisoDAOInterf;
@@ -144,10 +144,10 @@ public class DAOFactory {
 		return eventoDAO;
 	}
 
-    public static RegistroSaidaDAOInterf criarRegistroSaidaDAO() {
-    	RegistroSaidaDAO registroSaidaDAO = new RegistroSaidaDAO();
-    	registroSaidaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
-    	return registroSaidaDAO;
+    public static RegistroMoradaDAOInterf criarRegistroMoradaDAO() {
+    	RegistroMoradaDAO registroMoradaDAO = new RegistroMoradaDAO();
+    	registroMoradaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+    	return registroMoradaDAO;
     }
     
     public static RegistroVisitaDAOInterf criarRegistroVisitaDAO() {
