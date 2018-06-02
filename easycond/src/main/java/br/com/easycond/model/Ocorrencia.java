@@ -36,7 +36,7 @@ public class Ocorrencia implements Serializable {
 	private Date dataOcorrencia;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "codigo")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuarioOcorrencia;
 
 	public Integer getIdOcorrencia() {

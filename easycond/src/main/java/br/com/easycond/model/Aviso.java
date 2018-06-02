@@ -17,7 +17,7 @@ public class Aviso implements Serializable {
 	@Column(name = "assunto_aviso", length = 45, nullable = false)
 	private String titulo;
 	
-	@Column(name = "descricao_aviso", length = 45, nullable = false)
+	@Column(name = "descricao_aviso", length = 500, nullable = false)
 	private String descricao;
 
 	public Integer getId() {
