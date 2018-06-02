@@ -42,8 +42,7 @@
 				
 			</div>
 			
-			<p:carousel numVisible="1" effect="easeInStrong" headerText="Quadro de avisos" responsive="true" style="margin-bottom:0;" >
-		        <p:repeat var="avisos" value="#{avisoBean.quadroAvisos}">
+			<p:carousel numVisible="1" value="#{avisoBean.quadroAvisos}" var="avisos" effect="easeInStrong" headerText="Quadro de avisos" responsive="true" styleClass="panel-aviso" >
 		        	<p:tab title="Aviso">
 			            <h:panelGrid>
 			            	<h:outputText value="#{avisos.titulo}" escape="false" style="font-weight: bold;"/>
@@ -51,7 +50,6 @@
 			                <h:outputText value="#{avisos.descricao}" escape="false" />
 			            </h:panelGrid>
 			        </p:tab>
-		        </p:repeat>
 		       
 		    </p:carousel>
 
