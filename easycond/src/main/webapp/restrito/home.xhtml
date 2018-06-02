@@ -59,11 +59,11 @@
 			<p:carousel numVisible="1" value="#{avisoBean.quadroAvisos}" var="avisos" effect="easeInStrong" circular="true"
 				autoPlayInterval="10000" headerText="Quadro de avisos" responsive="true" styleClass="panel-aviso" >
 		        	<p:tab title="Aviso">
-			            <h:panelGrid>
+			            <p:panelGrid >
 			            	<h:outputText value="#{avisos.titulo}" escape="false" style="font-weight: bold;"/>
 			            	<br/>
 			                <h:outputText value="#{avisos.descricao}" escape="false" />
-			            </h:panelGrid>
+			            </p:panelGrid>
 			        </p:tab>
 		       
 		    </p:carousel>
