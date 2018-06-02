@@ -11,6 +11,20 @@
 		<br/>
 		
 		<h:form prependId="false">
+			<p:panel id="panelOcorrencia" rendered="#{ocorrenciaBean.panelOcorrenciaHome !=null}" header="Você tem uma ocorrência registrada" toggleable="true" toggleOrientation="vertical" styleClass="panel-ocorrencia-multa">
+		        <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">            
+		            <h:outputText value="Infração: " />
+		            <h:outputText value="#{ocorrenciaBean.panelOcorrenciaHome.descricaoOcorrencia}" />
+		            
+		            <h:outputText value="Data/hora da ocorrência: " />
+		            <h:outputText value="#{ocorrenciaBean.panelOcorrenciaHome.dataOcorrencia}">
+		            	<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+		            </h:outputText>
+		            
+		            <h:outputText value="Tipo: " />
+		            <h:outputText value="#{ocorrenciaBean.panelOcorrenciaHome.tipoOcorrencia}" />
+		        </p:panelGrid>
+		    </p:panel>
 			
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
 					Teste permissao ADM 

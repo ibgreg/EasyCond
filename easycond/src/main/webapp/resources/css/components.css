@@ -66,3 +66,12 @@
 	font-size: 1.5em;
 	color: #373737;
 }
+
+.panel-ocorrencia-multa .ui-panel-titlebar {
+	background-color: #ff4242;
+	color: #ffffff;
+}
+
+.panel-ocorrencia-advertencia .ui-panel-titlebar {
+	background-color: #fff538;
+}
