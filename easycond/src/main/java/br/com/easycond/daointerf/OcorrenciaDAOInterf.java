@@ -15,4 +15,6 @@ public interface OcorrenciaDAOInterf {
 	public Ocorrencia carregar(Integer id);
 	
 	public List<Ocorrencia> listar();
+	
+	public List<Ocorrencia> obterOcorrenciaPorUsuario(Integer id);
 }

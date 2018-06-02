@@ -2,6 +2,7 @@ package br.com.easycond.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.easycond.daointerf.OcorrenciaDAOInterf;
@@ -40,4 +41,14 @@ public class OcorrenciaDAO implements OcorrenciaDAOInterf {
 		return this.session.createCriteria(Ocorrencia.class).list();
 	}
 
+	@Override
+	public List<Ocorrencia> obterOcorrenciaPorUsuario(Integer idUsuario) {
+		String sqlQuery = "select oc from Ocorrencia oc where oc.usuarioOcorrencia = :idUsuario "
+				+ "order by oc.dataOcorrencia desc";
+		Query query = session.createQuery(sqlQuery);
+		query.setInteger("idUsuario", idUsuario);
+		
+		return query.list();
+	}
+	
 }

@@ -14,8 +14,12 @@ public class OcorrenciaRN {
 		this.ocorrenciaDAO = DAOFactory.criarOcorrenciaDAO();
 	}
 	
-	public Ocorrencia carregar (Integer id) {
+	public Ocorrencia carregar(Integer id) {
 		return this.ocorrenciaDAO.carregar(id);
+	}
+	
+	public List<Ocorrencia> obterOcorrenciaPorUsuario(Integer id) {
+		return this.ocorrenciaDAO.obterOcorrenciaPorUsuario(id);
 	}
 	
 	public List<Ocorrencia> listar() {

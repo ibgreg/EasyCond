@@ -11,18 +11,24 @@ import br.com.easycond.model.Ocorrencia;
 import br.com.easycond.model.Usuario;
 import br.com.easycond.rn.OcorrenciaRN;
 import br.com.easycond.rn.UsuarioRN;
+import br.com.easycond.util.SpringUtil;
 
 @ManagedBean(name = "ocorrenciaBean")
 @RequestScoped
 public class OcorrenciaBean {
 	
 	private Ocorrencia ocorrencia = new Ocorrencia();
+	private Ocorrencia panelOcorrenciaHome;
 	private Usuario usuario = new Usuario();
 	
 	private List<Ocorrencia> lista;
 	private List<Usuario> listaUsuario;
 	
 	private Integer usuarioSelecionado;
+	
+	public OcorrenciaBean() {
+		getPanelOcorrenciaHome();
+	}
 	
 	@PostConstruct
 	public String novo() {
@@ -52,6 +58,10 @@ public class OcorrenciaBean {
 		ocorrenciaRN.excluir(this.ocorrencia);
 		this.lista = null;
 		return null;
+	}
+	
+	public void obterOcorrenciaAtual() {
+		
 	}
 
 	public Ocorrencia getOcorrencia() {
@@ -89,6 +99,20 @@ public class OcorrenciaBean {
 
 	public void setUsuarioSelecionado(Integer usuarioSelecionado) {
 		this.usuarioSelecionado = usuarioSelecionado;
+	}
+
+	public Ocorrencia getPanelOcorrenciaHome() {
+		List<Ocorrencia> listOcorrenciaUsuario = null;
+		UsuarioRN usuarioRN = new UsuarioRN();
+		OcorrenciaRN ocorrenciaRN = new OcorrenciaRN();
+		usuario = usuarioRN.carregarPorNomeLogin(SpringUtil.obterUsuarioLogado());
+		listOcorrenciaUsuario = ocorrenciaRN.obterOcorrenciaPorUsuario(usuario.getCodigo());
+		
+		if (!listOcorrenciaUsuario.isEmpty()) {
+			this.panelOcorrenciaHome = listOcorrenciaUsuario.get(0);
+		}
+		
+		return this.panelOcorrenciaHome;
 	}
 	
 }
