@@ -2,20 +2,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
 
 	<h:form>
 		<p:growl id="messages" showDetail="true" />
 
-		<p:slideMenu style="width:180px">
-			<p:submenu label="Cadastro" icon="ui-icon-refresh">
-				<p:menuitem value="Condômino" update="messages"
+		<p:slideMenu style="width:180px; height: 96%;">
+			<p:menuitem value="Página inicial" icon="fa fa-home" url="/restrito/home.jsf" />
+			<sec:ifAnyGranted roles="ROLE_ADMIN">
+				<p:submenu label="Gerenciar sistema" icon="fa fa-gear">
+					<p:menuitem value="Assembleias" icon="fa fa-gavel" url="/adm/assembleia/lista.jsf" />
+					<p:menuitem value="Avisos" icon="fa fa-bullhorn" url="/adm/aviso/lista.jsf" />
+					<p:menuitem value="Eventos" icon="fa fa-birthday-cake" url="/adm/evento/lista.jsf" />
+					<p:menuitem value="Ocorrências" icon="fa fa-exclamation-circle" url="/adm/ocorrencia/lista.jsf" />
+				</p:submenu>
+			
+			</sec:ifAnyGranted>
+			<p:submenu label="Assembleia online" icon="fa fa-gavel">
+				<p:menuitem value="Votação" icon="fa fa-pencil-square-o" action="#{assembleiaBean.carregarEnquete}" />
+				<p:menuitem value="Resultados" icon="fa fa-pie-chart" action="#{assembleiaBean.carregarListaVotos}" />
+			</p:submenu>
+			<p:submenu label="Cadastro" icon="fa fa-pencil">
+				<p:menuitem value="Condômino" icon="fa fa-user"
 					url="/restrito/cadastro/condomino/grid_condomino.jsf" />
-				<p:menuitem value="Funcionário" update="messages"
+				<p:menuitem value="Funcionário" icon="fa fa-users" 
 					url="/restrito/cadastro/funcionario/grid_funcionario.jsf" />
-				<p:menuitem value="Visitante" update="messages"
+				<p:menuitem value="Visitante" icon="fa fa-user"
 					url="/restrito/cadastro/visitante/grid_visitante.jsf" />
-				<p:submenu label="Imovel">
+				<p:submenu label="Ímovel" icon="fa fa-building">
 					<p:menuitem value="Bloco" update="messages"
 						url="/restrito/cadastro/imovel/bloco/grid_bloco.jsf" />
 					<p:menuitem value="Casa" update="messages"
@@ -24,24 +39,19 @@
 						url="/restrito/cadastro/imovel/apartamento/grid_apartamento.jsf" />
 				</p:submenu>
 			</p:submenu>
-			<p:submenu label="Registro" update="messages">
+			<p:submenu label="Registro" icon="fa fa-file-text-o">
 				<p:menuitem value="Visita"
 					url="/restrito/registro/registro_visita/grid_registro_visita.jsf"
-					update="messages" />
+					icon="fa fa-users" />
 				<p:menuitem value="Registro de Morada"
 					url="/restrito/registro/registro_morada/grid_registro_morada.jsf"
-					update="messages" />
+					icon="fa fa-building" />
 			</p:submenu>
-			<p:submenu label="Aviso" update="messages">
-				<p:menuitem value="Avisos" url="/adm/aviso/lista.jsf"
-					update="messages" />
+			<p:menuitem value="Reservar espaço" url="/restrito/reserva/lista.jsf" icon="fa fa-calendar" />
+			<p:submenu label="Solicitações" icon="fa fa-list-alt">
+				<p:menuitem value="Aviso" icon="fa fa-bullhorn"
+					url="/restrito/solicitacao/aviso/grid_solicitacao_aviso.jsf"/>
 			</p:submenu>
-			<p:submenu label="Solicitações" update="messages">
-				<p:menuitem value="Aviso"
-					url="/restrito/solicitacao/aviso/grid_solicitacao_aviso.jsf"
-					update="messages" />
-			</p:submenu>
-
 
 		</p:slideMenu>
 	</h:form>
