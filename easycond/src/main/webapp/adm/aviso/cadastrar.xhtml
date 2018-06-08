@@ -25,6 +25,7 @@
 			<p:textEditor id="descricao" value="#{avisoBean.aviso.descricao}" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" height="200" />
 			
 			<p:commandButton action="#{avisoBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
+			<p:commandButton action="/adm/aviso/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
 		</h:form>
 	</ui:define>
 	

@@ -26,10 +26,11 @@
 			<br/>
 			
 			<h:outputLabel value="Data de realização: " for="dataInicioReserva"/>
-			<p:calendar locale="pt" id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" locale="pt" showOn="both" />
+			<p:calendar id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" locale="pt" showOn="both" />
 			<br/>
 			
 			<p:commandButton action="#{eventoBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
+			<p:commandButton action="/adm/evento/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
 			
 		</h:form>
 	</ui:define>

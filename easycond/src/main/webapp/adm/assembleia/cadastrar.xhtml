@@ -37,6 +37,8 @@
 			<p:textEditor id="pauta" value="#{assembleiaBean.assembleia.descricao}" required="true" requiredMessage="O campo 'Pauta' é obrigatório!" height="200" />
 			
 			<p:commandButton action="#{assembleiaBean.salvar()}" value="Salvar" process="@form" icon="ui-icon-disk"/>
+			<p:commandButton action="/adm/assembleia/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
+			
 		</h:form>
 	</ui:define>
 	
