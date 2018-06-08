@@ -23,7 +23,7 @@ public class OcorrenciaDAO implements OcorrenciaDAOInterf {
 
 	@Override
 	public void atualizar(Ocorrencia ocorrencia) {
-		this.session.update(ocorrencia);
+		this.session.merge(ocorrencia);
 	}
 
 	@Override
