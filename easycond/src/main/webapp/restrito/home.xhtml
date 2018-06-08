@@ -8,7 +8,6 @@
 	
 	<ui:define name="content">
 		<h1>Bem-vindo</h1>
-		<br/>
 		
 		<h:form prependId="false">
 			<p:panel id="panelOcorrencia" rendered="#{ocorrenciaBean.panelOcorrenciaHome !=null}" header="Você tem uma ocorrência registrada" toggleable="true" toggleOrientation="vertical" styleClass="panel-ocorrencia-multa">
@@ -27,28 +26,54 @@
 		    </p:panel>
 			
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
-					Teste permissao ADM 
+					<h3>Administração do sistema</h3>
+					<p:separator/>
+					
+					<div class="ui-g">
+						<div class="ui-g-6 ui-md-3 ui-lg-2">
+							<p:commandLink action="#{assembleiaBean.carregarEnquete}">
+								<h:graphicImage value="/resources/img/gerenciamentoevento.png"/>
+							</p:commandLink>
+						</div>
+						<div class="ui-g-6 ui-md-3 ui-lg-2">
+							<p:commandLink action="#{assembleiaBean.carregarListaVotos}" >
+								<h:graphicImage value="/resources/img/gerenciarassembleia.png" />
+							</p:commandLink>
+						</div>
+						<div class="ui-g-6 ui-md-3 ui-lg-2">
+							<p:commandLink action="/restrito/cadastro/visitante/grid_visitante.jsf" >
+								<h:graphicImage value="/resources/img/gerenciarocorrencia.png" />
+							</p:commandLink>
+						</div>
+						
+						<div class="ui-g-6 ui-md-3 ui-lg-2s">
+							<p:commandLink action="/restrito/reserva/lista.jsf" >
+								<h:graphicImage value="/resources/img/gerenciarquadroavisos.png" />
+							</p:commandLink>	
+						</div>
+					</div>
+					<p:separator/>
 			</sec:ifAnyGranted>
 			
 						
 			<div class="ui-g">
-				<div class="ui-g-6 ui-md-6 ui-lg-3">
+				<div class="ui-g-6 ui-md-3 ui-lg-2">
 					<p:commandLink action="#{assembleiaBean.carregarEnquete}">
 						<h:graphicImage value="/resources/img/linkvoto.png"/>
 					</p:commandLink>
 				</div>
-				<div class="ui-g-6 ui-md-6 ui-lg-3">
+				<div class="ui-g-6 ui-md-3 ui-lg-2">
 					<p:commandLink action="#{assembleiaBean.carregarListaVotos}" >
 						<h:graphicImage value="/resources/img/resultadovoto.png" />
 					</p:commandLink>
 				</div>
-				<div class="ui-g-6 ui-md-6 ui-lg-3">
+				<div class="ui-g-6 ui-md-3 ui-lg-2">
 					<p:commandLink action="/restrito/cadastro/visitante/grid_visitante.jsf" >
 						<h:graphicImage value="/resources/img/registrovisitante.png" />
 					</p:commandLink>
 				</div>
 				
-				<div class="ui-g-6 ui-md-6 ui-lg-3s">
+				<div class="ui-g-6 ui-md-3 ui-lg-2s">
 					<p:commandLink action="/restrito/reserva/lista.jsf" >
 						<h:graphicImage value="/resources/img/reservaespaco.png" />
 					</p:commandLink>	
