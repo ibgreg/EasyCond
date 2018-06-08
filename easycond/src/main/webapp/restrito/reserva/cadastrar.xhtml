@@ -17,7 +17,7 @@
 		
 			<h:inputHidden value="#{reservaBean.reserva.id}"  />
 			
-			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-11" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Espaço: " for="espacoReserva"/>
 				<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:190px">
 	            	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"
@@ -32,8 +32,8 @@
 			</p:panelGrid>
 			
 			
-			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
-			<p:commandButton action="/restrito/reserva/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
+			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro"/>
+			<p:commandButton action="/restrito/reserva/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" styleClass="btn-cadastro" />
 			
 		</h:form>
 	</ui:define>

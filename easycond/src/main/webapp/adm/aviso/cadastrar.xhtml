@@ -16,16 +16,18 @@
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 		
 			<h:inputHidden value="#{avisoBean.aviso.id}"  />
-		
-			<h:outputLabel value="Título: " for="titulo"/>
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-11" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Título: " for="titulo"/>
+				<p:inputText id="titulo" value="#{avisoBean.aviso.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="20" size="40" />
+			</p:panelGrid>
 			
-			<p:inputText id="titulo" value="#{avisoBean.aviso.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="20" size="30" />
-			<br/>
-			<h:outputLabel value="Descrição:" for="descricao" />
-			<p:textEditor id="descricao" value="#{avisoBean.aviso.descricao}" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" height="200" />
+			<p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Descrição:" for="descricao" />
+				<p:textEditor id="descricao" value="#{avisoBean.aviso.descricao}" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" height="200" />
+			</p:panelGrid>
 			
-			<p:commandButton action="#{avisoBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
-			<p:commandButton action="/adm/aviso/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
+			<p:commandButton action="#{avisoBean.salvar}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro"/>
+			<p:commandButton action="/adm/aviso/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" styleClass="btn-cadastro"/>
 		</h:form>
 	</ui:define>
 	

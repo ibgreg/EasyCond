@@ -75,3 +75,8 @@
 .panel-ocorrencia-advertencia .ui-panel-titlebar {
 	background-color: #fff538;
 }
+
+.btn-cadastro {
+	width: 150px;
+	margin-left: 10px;
+}

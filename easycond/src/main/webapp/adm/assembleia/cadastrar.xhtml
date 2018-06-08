@@ -15,29 +15,30 @@
 		
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 		
-			<h:inputHidden value="#{assembleiaBean.assembleia.id}"  />
+			<h:inputHidden value="#{assembleiaBean.assembleia.id}" />
 		
-			<h:outputLabel value="Título: " for="titulo"/>
-			<p:inputText id="titulo" value="#{assembleiaBean.assembleia.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="30" />
-			<br/>
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Título: " for="titulo"/>
+				<p:inputText id="titulo" value="#{assembleiaBean.assembleia.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="40" />
+	
+				<h:outputLabel value="Pergunta da Enquete: " for="perguntaEnquete"/>
+				<p:inputText id="perguntaEnquete" value="#{assembleiaBean.enquete.pergunta}" required="true" requiredMessage="O campo 'Pergunta da Enquete' é obrigatório!" maxlength="200" size="40" />
+				
+				<h:outputLabel value="Data Início: " for="dataInicio"/>
+				<p:calendar locale="pt" id="dataInicio" value="#{assembleiaBean.assembleia.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" navigator="true" showOn="both" />
+				
+				<h:outputLabel value="Data Final: " for="dataFinal"/>
+				<p:calendar locale="pt" id="dataFinal" value="#{assembleiaBean.assembleia.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" navigator="true" showOn="both" />
+				
+			</p:panelGrid>
 			
-			<h:outputLabel value="Data Início: " for="dataInicio"/>
-			<p:calendar locale="pt" id="dataInicio" value="#{assembleiaBean.assembleia.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" navigator="true" showOn="both" />
-			<br/>
+			<p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Pauta:" for="pauta" />
+				<p:textEditor id="pauta" value="#{assembleiaBean.assembleia.descricao}" required="true" requiredMessage="O campo 'Pauta' é obrigatório!" height="200" />
+			</p:panelGrid>
 			
-			<h:outputLabel value="Data Final: " for="dataFinal"/>
-			<p:calendar locale="pt" id="dataFinal" value="#{assembleiaBean.assembleia.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" navigator="true" showOn="both" />
-			<br/>
-
-			<h:outputLabel value="Pergunta da Enquete: " for="perguntaEnquete"/>
-			<p:inputText id="perguntaEnquete" value="#{assembleiaBean.enquete.pergunta}" required="true" requiredMessage="O campo 'Pergunta da Enquete' é obrigatório!" maxlength="200" size="50" />
-			<br/>
-			
-			<h:outputLabel value="Pauta:" for="pauta" />
-			<p:textEditor id="pauta" value="#{assembleiaBean.assembleia.descricao}" required="true" requiredMessage="O campo 'Pauta' é obrigatório!" height="200" />
-			
-			<p:commandButton action="#{assembleiaBean.salvar()}" value="Salvar" process="@form" icon="ui-icon-disk"/>
-			<p:commandButton action="/adm/assembleia/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
+			<p:commandButton action="#{assembleiaBean.salvar()}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro"/>
+			<p:commandButton action="/adm/assembleia/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" styleClass="btn-cadastro"/>
 			
 		</h:form>
 	</ui:define>

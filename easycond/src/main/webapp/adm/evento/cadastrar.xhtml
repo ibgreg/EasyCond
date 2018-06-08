@@ -16,21 +16,20 @@
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 		
 			<h:inputHidden value="#{eventoBean.evento.id}"  />
-		
-			<h:outputLabel value="Título: " for="usuarioReserva"/>
-			<p:inputText id="eventoTitulo" value="#{eventoBean.evento.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="30" />
-			<br/>
 			
-			<h:outputLabel value="Descrição" for="descricaoEvento"/>
-			<p:inputTextarea id="descricaoEvento" value="#{eventoBean.evento.descricao}" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="45" />
-			<br/>
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Título: " for="usuarioReserva"/>
+				<p:inputText id="eventoTitulo" value="#{eventoBean.evento.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="40" />
+				
+				<h:outputLabel value="Data de realização: " for="dataInicioReserva"/>
+				<p:calendar id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" locale="pt" showOn="both" />
+				
+				<h:outputLabel value="Descrição:" for="descricaoEvento"/>
+				<p:inputTextarea id="descricaoEvento" value="#{eventoBean.evento.descricao}"  required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="45" style="resize: none;" />
+			</p:panelGrid>
 			
-			<h:outputLabel value="Data de realização: " for="dataInicioReserva"/>
-			<p:calendar id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" locale="pt" showOn="both" />
-			<br/>
-			
-			<p:commandButton action="#{eventoBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
-			<p:commandButton action="/adm/evento/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
+			<p:commandButton action="#{eventoBean.salvar}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro"/>
+			<p:commandButton action="/adm/evento/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" styleClass="btn-cadastro" />
 			
 		</h:form>
 	</ui:define>

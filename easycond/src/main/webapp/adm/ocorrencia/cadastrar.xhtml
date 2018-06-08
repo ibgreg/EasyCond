@@ -17,9 +17,9 @@
 		
 			<h:inputHidden value="#{ocorrenciaBean.ocorrencia.idOcorrencia}"  />
 		
-			<p:panelGrid columns="2" >
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Descrição: " for="descricaoOcorrencia"/>
-				<p:inputTextarea id="descricaoOcorrencia" value="#{ocorrenciaBean.ocorrencia.descricaoOcorrencia}" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="200" size="200" style=""/>
+				<p:inputTextarea id="descricaoOcorrencia" value="#{ocorrenciaBean.ocorrencia.descricaoOcorrencia}" rows="3" cols="42" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="200" size="200" style="resize: none;"/>
 
 				<h:outputLabel value="Tipo da ocorrência: " for="tipoOcorrencia" />
 				<p:selectOneRadio id="tipoOcorrencia" value="#{ocorrenciaBean.ocorrencia.tipoOcorrencia}" required="true" requiredMessage="Escolha o tipo da ocorrência">
@@ -28,7 +28,7 @@
 				</p:selectOneRadio>
 				
 				<h:outputLabel value="Condômino: " for="condominoOcorrencia"/>
-				<p:selectOneMenu id="condominoOcorrencia" value="#{ocorrenciaBean.usuarioSelecionado}" required="true" requiredMessage="O campo 'Ocorrência' é obrigatório!" style="width:125px">
+				<p:selectOneMenu id="condominoOcorrencia" value="#{ocorrenciaBean.usuarioSelecionado}" required="true" requiredMessage="O campo 'Ocorrência' é obrigatório!" style="width:290px">
 	            	<f:selectItems value="#{ocorrenciaBean.listaUsuario}" var="usuario"
 	            		itemLabel="#{usuario.nome}" itemValue="#{usuario.codigo}"/>
 	       		</p:selectOneMenu>
@@ -36,8 +36,8 @@
 			</p:panelGrid>
 			
 			
-			<p:commandButton action="#{ocorrenciaBean.salvar}" value="Salvar" process="@form" icon="ui-icon-disk"/>
-			<p:commandButton action="/adm/ocorrencia/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" />
+			<p:commandButton action="#{ocorrenciaBean.salvar}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro" />
+			<p:commandButton action="/adm/ocorrencia/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" styleClass="btn-cadastro" />
 		</h:form>
 	</ui:define>
 	
