@@ -12,25 +12,25 @@
 		
 		<h:form prependId="false">
 		
-			<p:commandButton action="#{eventoBean.novo}" icon="fa fa-plus-circle" value="Novo" process="@this" />
+			<p:commandButton action="#{eventoBean.novo}" icon="fa fa-plus-circle" value="Novo" process="@this" styleClass="btn-novo" />
 		
 			<p:dataTable var="evento" value="#{eventoBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
 							
-				<p:column headerText="Título">
+				<p:column headerText="Título" width="25%">
 					<h:outputText value="#{evento.titulo}" />
 				</p:column>
 				
-				<p:column headerText="Descrição">
+				<p:column headerText="Descrição" priority="3" width="45%">
 					<h:outputText value="#{evento.descricao}" />
 				</p:column>
 				
-				<p:column headerText="Data de Realização">
+				<p:column headerText="Data de Realização" width="15%">
 					<h:outputText value="#{evento.dataEvento}" >
 						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 					</h:outputText>	
 				</p:column>
 				
-				<p:column headerText="Comandos">
+				<p:column headerText="Comandos" width="15%">
 					<p:commandButton action="#{eventoBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
 					</p:commandButton>

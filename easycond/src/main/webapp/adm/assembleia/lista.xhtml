@@ -12,18 +12,19 @@
 		
 		<h:form prependId="false">
 		
-			<p:commandButton action="#{assembleiaBean.novo()}" icon="fa fa-plus-circle" value="Novo" process="@this" />
+			<p:commandButton action="#{assembleiaBean.novo()}" icon="fa fa-plus-circle" value="Novo" process="@this" styleClass="btn-novo"/>
 		
-			<p:dataTable var="assembleia" value="#{assembleiaBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
-				<p:column headerText="Título">
+			<p:dataTable var="assembleia" value="#{assembleiaBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis" >
+			
+				<p:column headerText="Título" width="30%">
 					<h:outputText value="#{assembleia.titulo}" />
 				</p:column>
 				
-				<p:column headerText="Pauta">
-					<h:outputText value="#{assembleia.descricao}" escape="false" />
+				<p:column headerText="Pauta" priority="3" width="55%">
+					<h:outputText value="#{assembleia.enquete.pergunta}" escape="false" />
 				</p:column>
 				
-				<p:column headerText="Comandos">
+				<p:column headerText="Comandos" width="15%">
 					<p:commandButton action="#{assembleiaBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{assembleia}" target="#{assembleiaBean.assembleia}" />
 					</p:commandButton>

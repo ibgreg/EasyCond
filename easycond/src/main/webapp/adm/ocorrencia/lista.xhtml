@@ -7,33 +7,33 @@
 	template="/templates/layout.xhtml">
 	
 	<ui:define name="content">
-		<h1>Lista de Ocorrencias</h1>
+		<h1>Lista de Ocorrências</h1>
 		<p:separator />
 		
 		<h:form prependId="false">
 		
-			<p:commandButton action="#{ocorrenciaBean.novo()}" icon="fa fa-plus-circle" value="Novo" process="@this" />
+			<p:commandButton action="#{ocorrenciaBean.novo()}" icon="fa fa-plus-circle" value="Novo" process="@this" styleClass="btn-novo" />
 		
 			<p:dataTable var="ocorrencia" value="#{ocorrenciaBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
-				<p:column headerText="Condômino">
+				<p:column headerText="Condômino" width="15%">
 					<h:outputText value="#{ocorrencia.usuarioOcorrencia.nome}" />
 				</p:column>
 				
-				<p:column headerText="Descrição">
+				<p:column headerText="Descrição" priority="3" width="50%">
 					<h:outputText value="#{ocorrencia.descricaoOcorrencia}" />
 				</p:column>
 				
-				<p:column headerText="Tipo de ocorrência">
-					<h:outputText value="#{ocorrenciaBean.ocorrencia.tipoOcorrencia}" />
+				<p:column headerText="Tipo" width="5%">
+					<h:outputText value="#{ocorrencia.tipoOcorrencia}" />
 				</p:column>
 				
-				<p:column headerText="Data de registro">
+				<p:column headerText="Data de registro" width="15%">
 					<h:outputText value="#{ocorrencia.dataOcorrencia}" >
 						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 					</h:outputText>	
 				</p:column>
 				
-				<p:column headerText="Comandos">
+				<p:column headerText="Comandos" width="15%">
 					<p:commandButton action="#{ocorrenciaBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{ocorrencia}" target="#{ocorrenciaBean.ocorrencia}" />
 					</p:commandButton>
