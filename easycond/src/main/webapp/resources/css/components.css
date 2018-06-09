@@ -67,6 +67,20 @@
 	color: #373737;
 }
 
+h1 {
+	padding-top: 15px;
+}
+
+.panel-aviso {
+	margin-top: 35px;
+	margin-bottom:0;
+}
+
+.aviso-title {
+	font-weight: bold; 
+	font-size: 20px;
+}
+
 .panel-ocorrencia-multa .ui-panel-titlebar {
 	background-color: #ff4242;
 	color: #ffffff;
