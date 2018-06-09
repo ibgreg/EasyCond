@@ -25,18 +25,37 @@ public class PessoaRN {
 		return this.pessoaDAO.listar(tipoPessoa);
 	}
 	
-	public void salvar(Pessoa pessoa) {
+	public String salvar(Pessoa pessoa) {
 		
 		Integer id = pessoa.getIdPessoa();
+		
+		if(verificaCPFIgual(pessoa.getCpf()))
+			return "Já existe outra pessoa com o CPF " + pessoa.getCpf() + " cadastrado.";
 		
 		if(id == null || id == 0) 			
 			this.pessoaDAO.salvar(pessoa);		
 		else 		
 			this.pessoaDAO.atualizar(pessoa);
+		
+		return null;
 	}
 	
 	public void excluir(Pessoa pessoa) {
 		
 		this.pessoaDAO.excluir(pessoa);
+	}
+	
+	// Validações de regra de negócio
+	private boolean verificaCPFIgual(String cpf) {
+		
+		List<Pessoa> arrayPessoa;
+		
+		arrayPessoa = this.pessoaDAO.listar();
+		
+		for(Pessoa p : arrayPessoa) 			
+			if(cpf.equals(p.getCpf()))
+				return true;		
+		
+		return false;
 	}
 }
