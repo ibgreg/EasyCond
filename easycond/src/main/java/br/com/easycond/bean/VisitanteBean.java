@@ -3,8 +3,10 @@ package br.com.easycond.bean;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.easycond.model.Pessoa;
 import br.com.easycond.rn.PessoaRN;
@@ -33,7 +35,13 @@ public class VisitanteBean {
 		
 		this.pessoa.setTipoPessoa(TIPO_PESSOA_VISITANTE);
 		
-		pessoaRN.salvar(this.pessoa);	
+		String rnMsg = pessoaRN.salvar(this.pessoa);
+
+		if (rnMsg != null) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, rnMsg, null));
+			return null;
+		}	
 		
 		return "/restrito/cadastro/visitante/grid_visitante";
 	}	
