@@ -8,7 +8,7 @@
 	<h:form>
 		<p:growl id="messages" showDetail="true" />
 
-		<p:slideMenu style="width:180px; height: 96%;">
+		<p:slideMenu style="width:180px; height: 96%;" backLabel="Voltar">
 			<p:menuitem value="Página inicial" icon="fa fa-home" url="/restrito/home.jsf" />
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
 				<p:submenu label="Gerenciar sistema" icon="fa fa-gear">

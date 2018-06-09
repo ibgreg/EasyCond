@@ -27,13 +27,16 @@
 							<h:outputText value="#{assembleiaBean.assembleia.descricao}" escape="false" />
 						</h:panelGrid>
 					</p:fieldset>
+					
 					<p:selectOneRadio id="opcoesVoto" value="#{assembleiaBean.votos.opcao}" required="true" requiredMessage="É necessário escolher uma opção para votar">
 						<f:selectItem itemLabel="A Favor" itemValue="F" />
 						<f:selectItem itemLabel="Contra" itemValue="C" />
 					</p:selectOneRadio>
+					
 					<h:outputLabel value="Comentários e/ou sugestões (opcional)" />
-					<p:inputTextarea id="comentariosTexto" value="#{assembleiaBean.votos.comentario}" />
-					<p:commandButton action="#{assembleiaBean.enviarVoto()}" value="Enviar voto" process="@form" />
+					<p:inputTextarea id="comentariosTexto" value="#{assembleiaBean.votos.comentario}" rows="5" style="resize: none; width: 100%" />
+					
+					<p:commandButton action="#{assembleiaBean.enviarVoto()}" value="Enviar voto" icon="fa fa-check" styleClass="btn-votacao" process="@form" />
 					
 				</h:panelGrid>
 			</p:panel>

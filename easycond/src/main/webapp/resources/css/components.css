@@ -90,12 +90,23 @@ h1 {
 	background-color: #fff538;
 }
 
+.input-form {
+	height: 35px;
+}
+
 .btn-cadastro {
 	width: 150px;
+	height: 35px;
 	margin-left: 10px;
+}
+
+.btn-votacao {
+	width: 150px;
+	height: 35px;
 }
 
 .btn-novo {
 	width: 150px;
+	height: 35px;
 	margin-bottom: 15px;
 }

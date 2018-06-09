@@ -19,10 +19,10 @@
 		
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Título: " for="titulo"/>
-				<p:inputText id="titulo" value="#{assembleiaBean.assembleia.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="40" readonly="#{assembleiaBean.modoVisualizar}"/>
+				<p:inputText id="titulo" value="#{assembleiaBean.assembleia.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="40" readonly="#{assembleiaBean.modoVisualizar}" styleClass="input-form"/>
 	
 				<h:outputLabel value="Pergunta da Enquete: " for="perguntaEnquete"/>
-				<p:inputText id="perguntaEnquete" value="#{assembleiaBean.enquete.pergunta}" required="true" requiredMessage="O campo 'Pergunta da Enquete' é obrigatório!" maxlength="200" size="40" readonly="#{assembleiaBean.modoVisualizar}" />
+				<p:inputText id="perguntaEnquete" value="#{assembleiaBean.enquete.pergunta}" required="true" requiredMessage="O campo 'Pergunta da Enquete' é obrigatório!" maxlength="200" size="40" readonly="#{assembleiaBean.modoVisualizar}" styleClass="input-form"/>
 				
 				<h:outputLabel value="Data Início: " for="dataInicio"/>
 				<p:calendar locale="pt" id="dataInicio" value="#{assembleiaBean.assembleia.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" navigator="true" showOn="both" disabled="#{assembleiaBean.modoVisualizar}" />

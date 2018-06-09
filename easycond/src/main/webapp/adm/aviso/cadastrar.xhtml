@@ -8,7 +8,7 @@
 	
 	<ui:define name="content">
 		
-		<h1>Cadastro de Aviso</h1>
+		<h1>Novo Aviso</h1>
 		<p:separator />
 		
 		<h:form prependId="false" >
@@ -18,7 +18,7 @@
 			<h:inputHidden value="#{avisoBean.aviso.id}"  />
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-11" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Título: " for="titulo"/>
-				<p:inputText id="titulo" value="#{avisoBean.aviso.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="20" size="40" readonly="#{avisoBean.modoVisualizar}" />
+				<p:inputText id="titulo" value="#{avisoBean.aviso.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="20" size="40" readonly="#{avisoBean.modoVisualizar}" styleClass="input-form" />
 			</p:panelGrid>
 			
 			<p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank">

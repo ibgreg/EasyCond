@@ -19,9 +19,16 @@
 				<h:panelGrid columns="1" cellpadding="10">
 					<h:outputText value="#{assembleiaBean.assembleia.enquete.pergunta}" />
 					
+					<p:fieldset legend="Pauta" toggleable="true" collapsed="true" toggleSpeed="500">
+						<p:ajax event="toggle" listener="#{fieldsetView.handleToggle}"/>
+						<h:panelGrid columns="1">
+							<h:outputText value="#{assembleiaBean.assembleia.descricao}" escape="false" />
+						</h:panelGrid>
+					</p:fieldset>
+					
 					<p:chart type="pie" model="#{assembleiaBean.graficoVotos}" responsive="true" style="width:300px;height:300px"  />
 					
-					<p:commandButton value="Página inicial" action="/restrito/home" />
+					<p:commandButton value="Página inicial" action="/restrito/home" icon="fa fa-home" styleClass="btn-votacao" />
 					
 				</h:panelGrid>
 			</p:panel>
