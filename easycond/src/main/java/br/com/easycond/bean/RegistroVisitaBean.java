@@ -60,6 +60,9 @@ public class RegistroVisitaBean {
 	}
 
 	public String editar() {
+		
+		this.pessoaCombo = this.registroVisita.getPessoa().getIdPessoa();
+		
 		return "/restrito/registro/registro_visita/form_registro_visita";
 	}
 
@@ -132,7 +135,7 @@ public class RegistroVisitaBean {
 		this.pessoa = pessoa;
 	}
 
-	// region Verificacoes
+	// Validacoes
 
 	private boolean verificarData() {
 
@@ -160,6 +163,4 @@ public class RegistroVisitaBean {
 		
 		return true;
 	}
-
-	// endregion
 }
