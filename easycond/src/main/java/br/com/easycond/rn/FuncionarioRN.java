@@ -27,7 +27,7 @@ public class FuncionarioRN {
 		return this.funcionarioDAO.listar();
 	}
 	
-	public void salvar(Funcionario funcionario, Pessoa pessoa) {
+	public String salvar(Funcionario funcionario, Pessoa pessoa) {
 		
 		Integer id = funcionario.getIdFuncionario();
 		
@@ -38,8 +38,7 @@ public class FuncionarioRN {
 		
 		pessoaRN = new PessoaRN();
 		
-		pessoaRN.salvar(pessoa);
-		
+		return pessoaRN.salvar(pessoa);		
 	}
 	
 	public void excluir(Funcionario funcionario, Pessoa pessoa) {
