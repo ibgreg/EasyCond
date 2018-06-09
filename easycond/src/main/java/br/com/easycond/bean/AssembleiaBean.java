@@ -33,8 +33,11 @@ public class AssembleiaBean {
 	
 	private PieChartModel graficoVotos;
 	
+	private Boolean modoVisualizar;
+	
 	@PostConstruct
 	public String novo() {
+		modoVisualizar = Boolean.FALSE;
 		this.assembleia = new Assembleia();
 		this.enquete = new Enquete();
 		perguntaEnquete = null;
@@ -85,7 +88,6 @@ public class AssembleiaBean {
 	}
 	
 	public String salvar() {
-		
 		AssembleiaRN assembleiaRN = new AssembleiaRN();
 		
 		if (!assembleiaRN.verificaAssembleiaExistente(assembleia.getDataInicio(), assembleia.getDataFim())) {
@@ -128,12 +130,17 @@ public class AssembleiaBean {
 			return "";
 		}
 		
-		
-		
+	}
+	
+	public String visualizar() {
+		enquete = assembleia.getEnquete();
+		modoVisualizar = Boolean.TRUE;
+		return "/adm/assembleia/cadastrar";
 	}
 	
 	public String editar() {
 		enquete = assembleia.getEnquete();
+		modoVisualizar = Boolean.FALSE;
 		return "/adm/assembleia/cadastrar";
 	}
 	
@@ -206,6 +213,14 @@ public class AssembleiaBean {
 
 	public void setListaVotosFavor(List<Votos> listaVotosFavor) {
 		this.listaVotosFavor = listaVotosFavor;
-	}	
+	}
+
+	public Boolean getModoVisualizar() {
+		return modoVisualizar;
+	}
+
+	public void setModoVisualizar(Boolean modoVisualizar) {
+		this.modoVisualizar = modoVisualizar;
+	}
 	
 }

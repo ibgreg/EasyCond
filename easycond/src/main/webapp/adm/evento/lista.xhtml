@@ -16,21 +16,24 @@
 		
 			<p:dataTable var="evento" value="#{eventoBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
 							
-				<p:column headerText="Título" width="25%">
+				<p:column headerText="Título" width="15%">
 					<h:outputText value="#{evento.titulo}" />
 				</p:column>
 				
-				<p:column headerText="Descrição" priority="3" width="45%">
+				<p:column headerText="Descrição" priority="3" width="60%">
 					<h:outputText value="#{evento.descricao}" />
 				</p:column>
 				
-				<p:column headerText="Data de Realização" width="15%">
+				<p:column headerText="Data de Realização" width="10%">
 					<h:outputText value="#{evento.dataEvento}" >
 						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 					</h:outputText>	
 				</p:column>
 				
 				<p:column headerText="Comandos" width="15%">
+					<p:commandButton action="#{eventoBean.visualizar}" icon="fa fa-search" process="@form">
+						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
+					</p:commandButton>
 					<p:commandButton action="#{eventoBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{evento}" target="#{eventoBean.evento}" />
 					</p:commandButton>

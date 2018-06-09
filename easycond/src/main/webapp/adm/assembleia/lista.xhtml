@@ -16,15 +16,18 @@
 		
 			<p:dataTable var="assembleia" value="#{assembleiaBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis" >
 			
-				<p:column headerText="Título" width="30%">
+				<p:column headerText="Título" width="25%">
 					<h:outputText value="#{assembleia.titulo}" />
 				</p:column>
 				
-				<p:column headerText="Pauta" priority="3" width="55%">
+				<p:column headerText="Pergunta" priority="3" width="60%">
 					<h:outputText value="#{assembleia.enquete.pergunta}" escape="false" />
 				</p:column>
 				
 				<p:column headerText="Comandos" width="15%">
+					<p:commandButton action="#{assembleiaBean.visualizar}" icon="fa fa-search" process="@form">
+						<f:setPropertyActionListener value="#{assembleia}" target="#{assembleiaBean.assembleia}" />
+					</p:commandButton>
 					<p:commandButton action="#{assembleiaBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{assembleia}" target="#{assembleiaBean.assembleia}" />
 					</p:commandButton>

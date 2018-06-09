@@ -17,21 +17,29 @@ public class AvisoBean {
 	private List<Aviso> lista;
 	private List<Aviso> quadroAvisos;
 	
+	private Boolean modoVisualizar;
+	
 	@PostConstruct
 	public String novo() {
+		modoVisualizar = Boolean.FALSE;
 		this.aviso = new Aviso();
 		return "/adm/aviso/cadastrar";
 	}
 	
 	public String salvar() {
-		
 		AvisoRN avisoRN = new AvisoRN();
 		avisoRN.salvar(this.aviso);
 		
 		return "/adm/aviso/lista";
 	}
 	
+	public String visualizar() {
+		modoVisualizar = Boolean.TRUE;	
+		return "/adm/aviso/cadastrar";
+	}
+	
 	public String editar() {
+		modoVisualizar = Boolean.FALSE;	
 		return "/adm/aviso/cadastrar";
 	}
 	
@@ -64,6 +72,14 @@ public class AvisoBean {
 			this.lista = avisoRN.listar();
 		}
 		return this.lista;
+	}
+
+	public Boolean getModoVisualizar() {
+		return modoVisualizar;
+	}
+
+	public void setModoVisualizar(Boolean modoVisualizar) {
+		this.modoVisualizar = modoVisualizar;
 	}
 
 }

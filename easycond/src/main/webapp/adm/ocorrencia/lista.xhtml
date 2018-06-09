@@ -15,11 +15,11 @@
 			<p:commandButton action="#{ocorrenciaBean.novo()}" icon="fa fa-plus-circle" value="Novo" process="@this" styleClass="btn-novo" />
 		
 			<p:dataTable var="ocorrencia" value="#{ocorrenciaBean.lista}" paginator="true" paginatorPosition="bottom" emptyMessage="Não há registros disponíveis">
-				<p:column headerText="Condômino" width="15%">
+				<p:column headerText="Condômino" width="10%">
 					<h:outputText value="#{ocorrencia.usuarioOcorrencia.nome}" />
 				</p:column>
 				
-				<p:column headerText="Descrição" priority="3" width="50%">
+				<p:column headerText="Descrição" priority="3" width="60%">
 					<h:outputText value="#{ocorrencia.descricaoOcorrencia}" />
 				</p:column>
 				
@@ -27,13 +27,16 @@
 					<h:outputText value="#{ocorrencia.tipoOcorrencia}" />
 				</p:column>
 				
-				<p:column headerText="Data de registro" width="15%">
+				<p:column headerText="Data de registro" width="10%">
 					<h:outputText value="#{ocorrencia.dataOcorrencia}" >
 						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 					</h:outputText>	
 				</p:column>
 				
 				<p:column headerText="Comandos" width="15%">
+					<p:commandButton action="#{ocorrenciaBean.visualizar}" icon="fa fa-search" process="@form">
+						<f:setPropertyActionListener value="#{ocorrencia}" target="#{ocorrenciaBean.ocorrencia}" />
+					</p:commandButton>
 					<p:commandButton action="#{ocorrenciaBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{ocorrencia}" target="#{ocorrenciaBean.ocorrencia}" />
 					</p:commandButton>

@@ -19,21 +19,21 @@
 			
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-11" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Espaço: " for="espacoReserva"/>
-				<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:190px">
+				<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:190px" disabled="#{reservaBean.modoVisualizar}">
 	            	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"
 	            		itemLabel="#{espacoFisico.descricao}" itemValue="#{espacoFisico.id}"/>
 	       		</p:selectOneMenu>
 				
 				<h:outputLabel value="Data Início: " for="dataInicioReserva"/>
-				<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+				<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
 				
 				<h:outputLabel value="Data Final: " for="dataFinalReserva"/>
-				<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" />
+				<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
 			</p:panelGrid>
 			
 			
-			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro"/>
-			<p:commandButton action="/restrito/reserva/lista.jsf" value="Cancelar" process="@this" icon="fa fa-close" styleClass="btn-cadastro" />
+			<p:commandButton action="#{reservaBean.salvar}" value="Salvar" process="@form" icon="fa fa-save" styleClass="btn-cadastro" rendered="#{!reservaBean.modoVisualizar}" />
+			<p:commandButton action="/restrito/reserva/lista.jsf" value="#{reservaBean.modoVisualizar ? 'Fechar' : 'Cancelar'}" process="@this" icon="fa fa-close" styleClass="btn-cadastro" />
 			
 		</h:form>
 	</ui:define>

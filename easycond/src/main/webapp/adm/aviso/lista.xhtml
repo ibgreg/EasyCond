@@ -24,6 +24,9 @@
 				</p:column>
 				
 				<p:column headerText="Comandos" width="15%">
+					<p:commandButton action="#{avisoBean.visualizar}" icon="fa fa-search" process="@form">
+						<f:setPropertyActionListener value="#{aviso}" target="#{avisoBean.aviso}" />
+					</p:commandButton>
 					<p:commandButton action="#{avisoBean.editar}" icon="fa fa-pencil" process="@form">
 						<f:setPropertyActionListener value="#{aviso}" target="#{avisoBean.aviso}" />
 					</p:commandButton>

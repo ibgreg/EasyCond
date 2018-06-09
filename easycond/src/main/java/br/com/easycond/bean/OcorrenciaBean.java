@@ -25,6 +25,7 @@ public class OcorrenciaBean {
 	private List<Usuario> listaUsuario;
 	
 	private Integer usuarioSelecionado;
+	private Boolean modoVisualizar;
 	
 	public OcorrenciaBean() {
 		getPanelOcorrenciaHome();
@@ -32,6 +33,7 @@ public class OcorrenciaBean {
 	
 	@PostConstruct
 	public String novo() {
+		modoVisualizar = Boolean.FALSE;
 		this.ocorrencia = new Ocorrencia();
 		return "/adm/ocorrencia/cadastrar";
 	}
@@ -48,8 +50,15 @@ public class OcorrenciaBean {
 		return "/adm/ocorrencia/lista";
 	}
 	
+	public String visualizar() {
+		usuarioSelecionado = ocorrencia.getUsuarioOcorrencia().getCodigo();
+		modoVisualizar = Boolean.TRUE;
+		return "/adm/ocorrencia/cadastrar";
+	}
+	
 	public String editar() {
 		usuarioSelecionado = ocorrencia.getUsuarioOcorrencia().getCodigo();
+		modoVisualizar = Boolean.FALSE;
 		return "/adm/ocorrencia/cadastrar";
 	}
 	
@@ -58,10 +67,6 @@ public class OcorrenciaBean {
 		ocorrenciaRN.excluir(this.ocorrencia);
 		this.lista = null;
 		return null;
-	}
-	
-	public void obterOcorrenciaAtual() {
-		
 	}
 
 	public Ocorrencia getOcorrencia() {
@@ -113,6 +118,14 @@ public class OcorrenciaBean {
 		}
 		
 		return this.panelOcorrenciaHome;
+	}
+
+	public Boolean getModoVisualizar() {
+		return modoVisualizar;
+	}
+
+	public void setModoVisualizar(Boolean modoVisualizar) {
+		this.modoVisualizar = modoVisualizar;
 	}
 	
 }

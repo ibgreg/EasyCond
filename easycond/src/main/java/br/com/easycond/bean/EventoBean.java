@@ -17,8 +17,11 @@ public class EventoBean {
 	
 	private List<Evento> lista;
 	
+	private Boolean modoVisualizar;
+	
 	@PostConstruct
 	public String novo() {
+		modoVisualizar = Boolean.FALSE;
 		this.evento = new Evento();
 		return "/adm/evento/cadastrar";
 	}
@@ -30,7 +33,13 @@ public class EventoBean {
 		return "/adm/evento/lista";
 	}
 	
+	public String visualizar() {
+		modoVisualizar = Boolean.TRUE;
+		return "/adm/evento/cadastrar";
+	} 
+	
 	public String editar() {
+		modoVisualizar = Boolean.FALSE;
 		return "/adm/evento/cadastrar";
 	}
 	
@@ -57,6 +66,13 @@ public class EventoBean {
 		
 		return this.lista;
 	}
-	
+
+	public Boolean getModoVisualizar() {
+		return modoVisualizar;
+	}
+
+	public void setModoVisualizar(Boolean modoVisualizar) {
+		this.modoVisualizar = modoVisualizar;
+	}
 	
 }

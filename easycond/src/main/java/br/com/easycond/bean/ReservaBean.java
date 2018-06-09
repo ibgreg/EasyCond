@@ -29,9 +29,11 @@ public class ReservaBean {
 	private List<EspacoFisico> listaEspacoFisico;
 	
 	private Integer opcaoSelecionada;
+	private Boolean modoVisualizar;
 	
 	@PostConstruct
 	public String novo() {
+		modoVisualizar = Boolean.FALSE;
 		this.reserva = new Reserva();
 		return "/restrito/reserva/cadastrar";
 	}
@@ -58,11 +60,17 @@ public class ReservaBean {
 			
 			return "";
 		}
-		
-		
+
+	}
+	
+	public String visualizar() {
+		modoVisualizar = Boolean.TRUE;
+		opcaoSelecionada = reserva.getEspacoFisico().getId();
+ 		return "/restrito/reserva/cadastrar";
 	}
 	
 	public String editar() {
+		modoVisualizar = Boolean.FALSE;
 		opcaoSelecionada = reserva.getEspacoFisico().getId();
  		return "/restrito/reserva/cadastrar";
 	}
@@ -120,6 +128,14 @@ public class ReservaBean {
 
 	public void setOpcaoSelecionada(Integer opcaoSelecionada) {
 		this.opcaoSelecionada = opcaoSelecionada;
+	}
+
+	public Boolean getModoVisualizar() {
+		return modoVisualizar;
+	}
+
+	public void setModoVisualizar(Boolean modoVisualizar) {
+		this.modoVisualizar = modoVisualizar;
 	}
 
 }
