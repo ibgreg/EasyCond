@@ -64,7 +64,7 @@ public class RegistroMoradaRN {
 
 		LogicalExpression lgcExpr = Restrictions.and(criterionData, criterionId);
 
-		int quantReg = this.registroMoradaDAO.listar(criterionId).size();
+		int quantReg = this.registroMoradaDAO.listar(lgcExpr).size();
 
 		if (quantReg > 0)
 			return false;
