@@ -47,4 +47,10 @@ public class PessoaDAO implements PessoaDAOInterf {
 		return this.session.createCriteria(Pessoa.class)
 				.add(Restrictions.eq("tipoPessoa", tipoPessoa)).list();
 	}	
+	
+	public List<Pessoa> listar() {
+		// TODO Auto-generated method stub		
+		return this.session.createCriteria(Pessoa.class).list();
+	}
+	
 }
