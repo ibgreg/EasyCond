@@ -6,62 +6,66 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.easycond.model.Apartamento;
-import br.com.easycond.rn.ApartamentoRN;
+import br.com.easycond.model.Imovel;
+import br.com.easycond.rn.ImovelRN;
 
 @ManagedBean(name="apartamentoBean")
 @RequestScoped
 public class ApartamentoBean {
 
-	private Apartamento apartamento = new Apartamento();
+	private final static char TIPO_IMOVEL = 'A';
+	
+	private Imovel imovel = new Imovel();
 
-	private List<Apartamento> listaApartamento;
+	private List<Imovel> listaImovel;
 
 	@PostConstruct
 	public String novo() {
 
-		this.apartamento = new Apartamento();
+		this.imovel = new Imovel();
 
 		return "/restrito/cadastro/imovel/apartamento/form_apartamento";
 	}
 
 	public String salvar() {
 
-		ApartamentoRN apartamentoRN = new ApartamentoRN();
+		ImovelRN imovelRN = new ImovelRN();
 
-		apartamentoRN.salvar(this.apartamento);
+		imovel.setTipoImovel(TIPO_IMOVEL);
+		
+		imovelRN.salvar(this.imovel);
 
 		return "/restrito/cadastro/imovel/apartamento/grid_apartamento";
 	}
 
 	public String editar() {
-		return "/restrito/cadastro/imovel/apartamento/grid_apartamento";
+		return "/restrito/cadastro/imovel/apartamento/form_apartamento";
 	}
 
 	public String excluir() {
 		
-		ApartamentoRN apartamentoRN = new ApartamentoRN();
-		apartamentoRN.excluir(this.apartamento);
-		this.listaApartamento = null;
+		ImovelRN imovelRN = new ImovelRN();
+		imovelRN.excluir(this.imovel);
+		this.listaImovel = null;
 		return null;
 	}
 
-	public List<Apartamento> getListaApartamento() {
-		if (this.listaApartamento == null) {
+	public List<Imovel> getListaImovel() {
+		if (this.listaImovel == null) {
 			
-			ApartamentoRN apartamentoRN = new ApartamentoRN();
-			this.listaApartamento = apartamentoRN.listar();
+			ImovelRN imovelRN = new ImovelRN();
+			this.listaImovel = imovelRN.listar(TIPO_IMOVEL);
 		}
 
-		return this.listaApartamento;
+		return this.listaImovel;
 	}
 
-	public Apartamento getApartamento() {
-		return apartamento;
+	public Imovel getImovel() {
+		return imovel;
 	}
 
-	public void setApartamento(Apartamento apartamento) {
-		this.apartamento = apartamento;
+	public void setImovel(Imovel imovel) {
+		this.imovel = imovel;
 	}
 	
 }

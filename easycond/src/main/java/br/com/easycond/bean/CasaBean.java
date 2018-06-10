@@ -6,30 +6,34 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import br.com.easycond.model.Casa;
-import br.com.easycond.rn.CasaRN;
+import br.com.easycond.model.Imovel;
+import br.com.easycond.rn.ImovelRN;
 
 @ManagedBean(name = "casaBean")
 @RequestScoped
 public class CasaBean {
 
-	private Casa casa = new Casa();
+	private static final char TIPO_IMOVEL = 'C';
+	
+	private Imovel imovel = new Imovel();
 
-	private List<Casa> listaCasa;
+	private List<Imovel> listaImovel;
 
 	@PostConstruct
 	public String novo() {
 
-		this.casa = new Casa();
+		this.imovel = new Imovel();
 
 		return "/restrito/cadastro/imovel/casa/form_casa";
 	}
 
 	public String salvar() {
 
-		CasaRN casaRN = new CasaRN();
+		this.imovel.setTipoImovel(TIPO_IMOVEL);
+		
+		ImovelRN imovelRN = new ImovelRN();
 
-		casaRN.salvar(this.casa);
+		imovelRN.salvar(this.imovel);
 
 		return "/restrito/cadastro/imovel/casa/grid_casa";
 	}
@@ -40,27 +44,27 @@ public class CasaBean {
 
 	public String excluir() {
 		
-		CasaRN casaRN = new CasaRN();
-		casaRN.excluir(this.casa);
-		this.listaCasa = null;
+		ImovelRN imovelRN = new ImovelRN();
+		imovelRN.excluir(this.imovel);
+		this.listaImovel = null;
 		return null;
 	}
 
-	public List<Casa> getListaCasa() {
-		if (this.listaCasa == null) {
-			CasaRN casaRN = new CasaRN();
-			this.listaCasa = casaRN.listar();
+	public List<Imovel> getListaImovel() {
+		if (this.listaImovel == null) {
+			ImovelRN imovelRN = new ImovelRN();
+			this.listaImovel = imovelRN.listar(TIPO_IMOVEL);
 		}
 
-		return this.listaCasa;
+		return this.listaImovel;
 	}
 
-	public Casa getCasa() {
-		return casa;
+	public Imovel getImovel() {
+		return imovel;
 	}
 
-	public void setCasa(Casa casa) {
-		this.casa = casa;
+	public void setImovel(Imovel imovel) {
+		this.imovel = imovel;
 	}
 	
 }
