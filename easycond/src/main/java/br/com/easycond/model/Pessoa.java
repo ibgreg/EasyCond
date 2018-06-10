@@ -26,7 +26,7 @@ public class Pessoa implements Serializable{
 	
 	public Pessoa() {
 		super();
-		this.registroEntrada = new ArrayList<RegistroEntrada>();
+		//this.registroEntrada = new ArrayList<RegistroEntrada>();
 		//this.registroSaida = new ArrayList<RegistroSaida>();
 	}
 
@@ -56,11 +56,11 @@ public class Pessoa implements Serializable{
 	 */	
 	private char tipoPessoa;
 
-	@OneToMany(mappedBy="pessoa", orphanRemoval=true)
+	/*@OneToMany(mappedBy="pessoa", orphanRemoval=true)
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private List<RegistroEntrada> registroEntrada;
 	
-	/*@OneToMany(mappedBy="pessoa", orphanRemoval=true)
+	@OneToMany(mappedBy="pessoa", orphanRemoval=true)
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private List<RegistroSaida> registroSaida;*/
 	
