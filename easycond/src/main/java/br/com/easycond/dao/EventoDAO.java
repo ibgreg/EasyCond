@@ -2,6 +2,7 @@ package br.com.easycond.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.easycond.daointerf.EventoDAOInterf;
@@ -39,5 +40,13 @@ public class EventoDAO implements EventoDAOInterf {
 	public List<Evento> listar() {
 		return this.session.createCriteria(Evento.class).list();
 	}
+
+	@Override
+	public List<Evento> listarProximosEventos() {
+		String sqlQuery = "select ev from Evento ev where sysdate() <= ev.dataEvento";
+		Query query = session.createQuery(sqlQuery);
+		
+		return query.list();
+	}	
 
 }

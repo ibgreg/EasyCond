@@ -16,4 +16,6 @@ public interface EventoDAOInterf {
 	
 	public List<Evento> listar();
 	
+	public List<Evento> listarProximosEventos();
+	
 }

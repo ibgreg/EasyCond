@@ -81,17 +81,42 @@
 				
 			</div>
 			
-			<p:carousel numVisible="1" value="#{avisoBean.quadroAvisos}" var="avisos" effect="easeInStrong" circular="true"
-				autoPlayInterval="10000" headerText="Quadro de avisos" responsive="true" styleClass="panel-aviso" >
-		        	<p:tab title="Aviso">
-			            <p:panelGrid >
-			            	<h:outputText value="#{avisos.titulo}" escape="false" styleClass="aviso-title"/>
-			            	<br/>
-			                <h:outputText value="#{avisos.descricao}" escape="false" />
-			            </p:panelGrid>
-			        </p:tab>
-		       
-		    </p:carousel>
+			<div class="ui-g">
+				<div class="ui-g-12 ui-md-6 ui-lg-6">
+					<p:carousel id="carouselQuadroAviso" numVisible="1" value="#{avisoBean.quadroAvisos}" var="avisos" effect="easeInStrong" circular="true"
+						autoPlayInterval="10000" headerText="Quadro de avisos" responsive="true" styleClass="panel-aviso" >
+				        	<p:tab title="Aviso">
+					            <p:panelGrid >
+					            	<h:outputText value="#{avisos.titulo}" escape="false" styleClass="aviso-title"/>
+					            	<br/>
+					                <h:outputText value="#{avisos.descricao}" escape="false" />
+					            </p:panelGrid>
+					        </p:tab>
+				       
+				    </p:carousel>
+				</div>
+				<div class="ui-g-12 ui-md-6 ui-lg-6">
+					<p:carousel id="carouselQuadroEventos" numVisible="1" value="#{eventoBean.quadroEventos}" var="eventos" effect="easeInStrong" circular="true"
+						autoPlayInterval="10000" headerText="Próximos eventos" responsive="true" styleClass="panel-aviso" >
+				        	<p:tab title="Evento">
+					            <p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+					            	<br/>
+					            	<h:outputText value="#{eventos.titulo}" styleClass="aviso-title" />
+						            
+						            
+						            <h:outputText value="Descrição: " styleClass="label-text" />
+						            <h:outputText value="#{eventos.descricao}" />
+						            
+						            <h:outputText value="Data de realização: " styleClass="label-text" />
+						            <h:outputText value="#{eventos.dataEvento}">
+						            	<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+						            </h:outputText>
+					            </p:panelGrid>
+					        </p:tab>
+				    </p:carousel>
+				</div>
+			
+			</div>
 
 		</h:form>
 	</ui:define>

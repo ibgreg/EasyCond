@@ -22,6 +22,10 @@ public class EventoRN {
 		return this.eventoDAO.listar();
 	}
 	
+	public List<Evento> listarProximosEventos() {
+		return this.eventoDAO.listarProximosEventos();
+	}
+	
 	public void salvar(Evento evento) {
 		Integer id =  evento.getId();
 		

@@ -16,6 +16,7 @@ public class EventoBean {
 	private Evento evento = new Evento();
 	
 	private List<Evento> lista;
+	private List<Evento> quadroEventos;
 	
 	private Boolean modoVisualizar;
 	
@@ -65,6 +66,14 @@ public class EventoBean {
 		}
 		
 		return this.lista;
+	}
+	
+	public List<Evento> getQuadroEventos() {
+		if (this.quadroEventos == null) {
+			EventoRN eventoRN = new EventoRN();
+			this.quadroEventos = eventoRN.listarProximosEventos();
+		}
+		return this.quadroEventos;
 	}
 
 	public Boolean getModoVisualizar() {
