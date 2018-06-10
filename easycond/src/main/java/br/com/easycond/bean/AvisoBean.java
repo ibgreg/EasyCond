@@ -3,8 +3,11 @@ package br.com.easycond.bean;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
+import org.primefaces.context.RequestContext;
 
 import br.com.easycond.model.Aviso;
 import br.com.easycond.rn.AvisoRN;
@@ -27,10 +30,20 @@ public class AvisoBean {
 	}
 	
 	public String salvar() {
-		AvisoRN avisoRN = new AvisoRN();
-		avisoRN.salvar(this.aviso);
+ 		AvisoRN avisoRN = new AvisoRN();
 		
-		return "/adm/aviso/lista";
+		if (aviso.getDescricao().length() <= 500) {
+			avisoRN.salvar(this.aviso);
+			
+			return "/adm/aviso/lista";
+		} else {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Limite máximo da descrição excedido", "A descrição ultrapassa o "
+					+ "limite de 500 caracteres. Diminua o seu conteúdo para salvar");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);			
+			
+			return "";
+		}
+		
 	}
 	
 	public String visualizar() {

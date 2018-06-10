@@ -1,5 +1,6 @@
 package br.com.easycond.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +25,7 @@ public class ReservaBean {
 	private Reserva reserva = new Reserva();
 	private EspacoFisico espacoFisico = new EspacoFisico();
 	private Usuario usuario = new Usuario();
+	private Date dataAtual = new Date();
 	
 	private List<Reserva> lista;
 	private List<EspacoFisico> listaEspacoFisico;
@@ -46,7 +48,7 @@ public class ReservaBean {
 		this.espacoFisico = espacoFisicoRN.carregar(opcaoSelecionada);
 		this.usuario = usuarioRN.carregarPorNomeLogin(SpringUtil.obterUsuarioLogado());
 		
-		if (!reservaRN.verificaReservaExistente(espacoFisico.getId(), reserva.getDataInicio(), reserva.getDataFim())) {
+		if (!reservaRN.verificaReservaExistente(reserva.getId(), espacoFisico.getId(), reserva.getDataInicio(), reserva.getDataFim())) {
 			if (espacoFisico != null) {
 				reserva.setUsuario(usuario);
 				reserva.setEspacoFisico(espacoFisico);			
@@ -136,6 +138,10 @@ public class ReservaBean {
 
 	public void setModoVisualizar(Boolean modoVisualizar) {
 		this.modoVisualizar = modoVisualizar;
+	}
+	
+	public Date getDataAtual() {
+		return dataAtual;
 	}
 
 }
