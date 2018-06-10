@@ -25,7 +25,7 @@
 				<p:inputTextarea id="descricaoEvento" value="#{eventoBean.evento.descricao}" rows="3" cols="42" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="45" style="resize: none;" readonly="#{eventoBean.modoVisualizar}" />
 				
 				<h:outputLabel value="Data de realização: " for="dataRealizacaoEvento" styleClass="label-text"/>
-				<p:calendar id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" locale="pt" showOn="both" disabled="#{eventoBean.modoVisualizar}" />
+				<p:calendar id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" mask="true" mindate="#{assembleiaBean.dataAtual}" navigator="true" locale="pt" showOn="both" disabled="#{eventoBean.modoVisualizar}" />
 				
 			</p:panelGrid>
 			

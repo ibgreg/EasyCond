@@ -25,10 +25,10 @@
 				<p:inputText id="perguntaEnquete" value="#{assembleiaBean.enquete.pergunta}" required="true" requiredMessage="O campo 'Pergunta da Enquete' é obrigatório!" maxlength="200" size="40" readonly="#{assembleiaBean.modoVisualizar}" styleClass="input-form"/>
 				
 				<h:outputLabel value="Data Início: " for="dataInicio" styleClass="label-text"/>
-				<p:calendar locale="pt" id="dataInicio" value="#{assembleiaBean.assembleia.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" navigator="true" showOn="both" disabled="#{assembleiaBean.modoVisualizar}" />
+				<p:calendar locale="pt" id="dataInicio" value="#{assembleiaBean.assembleia.dataInicio}" pattern="dd/MM/yyyy" mask="true" mindate="#{assembleiaBean.dataAtual}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" navigator="true" showOn="both" disabled="#{assembleiaBean.modoVisualizar}" />
 				
 				<h:outputLabel value="Data Final: " for="dataFinal" styleClass="label-text"/>
-				<p:calendar locale="pt" id="dataFinal" value="#{assembleiaBean.assembleia.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" navigator="true" showOn="both" disabled="#{assembleiaBean.modoVisualizar}" />
+				<p:calendar locale="pt" id="dataFinal" value="#{assembleiaBean.assembleia.dataFim}" pattern="dd/MM/yyyy" mask="true" mindate="#{assembleiaBean.dataAtual}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" navigator="true" showOn="both" disabled="#{assembleiaBean.modoVisualizar}" />
 				
 			</p:panelGrid>
 			

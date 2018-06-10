@@ -25,10 +25,10 @@
 	       		</p:selectOneMenu>
 				
 				<h:outputLabel value="Data Início: " for="dataInicioReserva" styleClass="label-text"/>
-				<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
+				<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" mask="true" mindate="#{assembleiaBean.dataAtual}" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
 				
 				<h:outputLabel value="Data Final: " for="dataFinalReserva" styleClass="label-text"/>
-				<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
+				<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" mask="true" mindate="#{assembleiaBean.dataAtual}" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
 			</p:panelGrid>
 			
 			

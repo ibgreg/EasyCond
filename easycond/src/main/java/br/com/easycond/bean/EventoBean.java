@@ -1,5 +1,6 @@
 package br.com.easycond.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,7 @@ import br.com.easycond.rn.EventoRN;
 public class EventoBean {
 
 	private Evento evento = new Evento();
+	private Date dataAtual = new Date();
 	
 	private List<Evento> lista;
 	private List<Evento> quadroEventos;
@@ -82,6 +84,10 @@ public class EventoBean {
 
 	public void setModoVisualizar(Boolean modoVisualizar) {
 		this.modoVisualizar = modoVisualizar;
+	}
+	
+	public Date getDataAtual() {
+		return dataAtual;
 	}
 	
 }
