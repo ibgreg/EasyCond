@@ -3,6 +3,7 @@ package br.com.easycond.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +30,7 @@ public class Enquete implements Serializable {
 	@OneToOne(mappedBy = "enquete")
 	private Assembleia assembleia;
 	
-	@OneToMany(mappedBy = "idEnquete", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "idEnquete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@Column(name = "id_votos")
 	private List<Votos> votos;
 

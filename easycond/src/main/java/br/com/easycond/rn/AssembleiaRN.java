@@ -41,10 +41,10 @@ public class AssembleiaRN {
 		this.assembleiaDAO.excluir(assembleia);
 	}
 	
-	public boolean verificaAssembleiaExistente(Date dataInicio, Date dataFim) {
+	public boolean verificaAssembleiaExistente(Integer id, Date dataInicio, Date dataFim) {
 		Assembleia assembleiaExistente = this.assembleiaDAO.verificaAssembleiaExistente(dataInicio, dataFim);
 		
-		if (assembleiaExistente != null && assembleiaExistente.getId() == null) {
+		if (assembleiaExistente != null && id == null) {
 			return true;
 		} else {
 			return false;

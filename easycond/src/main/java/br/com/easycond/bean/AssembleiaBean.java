@@ -1,5 +1,6 @@
 package br.com.easycond.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -26,6 +27,7 @@ public class AssembleiaBean {
 	private Votos votos = new Votos();
 	
 	private String perguntaEnquete;
+	private Date dataAtual = new Date();
 	
 	private List<Assembleia> lista;
 	private List<Votos> listaVotosContra;
@@ -90,12 +92,12 @@ public class AssembleiaBean {
 	public String salvar() {
 		AssembleiaRN assembleiaRN = new AssembleiaRN();
 		
-		if (!assembleiaRN.verificaAssembleiaExistente(assembleia.getDataInicio(), assembleia.getDataFim())) {
+		if (!assembleiaRN.verificaAssembleiaExistente(assembleia.getId(), assembleia.getDataInicio(), assembleia.getDataFim())) {
 			
 			if (enquete != null) {
-				enquete.setPergunta(perguntaEnquete);
+
 				enquete.setAssembleia(assembleia);
-				assembleia.setEnquete(enquete);
+				assembleia.setEnquete(this.enquete);
 			}
 			
 			
@@ -221,6 +223,10 @@ public class AssembleiaBean {
 
 	public void setModoVisualizar(Boolean modoVisualizar) {
 		this.modoVisualizar = modoVisualizar;
+	}
+
+	public Date getDataAtual() {
+		return dataAtual;
 	}
 	
 }
