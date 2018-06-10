@@ -18,13 +18,13 @@
 			<h:inputHidden value="#{eventoBean.evento.id}"  />
 			
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
-				<h:outputLabel value="Título: " for="eventoTitulo"/>
+				<h:outputLabel value="Título: " for="eventoTitulo" styleClass="label-text"/>
 				<p:inputText id="eventoTitulo" value="#{eventoBean.evento.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="45" size="40" readonly="#{eventoBean.modoVisualizar}" styleClass="input-form" />
 				
-				<h:outputLabel value="Descrição:" for="descricaoEvento"/>
+				<h:outputLabel value="Descrição:" for="descricaoEvento" styleClass="label-text"/>
 				<p:inputTextarea id="descricaoEvento" value="#{eventoBean.evento.descricao}" rows="3" cols="42" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="45" style="resize: none;" readonly="#{eventoBean.modoVisualizar}" />
 				
-				<h:outputLabel value="Data de realização: " for="dataRealizacaoEvento"/>
+				<h:outputLabel value="Data de realização: " for="dataRealizacaoEvento" styleClass="label-text"/>
 				<p:calendar id="dataRealizacaoEvento" value="#{eventoBean.evento.dataEvento}" required="true" requiredMessage="O campo 'Data de realização' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" locale="pt" showOn="both" disabled="#{eventoBean.modoVisualizar}" />
 				
 			</p:panelGrid>

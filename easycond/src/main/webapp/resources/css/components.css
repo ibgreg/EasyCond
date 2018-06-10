@@ -110,3 +110,7 @@ h1 {
 	height: 35px;
 	margin-bottom: 15px;
 }
+
+.label-text {
+	font-weight: bold;
+}

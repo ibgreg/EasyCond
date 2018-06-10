@@ -18,16 +18,16 @@
 			<h:inputHidden value="#{ocorrenciaBean.ocorrencia.idOcorrencia}"  />
 		
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
-				<h:outputLabel value="Descrição: " for="descricaoOcorrencia"/>
+				<h:outputLabel value="Descrição: " for="descricaoOcorrencia" styleClass="label-text"/>
 				<p:inputTextarea id="descricaoOcorrencia" value="#{ocorrenciaBean.ocorrencia.descricaoOcorrencia}" rows="3" cols="42" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" maxlength="200" size="200" style="resize: none;" readonly="#{ocorrenciaBean.modoVisualizar}"/>
 
-				<h:outputLabel value="Tipo da ocorrência: " for="tipoOcorrencia" />
+				<h:outputLabel value="Tipo da ocorrência: " for="tipoOcorrencia" styleClass="label-text" />
 				<p:selectOneRadio id="tipoOcorrencia" value="#{ocorrenciaBean.ocorrencia.tipoOcorrencia}" required="true" requiredMessage="Escolha o tipo da ocorrência" disabled="#{ocorrenciaBean.modoVisualizar}">
 						<f:selectItem itemLabel="Advertência" itemValue="A" />
 						<f:selectItem itemLabel="Multa" itemValue="M" />
 				</p:selectOneRadio>
 				
-				<h:outputLabel value="Condômino: " for="condominoOcorrencia"/>
+				<h:outputLabel value="Condômino: " for="condominoOcorrencia" styleClass="label-text"/>
 				<p:selectOneMenu id="condominoOcorrencia" value="#{ocorrenciaBean.usuarioSelecionado}" required="true" requiredMessage="O campo 'Ocorrência' é obrigatório!" style="width:290px" disabled="#{ocorrenciaBean.modoVisualizar}">
 	            	<f:selectItems value="#{ocorrenciaBean.listaUsuario}" var="usuario"
 	            		itemLabel="#{usuario.nome}" itemValue="#{usuario.codigo}"/>

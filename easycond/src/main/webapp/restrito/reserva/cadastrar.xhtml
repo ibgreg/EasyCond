@@ -17,17 +17,17 @@
 		
 			<h:inputHidden value="#{reservaBean.reserva.id}"  />
 			
-			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-11" styleClass="ui-panelgrid-blank">
-				<h:outputLabel value="Espaço: " for="espacoReserva"/>
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Espaço: " for="espacoReserva" styleClass="label-text"/>
 				<p:selectOneMenu id="espacoReserva" value="#{reservaBean.opcaoSelecionada}" required="true" requiredMessage="O campo 'Espaço' é obrigatório!" style="width:190px" disabled="#{reservaBean.modoVisualizar}">
 	            	<f:selectItems value="#{reservaBean.listaEspacoFisico}" var="espacoFisico"
 	            		itemLabel="#{espacoFisico.descricao}" itemValue="#{espacoFisico.id}"/>
 	       		</p:selectOneMenu>
 				
-				<h:outputLabel value="Data Início: " for="dataInicioReserva"/>
+				<h:outputLabel value="Data Início: " for="dataInicioReserva" styleClass="label-text"/>
 				<p:calendar locale="pt" id="dataInicioReserva" value="#{reservaBean.reserva.dataInicio}" required="true" requiredMessage="O campo 'Data Inicial' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
 				
-				<h:outputLabel value="Data Final: " for="dataFinalReserva"/>
+				<h:outputLabel value="Data Final: " for="dataFinalReserva" styleClass="label-text"/>
 				<p:calendar locale="pt" id="dataFinalReserva" value="#{reservaBean.reserva.dataFim}" required="true" requiredMessage="O campo 'Data Final' é obrigatório!" pattern="dd/MM/yyyy HH:mm" navigator="true" showOn="both" disabled="#{reservaBean.modoVisualizar}" />
 			</p:panelGrid>
 			

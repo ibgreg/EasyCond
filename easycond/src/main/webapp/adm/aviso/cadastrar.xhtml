@@ -17,12 +17,12 @@
 		
 			<h:inputHidden value="#{avisoBean.aviso.id}"  />
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-1,ui-grid-col-11" styleClass="ui-panelgrid-blank">
-				<h:outputLabel value="Título: " for="titulo"/>
+				<h:outputLabel value="Título: " for="titulo" styleClass="label-text"/>
 				<p:inputText id="titulo" value="#{avisoBean.aviso.titulo}" required="true" requiredMessage="O campo 'Título' é obrigatório!" maxlength="20" size="40" readonly="#{avisoBean.modoVisualizar}" styleClass="input-form" />
 			</p:panelGrid>
 			
 			<p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank">
-				<h:outputLabel value="Descrição:" for="descricao" />
+				<h:outputLabel value="Descrição:" for="descricao" styleClass="label-text" />
 				<p:textEditor id="descricao" value="#{avisoBean.aviso.descricao}" required="true" requiredMessage="O campo 'Descrição' é obrigatório!" height="200" readonly="#{avisoBean.modoVisualizar}" />
 			</p:panelGrid>
 			
