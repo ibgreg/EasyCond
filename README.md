@@ -1,6 +1,7 @@
 # EasyCond – Sistema de Gestão de Condomínio
 Este é o repositório do sistema EasyCond. O projeto tem como objetivo facilitar a gestão administrativa e financeira de condomínios para os administradores, síndicos e condôminos, através de um sistema WEB com interface responsiva para PCs e dispositivos móveis. Além de contar com as principais funcionalidades essenciais para gestão do condomínio (quadro de avisos, reserva de espaços, registro de visitantes e entre outros), o principal diferencial do projeto é o sistema de assembleia online. Com ele, os sindicos ou administradores podem cadastrar as pautas a serem discutidas e através de um sistema de votação de enquete os condôminos vão votar e dar os seus comentários e/ou sugestões para chegar a uma conclusão de forma rápida.
 <br/>
+<br/>
 <strong>Recursos utilizados:</strong>
 <br/>
 <ul>
