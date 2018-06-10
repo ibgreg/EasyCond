@@ -14,25 +14,25 @@
 			<p:commandButton action="#{casaBean.novo()}"
 				icon="fa fa-plus-circle" value="Novo" process="@this" />
 
-			<p:dataTable var="casa"
-				value="#{casaBean.listaCasa}" paginator="true"
+			<p:dataTable var="imovel"
+				value="#{casaBean.listaImovel}" paginator="true"
 				paginatorPosition="bottom"
 				emptyMessage="Não há registros disponíveis">
 
 				<p:column headerText="Número da casa">
-					<h:outputText value="#{casa.numCasa}" />
+					<h:outputText value="#{imovel.numImovel}" />
 				</p:column>
 
 				<p:column headerText="Comandos">
 					<p:commandButton action="#{casaBean.editar}"
 						icon="fa fa-pencil" process="@form">
-						<f:setPropertyActionListener value="#{casa}"
-							target="#{casaBean.casa}" />
+						<f:setPropertyActionListener value="#{imovel}"
+							target="#{casaBean.imovel}" />
 					</p:commandButton>
 					<p:commandButton action="#{casaBean.excluir}"
 						icon="fa fa-trash" process="@this" update="@form">
-						<f:setPropertyActionListener value="#{casa}"
-							target="#{casaBean.casa}" />
+						<f:setPropertyActionListener value="#{imovel}"
+							target="#{casaBean.imovel}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>

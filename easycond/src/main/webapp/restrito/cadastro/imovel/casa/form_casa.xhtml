@@ -14,14 +14,14 @@
 
 		<h:form prependId="false">
 
-			<h:inputHidden value="#{casaBean.casa.id}" />
+			<h:inputHidden value="#{casaBean.imovel.id}" />
 
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Número da casa: " for="num_casa" />
 				<p:inputText id="num_casa"
-					value="#{casaBean.casa.numCasa}"
+					value="#{casaBean.imovel.numImovel}"
 					required="true"
 					requiredMessage="O campo 'Número da casa' é obrigatório."
 					maxlength="50" size="50" />
