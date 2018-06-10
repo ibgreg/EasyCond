@@ -2,8 +2,10 @@
 .aw-toggle {
 	line-height: 50px;
 	margin-right: 15px;
-	
+	position: fixed;
 	color: #fff;
+	margin-top: 19px;
+	margin-left: 10px;
 }
 
 .aw-user {
@@ -18,6 +20,12 @@
 	float: right;
 	display: inline-grid;
 	margin-top: 17px;
+}
+
+.logo-navbar {
+	width: 150px;
+	padding-left: 30px;
+	position: fixed;
 }
 
 /* MENU */
