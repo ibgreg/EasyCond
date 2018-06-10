@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-@Table(name="ingresso_egresso_condomino")
+@Table(name="registro_morada")
 public class RegistroMorada implements Serializable{
 
 	public RegistroMorada() {
