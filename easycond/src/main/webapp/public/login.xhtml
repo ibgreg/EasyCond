@@ -17,8 +17,8 @@
 		
 		<title>Login - EasyCond</title>
 	</h:head>
-	<h:body style="background-color: #1e94d2">
-		<div class="valign-wrapper" id="login-page" style="height: 100%;">
+	<h:body>
+		<div class="valign-wrapper" id="login-page" style="height: 100%; background-color: #1e94d2;">
 			<div class="container">
 				<div class="center-align">
 					<div class="row">
@@ -60,7 +60,7 @@
 											</script>
 										</form>
 										<h:form prependId="false">
-											<h:commandLink action="#{usuarioBean.novo}" value="Novo usuário? Cadastre-se aqui" />
+											<p:commandLink action="#{usuarioBean.novo}" process="@form" value="Novo usuário? Cadastre-se aqui" />
 										</h:form>
 									</div>
 								</div>

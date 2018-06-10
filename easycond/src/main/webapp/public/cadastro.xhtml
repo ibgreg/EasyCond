@@ -18,37 +18,38 @@
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 
 			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-11" styleClass="ui-panelgrid-blank">
-				<p:outputLabel value="Nome: " for="nomeUsuario" />
-				<p:inputText id="nomeUsuario" value="#{usuarioBean.usuario.nome}" required="true" requiredMessage="O campo 'Nome' é obrigatório." maxlength="30" size="40" />
+				<p:outputLabel value="Nome: " for="nomeUsuario" styleClass="label-text" />
+				<p:inputText id="nomeUsuario" value="#{usuarioBean.usuario.nome}" required="true" requiredMessage="O campo 'Nome' é obrigatório." maxlength="30" size="40" styleClass="input-form" />
 
-				<p:outputLabel value="Data de Nascimento: " for="dataNascUsuario" />
-				<p:calendar locale="pt" id="dataNascUsuario" value="#{usuarioBean.usuario.dataNasc}" required="true" requiredMessage="O campo 'Data de Nascimento' é obrigatório!" pattern="dd/MM/yyyy" navigator="true" showOn="both" />
+				<p:outputLabel value="Data de Nascimento: " for="dataNascUsuario" styleClass="label-text" />
+				<p:calendar locale="pt" id="dataNascUsuario" value="#{usuarioBean.usuario.dataNasc}" required="true" requiredMessage="O campo 'Data de Nascimento' é obrigatório!" pattern="dd/MM/yyyy" mask="true" navigator="true" showOn="both"  />
 
-				<p:outputLabel value="E-mail: " for="emailUsuario" />
-				<p:inputText id="emailUsuario" value="#{usuarioBean.usuario.email}" required="true" requiredMessage="O campo 'E-mail' é obrigatório!" maxlength="50" size="40" validatorMessage="E-mail inválido!">
+				<p:outputLabel value="E-mail: " for="emailUsuario" styleClass="label-text" />
+				<p:inputText id="emailUsuario" value="#{usuarioBean.usuario.email}" required="true" requiredMessage="O campo 'E-mail' é obrigatório!" maxlength="50" size="40" validatorMessage="E-mail inválido!" styleClass="input-form">
 					<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />
 				</p:inputText>
 				
-				<h:outputLabel value="Login:" for="login"/>
+				<h:outputLabel value="Login:" for="login" styleClass="label-text" />
 				<p:inputText id="login" value="#{usuarioBean.usuario.login}" 
 					size="20" maxlength="15" required="true" 
 					requiredMessage="O campo 'Login' é obrigatório" 
-					validatorMessage="Login deve ter no mínimo 5 e no máximo 15 caracteres e só pode ter os símbolos '.' e '_'" >
+					validatorMessage="Login deve ter no mínimo 5 e no máximo 15 caracteres e só pode ter os símbolos '.' e '_'" styleClass="input-form" >
 					<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}"/>
 				</p:inputText>
 
-				<h:outputLabel value="Senha: " for="senha" />
+				<h:outputLabel value="Senha: " for="senha" styleClass="label-text" />
 				<p:password id="senha" value="#{usuarioBean.usuario.senha}" size="20" maxlength="10" 
 					required="true" requiredMessage="O campo 'Senha' é obrigatório!"
-					feedback="true" weakLabel="Fraca" goodLabel="Média" strongLabel="Forte" />
+					feedback="true" weakLabel="Fraca" goodLabel="Média" strongLabel="Forte" styleClass="input-form" />
 
-				<h:outputLabel value="Confirmar senha: " for="confirmarSenha" />
+				<h:outputLabel value="Confirmar senha: " for="confirmarSenha" styleClass="label-text" />
 				<p:password id="confirmarSenha" value="#{usuarioBean.confirmarSenha}" size="20" maxlength="10" 
-					required="true" requiredMessage="O campo 'Confirmar senha' é obrigatório!" />
+					required="true" requiredMessage="O campo 'Confirmar senha' é obrigatório!" styleClass="input-form" />
 
 			</p:panelGrid>
 
 			<p:commandButton value="Criar cadastro" process="@form"	action="#{usuarioBean.salvar}" icon="fa fa-check" styleClass="btn-cadastro" />
+			<p:commandButton value="Cancelar" process="@this" action="/public/login.jsf" icon="fa fa-close" styleClass="btn-cadastro" />
 		</h:form>
 
 	</ui:define>
