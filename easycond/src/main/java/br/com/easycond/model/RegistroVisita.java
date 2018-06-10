@@ -42,6 +42,9 @@ public class RegistroVisita implements Serializable {
 	@Column(name="data_fim_visita")
 	private Date dataFimVisita;
 
+	@ManyToOne
+	private Pessoa pessoa2;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -72,6 +75,14 @@ public class RegistroVisita implements Serializable {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}	
+
+	public Pessoa getPessoa2() {
+		return pessoa2;
+	}
+
+	public void setPessoa2(Pessoa pessoa2) {
+		this.pessoa2 = pessoa2;
 	}
 
 	@Override
@@ -81,6 +92,8 @@ public class RegistroVisita implements Serializable {
 		result = prime * result + ((dataFimVisita == null) ? 0 : dataFimVisita.hashCode());
 		result = prime * result + ((dataInicioVisita == null) ? 0 : dataInicioVisita.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
+		result = prime * result + ((pessoa2 == null) ? 0 : pessoa2.hashCode());
 		return result;
 	}
 
@@ -108,6 +121,19 @@ public class RegistroVisita implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (pessoa == null) {
+			if (other.pessoa != null)
+				return false;
+		} else if (!pessoa.equals(other.pessoa))
+			return false;
+		if (pessoa2 == null) {
+			if (other.pessoa2 != null)
+				return false;
+		} else if (!pessoa2.equals(other.pessoa2))
+			return false;
 		return true;
-	}		
+	}
+	
+	
+	
 }

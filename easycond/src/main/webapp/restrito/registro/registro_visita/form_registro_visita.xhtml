@@ -21,7 +21,7 @@
 			<p:panelGrid columns="2">
 				<h:outputLabel value="Visitante: " for="visitante" />
 				<p:selectOneMenu id="visitante"
-					value="#{registroVisitaBean.pessoaCombo}">
+					value="#{registroVisitaBean.visitanteCombo}">
 					<f:selectItem itemLabel="[VISITANTE]" />
 					<f:selectItems value="#{registroVisitaBean.listaVisitantes}"
 						var="visitante" itemLabel="#{visitante.nomePessoa}"
@@ -37,6 +37,15 @@
 				<p:calendar locale="pt" id="data_saida"
 					value="#{registroVisitaBean.registroVisita.dataFimVisita}"
 					pattern="dd-MM-yyyy" mask="true" />
+
+				<h:outputLabel value="Condômino Visitado: " for="condomino" />
+				<p:selectOneMenu id="condomino"
+					value="#{registroVisitaBean.condominoCombo}">
+					<f:selectItem itemLabel="[VISITADO]" />
+					<f:selectItems value="#{registroVisitaBean.listaCondominos}"
+						var="condomino" itemLabel="#{condomino.nomePessoa}"
+						itemValue="#{condomino.idPessoa}" />
+				</p:selectOneMenu>
 
 			</p:panelGrid>
 

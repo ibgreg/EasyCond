@@ -34,6 +34,10 @@
 					</h:outputText>
 				</p:column>
 
+				<p:column headerText="Condômino Visitado">
+					<h:outputText value="#{registroVisita.pessoa2.nomePessoa}" />
+				</p:column>
+
 				<p:column headerText="Comandos">
 					<p:commandButton action="#{registroVisitaBean.editar}" icon="fa fa-pencil"
 						process="@this" update="@form">

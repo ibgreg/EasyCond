@@ -25,9 +25,15 @@ public class RegistroVisitaBean {
 
 	private List<Pessoa> listaVisitante;
 
-	private Integer pessoaCombo;
+	private List<Pessoa> listaCondomino;
+
+	private Integer visitanteCombo;
+
+	private Integer condominoCombo;
 
 	private Pessoa pessoa;
+
+	private Pessoa pessoa2;
 
 	@PostConstruct
 	public String novo() {
@@ -38,11 +44,12 @@ public class RegistroVisitaBean {
 	}
 
 	public String salvar() {
-		
-		if (!verificarVisitante())
+
+		if (!verificarCombos())
 			return null;
 
-		this.pessoa = new PessoaRN().carregar(pessoaCombo);		
+		this.pessoa = new PessoaRN().carregar(visitanteCombo);
+		this.pessoa2 = new PessoaRN().carregar(condominoCombo);
 
 		if (!verificarData())
 			return null;
@@ -51,18 +58,25 @@ public class RegistroVisitaBean {
 
 			this.registroVisita.setPessoa(pessoa);
 
+			this.registroVisita.setPessoa2(pessoa2);
+
 			RegistroVisitaRN registroVisitaRN = new RegistroVisitaRN();
 
 			registroVisitaRN.salvar(this.registroVisita);
 		}
+		
+		// Seria legal exibir uma mensagem confirmando o salvamento do registro no banco
+		//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registro salvo com sucesso."));
 
 		return "/restrito/registro/registro_visita/grid_registro_visita";
 	}
 
 	public String editar() {
-		
-		this.pessoaCombo = this.registroVisita.getPessoa().getIdPessoa();
-		
+
+		this.visitanteCombo = this.registroVisita.getPessoa().getIdPessoa();
+
+		this.condominoCombo = this.registroVisita.getPessoa2().getIdPessoa();
+
 		return "/restrito/registro/registro_visita/form_registro_visita";
 	}
 
@@ -119,12 +133,12 @@ public class RegistroVisitaBean {
 		this.listaVisitante = listaVisitante;
 	}
 
-	public Integer getPessoaCombo() {
-		return pessoaCombo;
+	public Integer getVisitanteCombo() {
+		return visitanteCombo;
 	}
 
-	public void setPessoaCombo(Integer pessoaCombo) {
-		this.pessoaCombo = pessoaCombo;
+	public void setVisitanteCombo(Integer visitanteCombo) {
+		this.visitanteCombo = visitanteCombo;
 	}
 
 	public Pessoa getPessoa() {
@@ -135,7 +149,42 @@ public class RegistroVisitaBean {
 		this.pessoa = pessoa;
 	}
 
+	public List<Pessoa> getListaCondomino() {
+		return listaCondomino;
+	}
+
+	public void setListaCondomino(List<Pessoa> listaCondomino) {
+		this.listaCondomino = listaCondomino;
+	}
+
+	public Pessoa getPessoa2() {
+		return pessoa2;
+	}
+
+	public void setPessoa2(Pessoa pessoa2) {
+		this.pessoa2 = pessoa2;
+	}
+
+	public List<Pessoa> getListaCondominos() {
+
+		if (this.listaCondomino == null) {
+
+			PessoaRN pessoaRN = new PessoaRN();
+			this.listaCondomino = pessoaRN.listar('C');
+		}
+
+		return this.listaCondomino;
+	}
+
 	// Validacoes
+
+	public Integer getCondominoCombo() {
+		return condominoCombo;
+	}
+
+	public void setCondominoCombo(Integer condominoCombo) {
+		this.condominoCombo = condominoCombo;
+	}
 
 	private boolean verificarData() {
 
@@ -143,8 +192,8 @@ public class RegistroVisitaBean {
 		Date dtFim = registroVisita.getDataFimVisita();
 
 		if (dtInicio.compareTo(dtFim) > 0) {
-			FacesContext.getCurrentInstance().addMessage("msg",
-					new FacesMessage("A data inicial não pode ser maior do que a data final."));
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage(FacesMessage.SEVERITY_WARN,
+					"A data inicial não pode ser maior do que a data final.", null));
 
 			return false;
 		}
@@ -152,15 +201,22 @@ public class RegistroVisitaBean {
 		return true;
 	}
 
-	private boolean verificarVisitante() {
+	private boolean verificarCombos() {
 
-		if (pessoaCombo == null) {
+		if (visitanteCombo == null) {
 			FacesContext.getCurrentInstance().addMessage("msg",
-					new FacesMessage("Por favor, selecione um visitante."));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Por favor, selecione um visitante.", null));
 
 			return false;
 		}
-		
+
+		if (condominoCombo == null) {
+			FacesContext.getCurrentInstance().addMessage("msg",
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Por favor, selecione um condômino.", null));
+
+			return false;
+		}
+
 		return true;
 	}
 }
