@@ -13,7 +13,7 @@
 		<p:separator />
 
 		<h:form prependId="false">
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
 				<h:inputHidden
 					value="#{solicitacaoAvisoBean.solicitacaoAviso.idSolicitacaoAviso}" />
 
@@ -34,7 +34,7 @@
 			</p:panelGrid>
 			
 			<p:commandButton value="Salvar" process="@form"
-				action="#{solicitacaoAvisoBean.salvar}" />
+				action="#{solicitacaoAvisoBean.salvar}" icon="fa fa-save" styleClass="btn-cadastro" />
 		</h:form>
 
 	</ui:define>

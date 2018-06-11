@@ -17,15 +17,15 @@
 			<h:inputHidden value="#{blocoBean.bloco.id}" />
 
 			<p:messages id="msg" closable="true" autoUpdate="true" />
-
-			<p:outputLabel value="Identificação do bloco: " for="identificacao_bloco" />
-			<p:inputText id="identificacao_bloco"
-				value="#{blocoBean.bloco.identificacaoBloco}" required="true"
-				requiredMessage="O campo 'Identificação do Bloco' é obrigatório." maxlength="50"
-				size="50" />
-
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
+				<p:outputLabel value="Identificação do bloco: " for="identificacao_bloco" />
+				<p:inputText id="identificacao_bloco"
+					value="#{blocoBean.bloco.identificacaoBloco}" required="true"
+					requiredMessage="O campo 'Identificação do Bloco' é obrigatório." maxlength="50"
+					size="50" />
+			</p:panelGrid>
 			<p:commandButton value="Salvar" process="@form"
-				action="#{blocoBean.salvar}" />
+				action="#{blocoBean.salvar}" icon="fa fa-save" styleClass="btn-cadastro" />
 		</h:form>
 
 	</ui:define>

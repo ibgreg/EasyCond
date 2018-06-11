@@ -18,7 +18,7 @@
 
 			<h:inputHidden value="#{registroVisitaBean.registroVisita.id}" />
 
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Visitante: " for="visitante" />
 				<p:selectOneMenu id="visitante"
 					value="#{registroVisitaBean.visitanteCombo}">
@@ -50,7 +50,7 @@
 			</p:panelGrid>
 
 			<p:commandButton value="Salvar" process="@form"
-				action="#{registroVisitaBean.salvar}" />
+				action="#{registroVisitaBean.salvar}" icon="fa fa-save" styleClass="btn-cadastro" />
 
 		</h:form>
 

@@ -14,7 +14,7 @@
 
 		<h:form prependId="false">
 
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
 				<h:outputLabel value="Condômino: " for="condomino" />
 				<p:selectOneMenu id="condomino"
 					value="#{registroEntradaBean.pessoaCombo}">
@@ -31,7 +31,7 @@
 			</p:panelGrid>
 			
 			<p:commandButton value="Salvar" process="@form"
-				action="#{registroEntradaBean.salvar}" />
+				action="#{registroEntradaBean.salvar}" icon="fa fa-save" styleClass="btn-cadastro" />
 
 		</h:form>
 

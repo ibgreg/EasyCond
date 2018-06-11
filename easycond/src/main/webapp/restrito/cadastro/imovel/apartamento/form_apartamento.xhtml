@@ -18,7 +18,7 @@
 
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 			
-			<p:panelGrid>
+			<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10" styleClass="ui-panelgrid-blank">
 				<p:outputLabel value="Número do apartamento: " for="num_apartamento" />
 				<p:inputText id="num_apartamento"
 					value="#{apartamentoBean.imovel.numImovel}"
@@ -28,7 +28,7 @@
 			</p:panelGrid>
 			
 			<p:commandButton value="Salvar" process="@form"
-				action="#{apartamentoBean.salvar}" />
+				action="#{apartamentoBean.salvar}" icon="fa fa-save" styleClass="btn-cadastro" />
 		</h:form>
 
 	</ui:define>
