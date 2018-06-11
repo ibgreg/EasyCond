@@ -69,15 +69,13 @@ public class RegistroMoradaBean {
 			
 			this.registroMorada.setImovel(imovel);
 			
-			if(imovelAntigo != imovelCombo && registroMorada.getId() != null)
-			{
+			/*if(imovelAntigo != imovelCombo && registroMorada.getId() != null) {
 				Imovel imv = new ImovelRN().carregar(imovelAntigo);
 				
 				imv.setOcupante(null);
 				
 				new ImovelRN().salvar(imv);
-			}
-			
+			}*/
 			new ImovelRN().salvar(imovel);
 			
 			RegistroMoradaRN registroMoradaRN = new RegistroMoradaRN();
@@ -99,12 +97,14 @@ public class RegistroMoradaBean {
 		
 		this.imovelAntigo = this.registroMorada.getImovel().getId();
 		
-		Integer idImovel = this.registroMorada.getImovel().getId();
+		this.registroMorada.getImovel().setOcupante(null);
+		
+		new ImovelRN().salvar(this.registroMorada.getImovel());
 
-		this.listaImovel = new ImovelRN().listarImoveisDesocupadosMaisODoCarinha(idImovel);
+		this.listaImovel = new ImovelRN().listarImoveisDesocupados();
 		
 		this.pessoaCombo = this.registroMorada.getPessoa().getIdPessoa();
-		this.imovelCombo = idImovel;
+		this.imovelCombo = imovelAntigo;
 		
 		return "/restrito/registro/registro_morada/form_registro_morada";
 	}
@@ -112,7 +112,13 @@ public class RegistroMoradaBean {
 	public String excluir() {
 
 		RegistroMoradaRN registroMoradaRN = new RegistroMoradaRN();
+		
+		this.registroMorada.getImovel().setOcupante(null);
+		
+		new ImovelRN().salvar(registroMorada.getImovel());
+		
 		registroMoradaRN.excluir(this.registroMorada);
+		
 		this.listaRegistroMorada = null;
 		return null;
 	}
