@@ -50,6 +50,9 @@ public class RegistroMorada implements Serializable{
 	@Column(name="data_egresso")
 	private Date dataEgresso;
 	
+	@ManyToOne
+	private Imovel imovel;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -80,6 +83,14 @@ public class RegistroMorada implements Serializable{
 
 	public void setDataEgresso(Date dataEgresso) {
 		this.dataEgresso = dataEgresso;
+	}	
+	
+	public Imovel getImovel() {
+		return imovel;
+	}
+
+	public void setImovel(Imovel imovel) {
+		this.imovel = imovel;
 	}
 
 	@Override

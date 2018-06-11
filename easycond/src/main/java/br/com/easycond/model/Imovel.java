@@ -34,6 +34,9 @@ public class Imovel implements Serializable{
 	@ManyToOne
 	private Bloco bloco;
 	
+	@OneToOne
+	private Pessoa ocupante;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -64,6 +67,14 @@ public class Imovel implements Serializable{
 
 	public void setBloco(Bloco bloco) {
 		this.bloco = bloco;
+	}	
+	
+	public Pessoa getOcupante() {
+		return ocupante;
+	}
+
+	public void setOcupante(Pessoa ocupante) {
+		this.ocupante = ocupante;
 	}
 
 	@Override

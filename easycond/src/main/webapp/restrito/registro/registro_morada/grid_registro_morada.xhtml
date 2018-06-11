@@ -12,7 +12,7 @@
 
 		<h:form>
 			<p:commandButton action="#{registroMoradaBean.novo()}"
-				icon="fa fa-plus-circle" value="Novo" process="@this" />
+				icon="fa fa-plus-circle" value="Novo" process="@this" styleClass="btn-novo"/>
 
 			<p:dataTable var="registroMorada" value="#{registroMoradaBean.listaRegistroMorada}"
 				paginator="true" paginatorPosition="bottom"
@@ -32,6 +32,10 @@
 					<h:outputText value="#{registroMorada.dataEgresso}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
 					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Imóvel">
+					<h:outputText value="#{registroMorada.imovel.numImovel}" />
 				</p:column>
 
 				<p:column headerText="Comandos">

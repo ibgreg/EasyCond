@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="bloco")
@@ -27,13 +30,17 @@ public class Bloco {
 	private String identificacaoBloco;
 
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	/*@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(
 			name="bloco_apartamento",
 			joinColumns = {@JoinColumn(name="id_bloco")},
 			inverseJoinColumns = {@JoinColumn(name="id_apartamento")}
 			)
-	private List<Apartamento> apartamento;
+	private List<Apartamento> apartamento;*/
+	
+	@OneToMany(mappedBy="bloco", orphanRemoval=true)
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+	private List<Imovel> bloco;
 	
 	public Integer getId() {
 		return id;
@@ -50,13 +57,23 @@ public class Bloco {
 	public void setIdentificacaoBloco(String identificacaoBloco) {
 		this.identificacaoBloco = identificacaoBloco;
 	}
-
+/*
 	public List<Apartamento> getApartamento() {
 		return apartamento;
 	}
 
 	public void setApartamento(List<Apartamento> apartamento) {
 		this.apartamento = apartamento;
+	}
+*/
+	public List<Imovel> getBloco() {
+		return bloco;
+	}
+
+	public void setBloco(List<Imovel> bloco) {
+		this.bloco = bloco;
 	}	
+	
+	
 	
 }

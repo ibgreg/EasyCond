@@ -14,12 +14,11 @@
 
 		<h:form prependId="false">
 
+			<h:inputHidden value="#{registroMoradaBean.registroMorada.id}" />
+
 			<h:inputHidden
-					value="#{registroMoradaBean.registroMorada.id}" />
-					
-			<h:inputHidden
-					value="#{registroMoradaBean.registroMorada.pessoa.idPessoa}" />
-			
+				value="#{registroMoradaBean.registroMorada.pessoa.idPessoa}" />
+
 			<p:messages id="msg" closable="true" autoUpdate="true" />
 
 			<p:panelGrid columns="2">
@@ -36,13 +35,22 @@
 				<p:calendar locale="pt" id="data_entrada"
 					value="#{registroMoradaBean.registroMorada.dataIngresso}"
 					pattern="dd-MM-yyyy" mask="true" />
-					
+
 				<h:outputLabel value="Data de saída: " for="data_saida" />
 				<p:calendar locale="pt" id="data_saida"
 					value="#{registroMoradaBean.registroMorada.dataEgresso}"
 					pattern="dd-MM-yyyy" mask="true" />
+
+				<h:outputLabel value="Imóveis desocupados: " for="imovel" />
+				<p:selectOneMenu id="imovel"
+					value="#{registroMoradaBean.imovelCombo}">
+					<f:selectItem itemLabel="[IMÓVEL]" />
+					<f:selectItems value="#{registroMoradaBean.listaImoveis}"
+						var="imovel" itemLabel="#{imovel.numImovel}"
+						itemValue="#{imovel.id}" />
+				</p:selectOneMenu>
 			</p:panelGrid>
-			
+
 			<p:commandButton value="Salvar" process="@form"
 				action="#{registroMoradaBean.salvar}" />
 

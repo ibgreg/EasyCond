@@ -22,4 +22,7 @@ public interface ImovelDAOInterf {
 	
 	public List<Imovel> listarDistinctAp(char tipoImovel);
 	
+	public List<Imovel> listarImoveisDesocupados();
+	
+	public List<Imovel> listarImoveisDesocupadosMaisODoCarinha(Integer id);
 }

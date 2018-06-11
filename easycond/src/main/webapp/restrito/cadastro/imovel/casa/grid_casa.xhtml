@@ -12,7 +12,7 @@
 
 		<h:form>
 			<p:commandButton action="#{casaBean.novo()}"
-				icon="fa fa-plus-circle" value="Novo" process="@this" />
+				icon="fa fa-plus-circle" value="Novo" process="@this" styleClass="btn-novo"/>
 
 			<p:dataTable var="imovel"
 				value="#{casaBean.listaImovel}" paginator="true"

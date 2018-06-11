@@ -60,4 +60,23 @@ public class ImovelDAO implements ImovelDAOInterf {
 								     setProjection(Projections.distinct(Projections.property("numImovel"))).list()))
 							.list();
 	}
+
+	@Override
+	public List<Imovel> listarImoveisDesocupados() {
+		// TODO Auto-generated method stub
+		
+		return this.session.createCriteria(Imovel.class).
+				add(Restrictions.isNull("ocupante")).list();
+	}
+
+	@Override
+	public List<Imovel> listarImoveisDesocupadosMaisODoCarinha(Integer id) {
+		// TODO Auto-generated method stub
+		List<Imovel> listaImovel = this.session.createCriteria(Imovel.class).
+				add(Restrictions.isNull("ocupante")).list();
+		
+		listaImovel.add(this.carregar(id));
+		
+		return listaImovel;
+	}
 }
